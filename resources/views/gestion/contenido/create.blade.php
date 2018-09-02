@@ -1,9 +1,9 @@
-@extends('layouts.dashboard')
+@extends('layouts.admin')
 @section('contenido')
 
 <div class="row">
     
-    <a href="http://www.wiris.com/plugins/demo/ckeditor/php" title="PHP"><input type= "hidden" id="php_logo" class="wrs_tech_logo"  alt="PHP"></a>
+    <a href="{{url('http://www.wiris.com/plugins/demo/ckeditor/php')}}" title="PHP"><input type= "hidden" id="php_logo" class="wrs_tech_logo"  alt="PHP"></a>
     <h3>Nueva Categoría</h3>
     @if (count($errors)>0)
     <div class="alert alert-danger">
@@ -24,17 +24,17 @@
               </div>
               <div class="card-body ">
 
-                    {!!Form::open(array('url'=>'gestion','method'=>'POST','autocomplete'=>'off'))!!}
+                    {!!Form::open(array('url'=>'gestion.contenido','method'=>'POST','autocomplete'=>'off'))!!}
                     {{Form::token()}}
                 
                     <label for= "contenido"> Contenido</label>
                     <textarea name= "contenido" id="example" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="false" role="textbox" aria-label="Rich Text Editor, example" title="Rich Text Editor, example">
                         <p>In elementary algebra, the <b>quadratic formula</b> is the solution of the quadratic equation.</p>
-                        <p style="text-align: center;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mfrac><mrow><mo>-</mo><mi>b</mi><mo>&#x000B1;</mo><msqrt><msup><mi>b</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn><mi>a</mi><mi>c</mi></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></math></p>
+                        <p style="text-align: center;"><math xmlns="{{url('http://www.w3.org/1998/Math/MathML')}}"><mi>x</mi><mo>=</mo><mfrac><mrow><mo>-</mo><mi>b</mi><mo>&#x000B1;</mo><msqrt><msup><mi>b</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn><mi>a</mi><mi>c</mi></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></math></p>
                         <p><b>Water is made from two molecules</b> - Hydrogen and Oxygen. If you put the two gasses together, along with energy, you can make water.</p>
-                        <p style="text-align: center;"><math class="wrs_chemistry" xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi mathvariant="normal">H</mi><mn>2</mn></msub><mfenced><mi mathvariant="normal">g</mi></mfenced><mo>+</mo><msub><mi mathvariant="normal">O</mi><mn>2</mn></msub><mfenced><mi mathvariant="normal">g</mi></mfenced><mo>&#x21CC;</mo><mn>2</mn><msub><mi mathvariant="normal">H</mi><mn>2</mn></msub><mi mathvariant="normal">O</mi><mfenced><mi mathvariant="normal">l</mi></mfenced></math></p>
+                        <p style="text-align: center;"><math class="wrs_chemistry" xmlns="{{url('http://www.w3.org/1998/Math/MathML')}}"><msub><mi mathvariant="normal">H</mi><mn>2</mn></msub><mfenced><mi mathvariant="normal">g</mi></mfenced><mo>+</mo><msub><mi mathvariant="normal">O</mi><mn>2</mn></msub><mfenced><mi mathvariant="normal">g</mi></mfenced><mo>&#x21CC;</mo><mn>2</mn><msub><mi mathvariant="normal">H</mi><mn>2</mn></msub><mi mathvariant="normal">O</mi><mfenced><mi mathvariant="normal">l</mi></mfenced></math></p>
                         <br>
-                        <p>The entire formula for the surface area of a cylinder is <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><msup><mi>&#x3C0;r</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>&#x3C0;rh</mi></math></p>
+                        <p>The entire formula for the surface area of a cylinder is <math xmlns="{{url('http://www.w3.org/1998/Math/MathML')}}"><mn>2</mn><msup><mi>&#x3C0;r</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>&#x3C0;rh</mi></math></p>
                     </textarea>
                     <div class="form-group">
                             <button class="btn btn-primary" type="submit">Guardar</button>
@@ -83,8 +83,5 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-
-
+ 
 @endsection

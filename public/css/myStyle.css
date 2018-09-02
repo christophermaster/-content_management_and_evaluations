@@ -59,3 +59,11 @@
 .mystats {
     display: inline-flex;
 }
+
+
+/*Menu*/
+
+nav#navigation-example {
+    background: #ffffff !important;
+    border-bottom: 1px solid #d8d6d6;
+}

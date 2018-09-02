@@ -26,13 +26,13 @@ class ContenidoController extends Controller
            // ->where ('condicion','=','1')
             ->orderBy('id','desc')
             ->paginate(7);
-            return view('gestion.index',["contenido"=>$contenido,"searchText"=>$query]);
+            return view('gestion.contenido.index',["contenido"=>$contenido,"searchText"=>$query]);
         }
     }
 
     public function create()
     {
-        return view("gestion.create");
+        return view("gestion.contenido.create");
     }
 
     public function store (ContenidoFormRequest $request)
@@ -41,16 +41,16 @@ class ContenidoController extends Controller
         $contenido->contenido=$request->get('contenido');
         $contenido->id_user='2';
         $contenido->save();
-        return Redirect::to('gestion');
+        return Redirect::to('gestion/contenido');
 
     }
     public function show($id)
     {
-        return view("gestion.show",["contenido"=>Contenido::findOrFail($id)]);
+        return view("gestion.contenido.show",["contenido"=>Contenido::findOrFail($id)]);
     }
     public function edit($id)
     {
-        return view("gestion.edit",["contenido"=>Contenido::findOrFail($id)]);
+        return view("gestion.contenido.edit",["contenido"=>Contenido::findOrFail($id)]);
     }
     public function update(ContenidoFormRequest $request,$id)
     {

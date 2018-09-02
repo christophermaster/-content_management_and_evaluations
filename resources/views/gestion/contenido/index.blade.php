@@ -1,22 +1,14 @@
-
-@extends('layouts.dashboard')
+@extends('layouts.admin')
 @section('contenido')
 
-
-
 <div class = "row">
-
     <div class= "col-lg-8 col-md-8 col-sm-8 col-xl-8 ">
 
         @foreach($contenido as $con)
-
         <div class="card card-product">
             <div class="card-header card-header-success card-header-icon">
 
-                    <div class="card-icon logo">
-                       CT 
-                           
-                        </div>
+                    <div class="card-icon logo"> CT </div>
                 <div class = "row titulo">    
                     <div class="text-left mystats">
                        
@@ -55,10 +47,6 @@
             </div>
 
             <div class="card-footer">
-
-      
-
-                
                 <div class="stats">
                     <i class="material-icons" >
                          drag_handle
@@ -83,17 +71,13 @@
                     </i>
                     <span> 20 veces Usado</span>
                 </div>
-                
-                
-                
+                 
             </div>
         </div>
         @endforeach
-
-          
+       
     </div>
- 
-    
+
     <div class= "col-lg-4 col-md-4 col-sm-4 col-xl-4" >
 
         <ul class="timeline timeline-simple">
@@ -112,7 +96,7 @@
                                       <tr>
                                         <td class="img-row">
                                           <div class="photo">
-                                            <img src="img/faces/ayo-ogunseinde-2.jpg" class="img-raised">
+                                            <img src="{{asset('img/faces/ayo-ogunseinde-2.jpg')}}" class="img-raised">
                                           </div>
                                         </td>
                                         <td class="text-left">Elementos I</td>
@@ -127,7 +111,7 @@
                                       <tr>
                                         <td class="img-row">
                                           <div class="photo">
-                                            <img src="img/faces/erik-lucatero-2.jpg" class="img-raised">
+                                            <img src="{{asset('img/faces/erik-lucatero-2.jpg')}}" class="img-raised">
                                           </div>
                                         </td>
                                         <td class="text-left">Elemetos II</td>

@@ -11,14 +11,26 @@
 |
 */
 
+Auth::routes();
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+// LOGIN
+
 Route::get('/', function () {
     return view('auth/login');
 });
-Route::get('/inicio', function () {
-    return view('index');
-});
 
-Route::resource('gestion','ContenidoController');
+/**
+ * iNICIO DE LA APLICACION 
+ * ventana que aparece despues del login
+ * */ 
+Route::Resource('/gestion/contenido','ContenidoController');
+
+
 
 Route::get('pdf',function(){
 
@@ -27,7 +39,3 @@ Route::get('pdf',function(){
 
 });
 
-Auth::routes();
-Route::auth();
-
-Route::get('/home', 'HomeController@index')->name('home');
