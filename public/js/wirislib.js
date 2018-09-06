@@ -2,7 +2,7 @@
 // This script renders non editable DOM objects.
 var js = document.createElement("script");
 js.type = "text/javascript";
-js.src = "./ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js?viewer=image";
+js.src = "/ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js?viewer=image";
 document.head.appendChild(js);
 
 // Global variables. For demo purposes.

@@ -39,3 +39,8 @@ Route::get('pdf',function(){
 
 });
 
+// Prueba
+
+Route::get('/iniciar', function () {
+    return view('login');
+});

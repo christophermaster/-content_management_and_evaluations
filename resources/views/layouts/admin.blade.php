@@ -31,6 +31,7 @@
     <script type="text/javascript" src="{{url('https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/codemirror.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/xml.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js')}}"></script>
 
     <script>
         if (window.location.search !== '') {
