@@ -8,7 +8,7 @@
                 <div class="card card-profile text-center card-hidden">
                     <div class="card-header ">
                         <div class="card-avatar">
-                            <a href="#pablo">
+                            <a>
                                 <img class="img" src="{{asset('img/faces/avatar.jpg')}}">
                             </a>
                         </div>
