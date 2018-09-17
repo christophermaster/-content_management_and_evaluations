@@ -71,7 +71,7 @@
 
     <div class="wrapper ">
 
-        <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('img/sidebar-1.jpg')}}">
+        <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('img/nav.gif')}}">
 
             <div class="logo"><a href="" class="simple-text logo-mini">
                     GC
@@ -97,7 +97,7 @@
                         <div class="collapse" id="collapseExample">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{url('miperfil')}}">
                                         <span class="sidebar-mini"> MP </span>
                                         <span class="sidebar-normal"> My Profile </span>
                                     </a>

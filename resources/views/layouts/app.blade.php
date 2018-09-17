@@ -15,7 +15,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
-<body>
+<body class="off-canvas-sidebar">
 
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white" id="navigation-example">
         <div class="container">
@@ -45,6 +45,7 @@
                                 <i class="material-icons">lock_open</i> Recuperar
                             </a>
                         </li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                     <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

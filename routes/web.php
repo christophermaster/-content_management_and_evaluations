@@ -27,10 +27,15 @@ Route::get('/', function () {
 /**
  * iNICIO DE LA APLICACION 
  * ventana que aparece despues del login
+ * 
  * */ 
 Route::Resource('/gestion/contenido','ContenidoController');
-
-
+/**
+ * Perfil
+ */
+Route::get('/miperfil', function () {
+    return view('perfil/myPerfil');
+});
 
 Route::get('pdf',function(){
 
