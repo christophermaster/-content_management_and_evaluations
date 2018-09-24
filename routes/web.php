@@ -36,6 +36,12 @@ Route::Resource('/gestion/contenido','ContenidoController');
 Route::get('/miperfil', function () {
     return view('perfil/myPerfil');
 });
+Route::get('mis/ejercicios', function () {
+    return view('ejercicio/miejercicios/ejercicios');
+});
+Route::get('otros/ejercicios', function () {
+    return view('ejercicio/todoLosEjercicios/ejercicios');
+});
 
 Route::get('pdf',function(){
 

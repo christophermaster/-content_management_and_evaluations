@@ -99,19 +99,13 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{url('miperfil')}}">
                                         <span class="sidebar-mini"> MP </span>
-                                        <span class="sidebar-normal"> My Profile </span>
+                                        <span class="sidebar-normal"> Mi Perfil </span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
-                                        <span class="sidebar-mini"> EP </span>
-                                        <span class="sidebar-normal"> Edit Profile </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span class="sidebar-mini"> S </span>
-                                        <span class="sidebar-normal"> Settings </span>
+                                        <span class="sidebar-mini"> CS </span>
+                                        <span class="sidebar-normal"> Conf. de Seguridad </span>
                                     </a>
                                 </li>
                             </ul>
@@ -150,13 +144,13 @@
                                     <div class="collapse" id="ejercicios">
                                         <ul class="nav">
                                             <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
+                                                <a class="nav-link" href="{{url('mis/ejercicios')}}">
                                                     <span class="sidebar-mini"> ME </span>
                                                     <span class="sidebar-normal"> Mis Ejercicios </span>
                                                 </a>
                                             </li>
                                             <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
+                                                <a class="nav-link" href="{{url('otros/ejercicios')}}">
                                                     <span class="sidebar-mini"> TE </span>
                                                     <span class="sidebar-normal"> Todos Los Ejercicios </span>
                                                 </a>
