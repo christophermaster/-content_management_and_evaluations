@@ -15,7 +15,7 @@ class CreateContenidoTable extends Migration
     {
         Schema::create('contenido', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('id_user');
+            $table->integer('id_user');
             $table->string('contenido');
         });
     }

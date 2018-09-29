@@ -1,73 +1,74 @@
 @extends('layouts.admin') @section('contenido')
   <div class="content">
       <div class="container-fluid">
-          <div class="row">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                      <div class="card-header card-header-warning card-header-icon">
-                          <div class="card-icon">
-                              <i class="material-icons">weekend</i>
-                          </div>
-                          <p class="card-category">Bookings</p>
-                          <h3 class="card-title">184</h3>
-                      </div>
-                      <div class="card-footer">
-                          <div class="stats">
-                              <i class="material-icons text-danger">warning</i>
-                              <a href="#pablo">Get More Space...</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                      <div class="card-header card-header-rose card-header-icon">
-                          <div class="card-icon">
-                              <i class="material-icons">equalizer</i>
-                          </div>
-                          <p class="card-category">Website Visits</p>
-                          <h3 class="card-title">75.521</h3>
-                      </div>
-                      <div class="card-footer">
-                          <div class="stats">
-                              <i class="material-icons">local_offer</i> Tracked from Google Analytics
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                      <div class="card-header card-header-success card-header-icon">
-                          <div class="card-icon">
-                              <i class="material-icons">store</i>
-                          </div>
-                          <p class="card-category">Revenue</p>
-                          <h3 class="card-title">$34,245</h3>
-                      </div>
-                      <div class="card-footer">
-                          <div class="stats">
-                              <i class="material-icons">date_range</i> Last 24 Hours
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                      <div class="card-header card-header-info card-header-icon">
-                          <div class="card-icon">
-                              <i class="fa fa-twitter"></i>
-                          </div>
-                          <p class="card-category">Followers</p>
-                          <h3 class="card-title">+245</h3>
-                      </div>
-                      <div class="card-footer">
-                          <div class="stats">
-                              <i class="material-icons">update</i> Just Updated
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+        <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">description</i>
+                </div>
+                <p class="card-category">Ejercicios</p>
+                <h3 class="card-title">84</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">description</i>Ejercicios subidos
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">extension</i>
+                </div>
+                <p class="card-category">Soluciones</p>
+                <h3 class="card-title">14</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">extension</i>Soluciones subidas
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-rose card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">favorite</i>
+                </div>
+                <p class="card-category">favorito</p>
+                <h3 class="card-title">64</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">favorite</i> Ejer. o Sol. favoritas
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">offline_pin</i>
+                </div>
+                <p class="card-category">Por Confirmar</p>
+                <h3 class="card-title">4</h3>
+            </div>
+
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">update</i> Ejer. o Sol. por ser Confirmadas
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
           <div class="row">
               <div class="col-md-4">
                   <div class="card card-profile">
@@ -78,12 +79,11 @@
                       </div>
                       <div class="card-body">
                           <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                          <h4 class="card-title">Alec Thompson</h4>
+                          <h4 class="card-title">Christopher Siverio</h4>
                           <p class="card-description">
-                              Don't be scared of the truth because we need to restart the human foundation in truth And I
-                              love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                             No tengas miedo de la verdad porque necesitamos reiniciar la base humana en la verdad
                           </p>
-                          <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                         
                       </div>
                   </div>
               </div>
@@ -93,8 +93,8 @@
                           <div class="card-icon">
                               <i class="material-icons">perm_identity</i>
                           </div>
-                          <h4 class="card-title">Edit Profile -
-                              <small class="category">Complete your profile</small>
+                          <h4 class="card-title">Mi PERFIL - 
+                              <small class="category"> Informacion Personal</small>
                           </h4>
                       </div>
                       <div class="card-body">
@@ -102,19 +102,19 @@
                               <div class="row">
                                   <div class="col-md-5">
                                       <div class="form-group">
-                                          <label class="bmd-label-floating">Company (disabled)</label>
+                                          <label class="bmd-label-floating">Empresa (disabled)</label>
                                           <input type="text" class="form-control" disabled>
                                       </div>
                                   </div>
                                   <div class="col-md-3">
                                       <div class="form-group">
-                                          <label class="bmd-label-floating">Username</label>
+                                          <label class="bmd-label-floating">Nombre de Usuario</label>
                                           <input type="text" class="form-control">
                                       </div>
                                   </div>
                                   <div class="col-md-4">
                                       <div class="form-group">
-                                          <label class="bmd-label-floating">Email address</label>
+                                          <label class="bmd-label-floating">Email</label>
                                           <input type="email" class="form-control">
                                       </div>
                                   </div>
@@ -122,13 +122,13 @@
                               <div class="row">
                                   <div class="col-md-6">
                                       <div class="form-group">
-                                          <label class="bmd-label-floating">Fist Name</label>
+                                          <label class="bmd-label-floating">Nombre</label>
                                           <input type="text" class="form-control">
                                       </div>
                                   </div>
                                   <div class="col-md-6">
                                       <div class="form-group">
-                                          <label class="bmd-label-floating">Last Name</label>
+                                          <label class="bmd-label-floating">Apellido</label>
                                           <input type="text" class="form-control">
                                       </div>
                                   </div>
@@ -144,19 +144,19 @@
                               <div class="row">
                                   <div class="col-md-4">
                                       <div class="form-group">
-                                          <label class="bmd-label-floating">City</label>
+                                          <label class="bmd-label-floating">Ciudad</label>
                                           <input type="text" class="form-control">
                                       </div>
                                   </div>
                                   <div class="col-md-4">
                                       <div class="form-group">
-                                          <label class="bmd-label-floating">Country</label>
+                                          <label class="bmd-label-floating">Pais</label>
                                           <input type="text" class="form-control">
                                       </div>
                                   </div>
                                   <div class="col-md-4">
                                       <div class="form-group">
-                                          <label class="bmd-label-floating">Postal Code</label>
+                                          <label class="bmd-label-floating">Número de Telf:</label>
                                           <input type="text" class="form-control">
                                       </div>
                                   </div>
@@ -164,16 +164,15 @@
                               <div class="row">
                                   <div class="col-md-12">
                                       <div class="form-group">
-                                          <label>About Me</label>
+                                          <label>Sobre mi</label>
                                           <div class="form-group">
-                                              <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so
-                                                  thirsty, I'm in that two seat Lambo.</label>
+                                              <label class="bmd-label-floating">Descripción.</label>
                                               <textarea class="form-control" rows="5"></textarea>
                                           </div>
                                       </div>
                                   </div>
                               </div>
-                              <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                              <button type="submit" class="btn btn-primary pull-right">Actualizar perfil</button>
                               <div class="clearfix"></div>
                           </form>
                       </div>

@@ -89,7 +89,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <textarea name="contenido" id="example" requerid value="{{old('contenido')}}" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="true" role="textbox" aria-label="Rich Text Editor, example" title="Rich Text Editor, example">
-                                                                </textarea>
+                                      </textarea>
                                 </div>
 
                             </div>
@@ -97,7 +97,7 @@
                         <div class="tab-pane" id="link8">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea name ="contenidoB" id="exampleA" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="true" role="textbox" aria-label="Rich Text Editor, exampleA" title="Rich Text Editor, exampleA">
+                                    <textarea name ="contenidoB" id="exampleA" " contenteditable="true" tabindex="0" spellcheck="true" role="textbox" aria-label="Rich Text Editor, exampleA" title="Rich Text Editor, exampleA">
                                      
                                     </textarea>
                                 </div>

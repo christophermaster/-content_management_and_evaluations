@@ -42,7 +42,9 @@ Route::get('mis/ejercicios', function () {
 Route::get('otros/ejercicios', function () {
     return view('ejercicio/todoLosEjercicios/ejercicios');
 });
-
+Route::get('gestion/solucion', function () {
+    return view('gestion/solucion/solucion');
+});
 Route::get('pdf',function(){
 
     $pdf = PDF::loadView('indexx');

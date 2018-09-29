@@ -69,7 +69,7 @@
 
 <body class="sidebar-mini">
 
-    <div class="wrapper ">
+    <div class="wrapper">
 
         <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('img/nav.gif')}}">
 
@@ -90,7 +90,7 @@
                     <div class="user-info">
                         <a data-toggle="collapse" href="#collapseExample" class="username">
                             <span>
-                                Tania Andrew
+                                Christopher Siverio
                                 <b class="caret"></b>
                             </span>
                         </a>
@@ -166,7 +166,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="">
+                                    <a class="nav-link" href="{{url('gestion/solucion')}}">
                                         <span class="sidebar-mini"> CS </span>
                                         <span class="sidebar-normal"> Crear Solución </span>
                                     </a>
