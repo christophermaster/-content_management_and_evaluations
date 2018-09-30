@@ -8,10 +8,12 @@ use gestion\Contenido;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Auth\Middleware\Authenticate;
 use gestion\Http\Requests\ContenidoFormRequest;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class ContenidoController extends Controller
 {
+
     public function __construct()
     {
         //$this->middleware('auth');

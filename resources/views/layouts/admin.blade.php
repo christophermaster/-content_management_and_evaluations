@@ -113,13 +113,18 @@
                     </div>
                 </div>
                 <ul class="nav">
-
+                    <!--
+                        Inicio
+                    -->
                     <li class="nav-item active">
                         <a class="nav-link" href="{{url('gestion/contenido')}}">
                             <i class="material-icons">dashboard</i>
                             <p> Inicio </p>
                         </a>
                     </li>
+                    <!--
+                        GESTION DE EJERCICIO
+                    -->
 
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
@@ -128,7 +133,9 @@
                                 <b class="caret"></b>
                             </p>
                         </a>
-
+                    <!--
+                        lISTA DE EJERCICIO
+                    -->
                         <div class="collapse" id="pagesExamples">
                             <ul class="nav">
 
@@ -181,6 +188,9 @@
                             </ul>
                         </div>
                     </li>
+                    <!--
+                        GESTION DE EVALUACION 
+                    -->
 
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#evaluaciones">
@@ -284,6 +294,74 @@
                             </ul>
                         </div>
                     </li>
+
+                    <!--
+                        ADINISTRACION UNIVERSITARIA
+                    -->
+                    @if (Auth::user()->id_persona == 1)
+                      <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#universidad">
+                            <i class="material-icons">account_balance</i>
+                            <p>Admin. Universidad
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                    <!--
+                        lISTA DE EJERCICIO
+                    -->
+                        <div class="collapse" id="universidad">
+                            <ul class="nav">
+
+                                <!--<li class="nav-item ">
+                                    <a class="nav-link" data-toggle="collapse" href="#ejercicios">
+                                        <span class="sidebar-mini"> E </span>
+                                        <span class="sidebar-normal">Ejercicios
+                                            <b class="caret"></b>
+                                        </span>
+
+                                    </a>
+
+                                    <div class="collapse" id="ejercicios">
+                                        <ul class="nav">
+                                            <li class="nav-item ">
+                                                <a class="nav-link" href="{{url('mis/ejercicios')}}">
+                                                    <span class="sidebar-mini"> ME </span>
+                                                    <span class="sidebar-normal"> Mis Ejercicios </span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item ">
+                                                <a class="nav-link" href="{{url('otros/ejercicios')}}">
+                                                    <span class="sidebar-mini"> TE </span>
+                                                    <span class="sidebar-normal"> Todos Los Ejercicios </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>-->
+
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{url('administracion/facultad')}}">
+                                        <span class="sidebar-mini"> F </span>
+                                        <span class="sidebar-normal">Facultades</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{url('gestion/solucion')}}">
+                                        <span class="sidebar-mini"> CS </span>
+                                        <span class="sidebar-normal"> Crear Solución </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="pages/login.html">
+                                        <span class="sidebar-mini"> SE </span>
+                                        <span class="sidebar-normal"> Subir Ejercicio </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    @endif
 
                 
                 </ul>

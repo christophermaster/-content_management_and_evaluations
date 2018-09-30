@@ -45,6 +45,24 @@ Route::get('otros/ejercicios', function () {
 Route::get('gestion/solucion', function () {
     return view('gestion/solucion/solucion');
 });
+/**
+ * Facultad
+*/
+Route::Resource('administracion/facultad','FacultyController');
+/**
+ * Escuela
+*/
+//Route::Resource('administracion/facultad/escuela/{id}', ['as' => 'escuela', 'uses' => 'SchoolController']);
+Route::get('facultad/escuela/{id}', ['as' => 'escuela', 'uses' => 'SchoolController@index']);
+
+/*
+Route::get('administracion/facultad', function () {
+    if(Auth::user()->id_persona == 1){
+        return view('administration/university/faculty/index');
+    }
+    return view('perfil/myPerfil');
+});
+*/
 Route::get('pdf',function(){
 
     $pdf = PDF::loadView('indexx');
