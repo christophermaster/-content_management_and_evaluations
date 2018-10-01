@@ -14,7 +14,8 @@ class School extends Model
 
     protected $fillable =[
         'nombre',
-        'id_facultad'
+        'descripcion',
+        'id_facultad',
     ];
 
     protected $guarded =[

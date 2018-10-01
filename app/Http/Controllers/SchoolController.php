@@ -1,35 +1,56 @@
 <?php
 
 namespace gestion\Http\Controllers;
-use Illuminate\Support\Facades\Input;
-use gestion\models\Faculty;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use gestion\Http\Requests\SchoolFormRequest;
+use gestion\models\Faculty;
+use gestion\models\School;
+use Illuminate\Auth\Middleware\Authenticate;
+use Illuminate\Support\Facades\Auth;
+use DB;
 class SchoolController extends Controller
 {
      public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
     public function index(Request $request,$id)
     {
-        $user= $id;
-        return view('administration.university.school.index',["user"=>$user]);
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $school=DB::table('schools as s')
+            //->join('categoria as c','a.idcategoria','=',"c.idcategoria")
+            ->select('s.id','s.nombre','s.descripcion')
+            ->where('s.nombre','LIKE','%'.$query.'%')
+            ->where('s.id_facultad',"=",$id)
+            //->orwhere('a.codigo','LIKE','%'.$query.'%')
+            ->orderBy('s.id','asc')
+            ->paginate(3);
+
+            return view('administration.university.school.index',["school"=>$school,"id_facultad"=>$id,"searchText"=>$query]);
+        }
+        
           
     }
-    public function create()
+    public function create($id)
     {
-        /*$categorias = DB::table('categoria')->where('condicion','=','1')->get();
-        return view("administration.university.faculty.create");*/
+        /*$categorias = DB::table('categoria')->where('condicion','=','1')->get();*/
+        return view("administration.university.school.create",["id_facultad"=>$id]);
     }
-    public function store (FacultyFormRequest $request)
+    public function store (SchoolFormRequest $request)
     {
-        /*$faculty=new Faculty;
-        $faculty->nombre=$request->get('nombre');
-        $faculty->descripcion=$request->get('descripcion');
+        $school=new School();
+        $school->nombre=$request->get('nombre');
+        $school->descripcion=$request->get('descripcion');
+        $school->id_facultad=$request->get('id_facultad');
 
-        $faculty->save();
-        return Redirect::to('administracion/facultad');*/
+        $school->save();
+       
+         return Redirect::to('facultad/escuela/'.$request->get('id_facultad'));
 
     }
     public function show($id)

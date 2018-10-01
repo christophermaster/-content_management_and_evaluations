@@ -19,25 +19,19 @@ class FacultyController extends Controller
     }
     public function index(Request $request)
     {
-        $user = Auth::user()->id_cargo;
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $faculty=DB::table('faculties as f')
+            //->join('categoria as c','a.idcategoria','=',"c.idcategoria")
+            ->select('f.id','f.nombre','f.descripcion')
+            ->where('f.nombre','LIKE','%'.$query.'%')
+            //->orwhere('a.codigo','LIKE','%'.$query.'%')
+            ->orderBy('f.id','asc')
+            ->paginate(3);
 
-         if($user == 1){
-
-            if ($request)
-            {
-                $query=trim($request->get('searchText'));
-                $faculty=DB::table('faculties as f')
-                //->join('categoria as c','a.idcategoria','=',"c.idcategoria")
-                ->select('f.id','f.nombre','f.descripcion')
-                ->where('f.nombre','LIKE','%'.$query.'%')
-                //->orwhere('a.codigo','LIKE','%'.$query.'%')
-                ->orderBy('f.id','asc')
-                ->paginate(3);
-
-                return view('administration.university.faculty.index',["faculty"=>$faculty,"searchText"=>$query,"user"=> $user]);
-            }
-
-         }
+            return view('administration.university.faculty.index',["faculty"=>$faculty,"searchText"=>$query]);
+        }
 
     }
     public function create()

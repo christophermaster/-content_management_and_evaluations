@@ -54,7 +54,8 @@ Route::Resource('administracion/facultad','FacultyController');
 */
 //Route::Resource('administracion/facultad/escuela/{id}', ['as' => 'escuela', 'uses' => 'SchoolController']);
 Route::get('facultad/escuela/{id}', ['as' => 'escuela', 'uses' => 'SchoolController@index']);
-
+Route::get('facultad/escuela/create/{id}', ['as' => 'create', 'uses' => 'SchoolController@create']);
+Route::post('facultad/escuela','SchoolController@store');
 /*
 Route::get('administracion/facultad', function () {
     if(Auth::user()->id_persona == 1){

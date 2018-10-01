@@ -13,7 +13,7 @@ class SchoolFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class SchoolFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
+            'nombre' =>'required|max:15',
+            'descripcion' => 'required|max:512',
+            'id_facultad'=> 'required'
         ];
     }
 }
