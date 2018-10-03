@@ -1,6 +1,6 @@
 <?php
 
-namespace gestion\model;
+namespace gestion\models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +15,7 @@ class Cathedra extends Model
 
     protected $fillable =[
         'nombre',
+        "descripcion",
         'id_escuela'
     ];
 

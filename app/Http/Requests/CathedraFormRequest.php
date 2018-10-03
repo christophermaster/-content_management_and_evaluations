@@ -26,6 +26,7 @@ class CathedraFormRequest extends FormRequest
         return [
             'id_escuela'=>'required',
             'nombre' =>'required|max:100',
+            'descripcion' => 'required|max:512'           
         ];
     }
 }

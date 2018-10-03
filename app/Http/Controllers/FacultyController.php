@@ -60,10 +60,9 @@ class FacultyController extends Controller
     }
     public function update(FacultyFormRequest $request, $id)
     {
-        $faculty=new Faculty;
+        $faculty = Faculty::findOrfail($id);
         $faculty->nombre=$request->get('nombre');
         $faculty->descripcion=$request->get('descripcion');
-
         $faculty->update();
         return Redirect::to('administracion/facultad');
     }

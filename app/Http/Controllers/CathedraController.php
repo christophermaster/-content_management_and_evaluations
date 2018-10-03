@@ -5,14 +5,14 @@ namespace gestion\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-use gestion\Http\Requests\SchoolFormRequest;
-use gestion\models\Faculty;
+use gestion\Http\Requests\CathedraFormRequest;
 use gestion\models\School;
+use gestion\models\Cathedra;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
-class SchoolController extends Controller
+class CathedraController extends Controller
 {
      public function __construct()
     {
@@ -23,16 +23,16 @@ class SchoolController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $school=DB::table('schools as s')
+            $cathedra=DB::table('cathedras as c')
             //->join('categoria as c','a.idcategoria','=',"c.idcategoria")
-            ->select('s.id','s.nombre','s.descripcion')
-            ->where('s.nombre','LIKE','%'.$query.'%')
-            ->where('s.id_facultad',"=",$id)
+            ->select('c.id','c.nombre','c.descripcion')
+            ->where('c.nombre','LIKE','%'.$query.'%')
+            ->where('c.id_escuela',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('s.id','asc')
+            ->orderBy('c.id','asc')
             ->paginate(3);
 
-            return view('administration.university.school.index',["school"=>$school,"id_facultad"=>$id,"searchText"=>$query]);
+            return view('administration.university.cathedra.index',["cathedra"=>$cathedra,"id_escuela"=>$id,"searchText"=>$query]);
         }
         
           
@@ -40,18 +40,18 @@ class SchoolController extends Controller
     public function create($id)
     {
         /*$categorias = DB::table('categoria')->where('condicion','=','1')->get();*/
-        return view("administration.university.school.create",["id_facultad"=>$id]);
+        return view("administration.university.cathedra.create",["id_escuela"=>$id]);
     }
-    public function store (SchoolFormRequest $request)
+    public function store (CathedraFormRequest $request)
     {
-        $school=new School;
-        $school->nombre=$request->get('nombre');
-        $school->descripcion=$request->get('descripcion');
-        $school->id_facultad=$request->get('id_facultad');
+        $cathedra=new Cathedra;
+        $cathedra->nombre=$request->get('nombre');
+        $cathedra->descripcion=$request->get('descripcion');
+        $cathedra->id_escuela=$request->get('id_escuela');
 
-        $school->save();
+        $cathedra->save();
        
-         return Redirect::to('facultad/escuela/'.$request->get('id_facultad'));
+         return Redirect::to('facultad/catedra/'.$request->get('id_escuela'));
 
     }
     public function show($id)

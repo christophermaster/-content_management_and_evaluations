@@ -49,13 +49,27 @@ Route::get('gestion/solucion', function () {
  * Facultad
 */
 Route::Resource('administracion/facultad','FacultyController');
+
 /**
  * Escuela
 */
 //Route::Resource('administracion/facultad/escuela/{id}', ['as' => 'escuela', 'uses' => 'SchoolController']);
 Route::get('facultad/escuela/{id}', ['as' => 'escuela', 'uses' => 'SchoolController@index']);
-Route::get('facultad/escuela/create/{id}', ['as' => 'create', 'uses' => 'SchoolController@create']);
+Route::get('facultad/escuela/create/{id}', ['as' => 'createEscuela', 'uses' => 'SchoolController@create']);
+Route::get('facultad/escuela/modificar/{id}', ['as' => 'updateEscuela', 'uses' => 'SchoolController@edit']);
+Route::post('facultad/escuela/modificar/{id}', 'SchoolController@update');
 Route::post('facultad/escuela','SchoolController@store');
+
+/**
+ * Catedra
+ */
+Route::get('facultad/catedra/{id}', ['as' => 'catedra', 'uses' => 'CathedraController@index']);
+Route::get('facultad/catedra/create/{id}', ['as' => 'createCatedra', 'uses' => 'CathedraController@create']);
+Route::get('facultad/catedra/modificar/{id}', ['as' => 'updateCatedra', 'uses' => 'CathedraController@edit']);
+Route::post('facultad/catedra/modificar/{id}', 'CathedraController@update');
+Route::post('facultad/catedra','CathedraController@store');
+
+
 /*
 Route::get('administracion/facultad', function () {
     if(Auth::user()->id_persona == 1){

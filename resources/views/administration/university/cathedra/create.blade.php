@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Modificar Escuela</h3>
+			<h3>Nueva Catedra</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -18,32 +18,28 @@
        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                  <div class="card-header">
-                    <h4 class="card-title">Modificar  - 
-                        <small class="category">{{$school->nombre}}</small>
+                    <h4 class="card-title">Crear  - 
+                        <small class="category"> Catedra</small>
                     </h4>
                  </div>
                 <div class="card-body">
-               <form method="post" action="/facultad/escuela/modificar/{{$school->id}}" >
-                 @csrf
-              
-                 <input type="hidden" value="{{csrf_token()}}" name="_token" /> 
-                 
-                    <div class="row">                                        
+                {!!Form::open(array('url'=>'facultad/catedra','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
+                {{Form::token()}}
+                    <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                 
                                 <label for="nombre">Nombre</label>
-                                <input type="text" name="nombre" required value ="{{$school->nombre}}" class="form-control" >
+                                <input type="text" name="nombre" required value = "{{old('nombre')}}" class="form-control" >
                             </div>
                         </div>
                     
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label for="descripcion">Descripción</label>
-                                <input type="text" name="descripcion"  value ="{{$school->descripcion}}" class="form-control">
+                                <input type="text" name="descripcion"  value = "{{old('descripcion')}}" class="form-control">
                             </div>
                         </div>
-                        <input type="hidden" value="{{$school->id_facultad}}" name="id_facultad" /> 
+                        <input type="hidden" name="id_escuela"  value = "{{$id_escuela}}" class="form-control">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Guardar</button>
@@ -51,10 +47,9 @@
                             </div>
                         </div>
                     </div>
-               </form>
+                {!!Form::close()!!}
             </div>
          </div>
      </div>
 </div>
-
 @endsection
