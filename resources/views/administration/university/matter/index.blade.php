@@ -3,11 +3,11 @@
 
 <div class = "row   ">
     <div class= "col-lg-8 col-md-8 col-sm-8 col-xs-12 text-left">
-        <h3> Listado de Escuelas</h3>
+        <h3> Listado de Materias</h3>
     </div>
     <div class= "col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right">
         <h3> 
-            <a href = "{{route('createEscuela',['id' => $id_facultad])}}">
+            <a href = "{{route('createMateria',['id' => $id_catedra])}}">
                 <button class ="btn btn-success">Nuevo</button>
             </a>
         </h3>
@@ -15,7 +15,7 @@
 </div>
 <div class="row">
     <div class= "col-lg-8 col-md-12 col-sm-8 col-xs-12 ">
-        @include('administration.university.school.search')
+        @include('administration.university.matter.search')
     </div>
 </div>
 <div class = "row">
@@ -32,31 +32,31 @@
 
                 </thead>
 
-                @foreach($school as $sch)
+                @foreach($matter as $mat)
                     <tr>
-                        <td>{{$sch ->id}}</td>
-                        <td>{{$sch ->nombre}}</td>
-                        <td>{{$sch ->descripcion}}</td>
+                        <td>{{$mat ->id}}</td>
+                        <td>{{$mat ->nombre}}</td>
+                        <td>{{$mat ->descripcion}}</td>
                         <td>
-                           <a href = "{{route('updateEscuela',['id' => $sch->id])}}">
+                           <a href = "{{route('updateMateria',['id' => $mat->id])}}">
                                 <button class= "btn btn-info">Editar</button>
                             </a>
                             <a href = ""  data-toggle="modal">
                                 <button class= "btn btn-danger">Eliminar</button>
                             </a>
-                            <a href="{{route('catedra',['id' => $sch->id])}}">
+                            <a href="{{route('materia',['id' => $mat->id])}}">
                                 <button class= "btn btn-primary">Detalles</button>
                             </a>
                         </td>
 
                     </tr>
-                    @include('administration.university.faculty.modal')
+                    @include('administration.university.matter.modal')
                 @endforeach
 
 
             </table>
        </div>
-       {{$school ->render()}}
+       {{$matter ->render()}}
     </div>
 </div> 
 

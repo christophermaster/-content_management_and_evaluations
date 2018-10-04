@@ -12,7 +12,7 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
-class CathedraController extends Controller
+class MatterController extends Controller
 {
      public function __construct()
     {

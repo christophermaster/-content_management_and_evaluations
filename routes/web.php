@@ -69,6 +69,15 @@ Route::get('facultad/catedra/modificar/{id}', ['as' => 'updateCatedra', 'uses' =
 Route::post('facultad/catedra/modificar/{id}', 'CathedraController@update');
 Route::post('facultad/catedra','CathedraController@store');
 
+/**
+ * Materia
+ */
+Route::get('facultad/materia/{id}', ['as' => 'materia', 'uses' => 'MatterController@index']);
+Route::get('facultad/materia/create/{id}', ['as' => 'createMateria', 'uses' => 'MatterController@create']);
+Route::get('facultad/materia/modificar/{id}', ['as' => 'updateMateria', 'uses' => 'MatterController@edit']);
+Route::post('facultad/materia/modificar/{id}', 'MatterController@update');
+Route::post('facultad/materia','MatterController@store');
+
 
 /*
 Route::get('administracion/facultad', function () {

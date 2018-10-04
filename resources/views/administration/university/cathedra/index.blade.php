@@ -44,9 +44,9 @@
                             <a href = ""  data-toggle="modal">
                                 <button class= "btn btn-danger">Eliminar</button>
                             </a>
-                          <!--<a href="{{route('catedra',['id' => $cat->id])}}">
+                            <a href="{{route('materia',['id' => $cat->id])}}">
                                 <button class= "btn btn-primary">Detalles</button>
-                            </a>-->
+                            </a>
                         </td>
 
                     </tr>

@@ -1,67 +1,65 @@
-.photo {
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    float: left;
-    z-index: 5;
-    margin-right: 11px;
-    border-radius: 50%;
-    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, .56), 0 4px 25px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
-}
-
-.photo img {
-    width: 100%;
-}
-
-.user-info>a {
-    display: block;
-    font-size: 14px;
-    color: #3C4858;
-    padding: .5rem 15px;
-    white-space: nowrap;
-}
-
-#fijo {
-    position: static;
-    min-height: 120px;
-    width: 252px;
-    text-align: center;
-    word-wrap: break-word;
-}
-
-.titulo {
-    padding-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card .card-header-success .card-icon {
-    background: linear-gradient(60deg, #00bcd4, #00bcd4);
-}
-
-.menu {
-    color: #3C4858 !important;
-}
-
-.dropdown-menu .dropdown-item:hover {
-    box-shadow: 0 4px 20px 0 rgba(153, 153, 153, .2), 0 7px 10px -5px rgba(204, 204, 204, .15);
-    background-color: rgba(153, 153, 153, .2);
-    color: #151414;
-}
-
-.mystats {
-    color: #999;
-    font-size: 12px;
-    line-height: 22px;
-}
-
-.mystats {
-    display: inline-flex;
-}
-
-
-/*Menu
+    .photo {
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        float: left;
+        z-index: 5;
+        margin-right: 11px;
+        border-radius: 50%;
+        box-shadow: 0 16px 38px -12px rgba(0, 0, 0, .56), 0 4px 25px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+    }
+    
+    .photo img {
+        width: 100%;
+    }
+    
+    .user-info>a {
+        display: block;
+        font-size: 14px;
+        color: #3C4858;
+        padding: .5rem 15px;
+        white-space: nowrap;
+    }
+    
+    #fijo {
+        position: static;
+        min-height: 120px;
+        width: 252px;
+        text-align: center;
+        word-wrap: break-word;
+    }
+    
+    .titulo {
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .card .card-header-success .card-icon {
+        background: linear-gradient(60deg, #00bcd4, #00bcd4);
+    }
+    
+    .menu {
+        color: #3C4858 !important;
+    }
+    
+    .dropdown-menu .dropdown-item:hover {
+        box-shadow: 0 4px 20px 0 rgba(153, 153, 153, .2), 0 7px 10px -5px rgba(204, 204, 204, .15);
+        background-color: rgba(153, 153, 153, .2);
+        color: #151414;
+    }
+    
+    .mystats {
+        color: #999;
+        font-size: 12px;
+        line-height: 22px;
+    }
+    
+    .mystats {
+        display: inline-flex;
+    }
+    /*Menu
 
 nav#navigation-example {
     background: #ffffff !important;
@@ -70,84 +68,97 @@ nav#navigation-example {
 
 
 /*lOGIN*/
-
-.card-header-rose:not(.card-header-icon):not(.card-header-text) {
-    background: linear-gradient(60deg, #00bcd4, #00bcd4) !important;
-}
-
-.btn.btn-rose.btn-link,
-.btn.btn-rose.btn-link:active {
-    color: #00bcd4 !important;
-}
-
-.form-control,
-.is-focused .form-control {
-    background-image: linear-gradient(to top, #00bcd4 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
-}
-
-.btn.btn-primary {
-    background-color: #00bcd4 !important;
-    border-color: #00bcd4 !important;
-}
-
-.card .card-header-primary .card-icon,
-.card .card-header-primary .card-text,
-.card .card-header-primary:not(.card-header-icon):not(.card-header-text) {
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(0, 188, 212)!important;
-}
-
-.card .card-header-primary .card-icon,
-.card .card-header-primary .card-text,
-.card .card-header-primary:not(.card-header-icon):not(.card-header-text),
-.card.bg-primary,
-.card.card-rotate.bg-primary .back,
-.card.card-rotate.bg-primary .front {
-    background: linear-gradient(60deg, #00bcd4, #00bcd4)!important;
-}
-
-.nav-pills.nav-pills-warning .nav-item .nav-link.active,
-.nav-pills.nav-pills-warning .nav-item .nav-link.active:focus,
-.nav-pills.nav-pills-warning .nav-item .nav-link.active:hover {
-    background-color: #00bcd4 !important;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(0, 188, 212) !important;
-    color: #fff;
-}
-
-.card .card-header-success .card-icon,
-.card .card-header-success .card-text,
-.card .card-header-success:not(.card-header-icon):not(.card-header-text),
-.card.bg-success,
-.card.card-rotate.bg-success .back,
-.card.card-rotate.bg-success .front {
-    background: linear-gradient(60deg, #66bb6a, #43a047);
-}
-
-.class_div {
-    height: 300px;
-    overflow-y: scroll
-}
-
-#navega #menu #fijo {
-    position: fixed;
-    font-family: verdana, arial;
-    font-size: 11pt;
-    text-align: center;
-    padding: 10px 5px 10px 5px;
-    /* margen con valores: arriba - derecha - abajo - izquierda */
-    top: 0px;
-    /* Distancia hasta el borde superior */
-    left: 0px;
-    /* Distancia hasta el borde izquierdo */
-    width: 100%;
-    background-color: #FCAF62;
-    z-index: 1;
-    /* hace que la capa sea opaca  */
-}
-
-#texto {
-    position: absolute;
-    margin: 20px 5px 10px 5px;
-    /* margen con valores: arriba - derecha - abajo - izquierda */
-    font-family: verdana, arial;
-    font-size: 10pt;
-}
+    
+    .card-header-rose:not(.card-header-icon):not(.card-header-text) {
+        background: linear-gradient(60deg, #00bcd4, #00bcd4) !important;
+    }
+    
+    .btn.btn-rose.btn-link,
+    .btn.btn-rose.btn-link:active {
+        color: #00bcd4 !important;
+    }
+    
+    .form-control,
+    .is-focused .form-control {
+        background-image: linear-gradient(to top, #00bcd4 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
+    }
+    
+    .btn.btn-primary {
+        background-color: #00bcd4 !important;
+        border-color: #00bcd4 !important;
+    }
+    
+    .card .card-header-primary .card-icon,
+    .card .card-header-primary .card-text,
+    .card .card-header-primary:not(.card-header-icon):not(.card-header-text) {
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(0, 188, 212)!important;
+    }
+    
+    .card .card-header-primary .card-icon,
+    .card .card-header-primary .card-text,
+    .card .card-header-primary:not(.card-header-icon):not(.card-header-text),
+    .card.bg-primary,
+    .card.card-rotate.bg-primary .back,
+    .card.card-rotate.bg-primary .front {
+        background: linear-gradient(60deg, #00bcd4, #00bcd4)!important;
+    }
+    
+    .nav-pills.nav-pills-warning .nav-item .nav-link.active,
+    .nav-pills.nav-pills-warning .nav-item .nav-link.active:focus,
+    .nav-pills.nav-pills-warning .nav-item .nav-link.active:hover {
+        background-color: #00bcd4 !important;
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(0, 188, 212) !important;
+        color: #fff;
+    }
+    
+    .card .card-header-success .card-icon,
+    .card .card-header-success .card-text,
+    .card .card-header-success:not(.card-header-icon):not(.card-header-text),
+    .card.bg-success,
+    .card.card-rotate.bg-success .back,
+    .card.card-rotate.bg-success .front {
+        background: linear-gradient(60deg, #66bb6a, #43a047);
+    }
+    
+    .class_div {
+        height: 300px;
+        overflow-y: scroll
+    }
+    
+    #navega #menu #fijo {
+        position: fixed;
+        font-family: verdana, arial;
+        font-size: 11pt;
+        text-align: center;
+        padding: 10px 5px 10px 5px;
+        /* margen con valores: arriba - derecha - abajo - izquierda */
+        top: 0px;
+        /* Distancia hasta el borde superior */
+        left: 0px;
+        /* Distancia hasta el borde izquierdo */
+        width: 100%;
+        background-color: #FCAF62;
+        z-index: 1;
+        /* hace que la capa sea opaca  */
+    }
+    
+    #texto {
+        position: absolute;
+        margin: 20px 5px 10px 5px;
+        /* margen con valores: arriba - derecha - abajo - izquierda */
+        font-family: verdana, arial;
+        font-size: 10pt;
+    }
+    
+    .pagination>.page-item.active>span,
+    .pagination>.page-item.active>span:focus,
+    .pagination>.page-item.active>span:hover {
+        background-color: #0bbed5;
+        border-color: #9be5ee;
+        color: #fff;
+        box-shadow: 0 4px 5px 0 rgb(181, 233, 239), 0 1px 10px 0 rgb(181, 233, 239), 0 2px 4px -1px rgb(181, 233, 239);
+    }
+    
+    .pagination {
+        display: inline-flex;
+    }

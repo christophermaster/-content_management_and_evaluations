@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nueva escuela</h3>
+			<h3>Nueva Materia</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -19,11 +19,11 @@
             <div class="card">
                  <div class="card-header">
                     <h4 class="card-title">Crear  - 
-                        <small class="category"> Escuela</small>
+                        <small class="category"> Materia</small>
                     </h4>
                  </div>
                 <div class="card-body">
-                {!!Form::open(array('url'=>'facultad/escuela','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
+                {!!Form::open(array('url'=>'facultad/materia','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
                 {{Form::token()}}
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -39,7 +39,7 @@
                                 <input type="text" name="descripcion"  value = "{{old('descripcion')}}" class="form-control">
                             </div>
                         </div>
-                        <input type="hidden" name="id_facultad"  value = "{{$id_facultad}}" class="form-control">
+                        <input type="hidden" name="id_catedra"  value = "{{$id_catedra}}" class="form-control">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Guardar</button>
