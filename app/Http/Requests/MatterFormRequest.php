@@ -24,7 +24,9 @@ class MatterFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_catedra'=>'required',
+            'nombre' =>'required|max:100',
+            'descripcion' => 'required|max:512'
         ];
     }
 }

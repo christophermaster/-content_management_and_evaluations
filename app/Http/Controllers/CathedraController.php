@@ -60,17 +60,17 @@ class CathedraController extends Controller
     }
     public function edit($id)
     {
-        $school = School::findOrfail($id);
-        return view("administration.university.school.edit",["school"=>$school]);
+        $cathedra = Cathedra::findOrfail($id);
+        return view("administration.university.cathedra.edit",["cathedra"=>$cathedra]);
     }
-    public function update(SchoolFormRequest $request, $id)
+    public function update(CathedraFormRequest $request, $id)
     {
-        $school = School::findOrfail($id);
-        $school->nombre=$request->get('nombre');
-        $school->descripcion=$request->get('descripcion');
-        $school->id_facultad=$request->get('id_facultad');
-        $school->update();
-        return Redirect::to('facultad/escuela/'.$request->get('id_facultad'));
+        $cathedra = Cathedra::findOrfail($id);
+        $cathedra->nombre=$request->get('nombre');
+        $cathedra->descripcion=$request->get('descripcion');
+        $cathedra->id_escuela=$request->get('id_escuela');
+        $cathedra->update();
+        return Redirect::to('facultad/catedra/'.$request->get('id_escuela'));
     }
     public function destroy($id)
     {

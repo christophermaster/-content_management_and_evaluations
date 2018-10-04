@@ -15,6 +15,7 @@ class Matter extends Model
 
     protected $fillable =[
         'nombre',
+        "descripcion",
         'id_catedra'
     ];
 
