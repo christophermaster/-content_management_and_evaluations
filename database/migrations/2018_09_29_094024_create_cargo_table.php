@@ -16,6 +16,7 @@ class CreateCargoTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');//identificador de la tabla
             $table->string('nombre'); //nombre de la faculta de la universidad de carabobo
+            $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ class CreateFacultadTable extends Migration
         Schema::create('faculties', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
             $table->timestamps();
         });
     }

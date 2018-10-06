@@ -8,7 +8,7 @@
      
  </div>
  <hr>
-<div class = "row   ">
+<div class = "row recuadro">
     <div class= "col-lg-8 col-md-8 col-sm-8 col-xs-12 text-left">
         <h3> Listado de Facultades</h3>
     </div>
@@ -48,7 +48,7 @@
 
                                 <td class="td-actions">
                                     <a href="{{route('escuela',['id' => $fac->id])}}">
-                                        <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Carreras" title="Ver Carreras">
+                                        <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Carreras" title="Ver escuelas">
                                         <i class="material-icons">visibility</i>
                                         </button>
                                     </a>

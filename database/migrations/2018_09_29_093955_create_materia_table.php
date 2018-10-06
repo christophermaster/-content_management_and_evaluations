@@ -17,6 +17,7 @@ class CreateMateriaTable extends Migration
             $table->increments('id');//identificador de la tabla
             $table->integer('id_catedra')->unsigned();//identificador de la facultad que pertenece la escuela            
             $table->string('nombre'); //nombre de la Escuela de la universidad de carabobo
+            $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
             $table->timestamps();
         });
 
