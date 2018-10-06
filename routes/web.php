@@ -78,6 +78,32 @@ Route::get('facultad/materia/modificar/{id}', ['as' => 'updateMateria', 'uses' =
 Route::post('facultad/materia/modificar/{id}', 'MatterController@update');
 Route::post('facultad/materia','MatterController@store');
 
+/**
+ * Modulo
+ */
+Route::get('facultad/modulo/{id}', ['as' => 'modulo', 'uses' => 'ModuleController@index']);
+Route::get('facultad/modulo/create/{id}', ['as' => 'createModulo', 'uses' => 'ModuleController@create']);
+Route::get('facultad/modulo/modificar/{id}', ['as' => 'updateModulo', 'uses' => 'ModuleController@edit']);
+Route::post('facultad/modulo/modificar/{id}', 'ModuleController@update');
+Route::post('facultad/modulo','ModuleController@store');
+
+/**
+ * Temas
+ */
+Route::get('facultad/tema/{id}', ['as' => 'tema', 'uses' => 'TopicController@index']);
+Route::get('facultad/tema/create/{id}', ['as' => 'createTema', 'uses' => 'TopicController@create']);
+Route::get('facultad/tema/modificar/{id}', ['as' => 'updateTema', 'uses' => 'TopicController@edit']);
+Route::post('facultad/tema/modificar/{id}', 'TopicController@update');
+Route::post('facultad/tema','TopicController@store');
+
+/**
+ * Contenido
+ */
+Route::get('facultad/contenido/{id}', ['as' => 'contenido', 'uses' => 'ContentController@index']);
+Route::get('facultad/contenido/create/{id}', ['as' => 'createContenido', 'uses' => 'ContentController@create']);
+Route::get('facultad/contenido/modificar/{id}', ['as' => 'updateContenido', 'uses' => 'ContentController@edit']);
+Route::post('facultad/contenido/modificar/{id}', 'ContentController@update');
+Route::post('facultad/contenido','ContentController@store');
 
 /*
 Route::get('administracion/facultad', function () {

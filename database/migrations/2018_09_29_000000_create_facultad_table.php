@@ -17,6 +17,8 @@ class CreateFacultadTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
+            $table->string('usuario_creador');
+            $table->string('usuario_modificador');
             $table->timestamps();
         });
     }

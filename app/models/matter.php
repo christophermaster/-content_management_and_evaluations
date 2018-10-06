@@ -16,7 +16,11 @@ class Matter extends Model
     protected $fillable =[
         'nombre',
         "descripcion",
-        'id_catedra'
+        'id_catedra',
+        'usuario_creador',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
 
     protected $guarded =[

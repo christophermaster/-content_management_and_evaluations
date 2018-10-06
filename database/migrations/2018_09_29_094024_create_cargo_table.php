@@ -17,6 +17,8 @@ class CreateCargoTable extends Migration
             $table->increments('id');//identificador de la tabla
             $table->string('nombre'); //nombre de la faculta de la universidad de carabobo
             $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
+            $table->string('usuario_creador');
+            $table->string('usuario_modificador');
             $table->timestamps();
         });
     }

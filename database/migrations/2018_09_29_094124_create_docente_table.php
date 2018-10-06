@@ -17,6 +17,8 @@ class CreateDocenteTable extends Migration
             $table->increments('id');//identificador de la tabla
             $table->integer('id_materia')->unsigned();//identificador de la facultad que pertenece la escuela          
             $table->integer('id_persona')->unsigned();
+            $table->string('usuario_creador');
+            $table->string('usuario_modificador');
             $table->timestamps();
         });
 

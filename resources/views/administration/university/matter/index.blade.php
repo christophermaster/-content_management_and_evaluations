@@ -42,7 +42,7 @@
                                     <td>{{$mat ->nombre}}</td>
                                     <td>{{$mat ->descripcion}}</td>
                                     <td class="td-actions">
-                                        <a href="{{route('materia',['id' => $mat->id])}}">
+                                        <a href="{{route('modulo',['id' => $mat->id])}}">
                                             <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Catedras" title="Ver modulos">
                                                 <i class="material-icons">visibility</i>
                                             </button>
@@ -66,9 +66,9 @@
                         </table>
                 </div>
              </div>
-         </div>
-         <div class="text-center">
-            {{$matter ->render()}}
+             <div class="text-center">
+                {{$matter ->render()}}
+             </div>
          </div>
       
     </div>

@@ -62,9 +62,9 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="text-center">
-            {{$school ->render()}}
+            <div class="text-center">
+                {{$school ->render()}}
+            </div>
         </div>
     </div>
 </div>

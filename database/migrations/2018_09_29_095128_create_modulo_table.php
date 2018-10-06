@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContenidoTable extends Migration
+class CreateModuloTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateContenidoTable extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->increments('id');//identificador de la tabla
-            $table->integer('id_tema')->unsigned();//identificador de la facultad que pertenece la escuela
+            $table->integer('id_materia')->unsigned();//identificador de la facultad que pertenece la escuela            
             $table->string('nombre'); //nombre de la Escuela de la universidad de carabobo
             $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
+            $table->string('usuario_creador');
+            $table->string('usuario_modificador');
             $table->timestamps();
         });
 
-        Schema::table('contents', function($table){
-            $table->foreign('id_tema')->references('id')->on('topics')->onDelete('cascade');
+        Schema::table('modules', function($table){
+            $table->foreign('id_materia')->references('id')->on('matters')->onDelete('cascade');
         });
     }
 
@@ -33,10 +35,10 @@ class CreateContenidoTable extends Migration
      */
     public function down()
     {
-        Schema::table('contents', function($table)
+       Schema::table('modules', function($table)
         {
-            Schema::dropIfExists('contents');
-            $table->dropForeign('contents_id_tema_foreign');
+            Schema::dropIfExists('modules');
+            $table->dropForeign('modules_id_materia_foreign');
         });
     }
 }

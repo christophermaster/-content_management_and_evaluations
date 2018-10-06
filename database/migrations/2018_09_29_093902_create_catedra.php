@@ -18,6 +18,8 @@ class CreateCatedra extends Migration
             $table->integer('id_escuela')->unsigned();//identificador de la facultad que pertenece la escuela 
             $table->string('nombre'); //nombre de la Escuela de la universidad de carabobo
             $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
+            $table->string('usuario_creador');
+            $table->string('usuario_modificador');
             $table->timestamps();
         });
         

@@ -18,6 +18,8 @@ class CreatePersonaTable extends Migration
             $table->string('nombre'); //nombre de la Escuela de la universidad de carabobo;
             $table->string('apellido'); //nombre de la Escuela de la universidad de carabobo
             $table->string('cedula')->unique(); //nombre de la Escuela de la universidad de carabobo
+            $table->string('usuario_creador');
+            $table->string('usuario_modificador');
             $table->timestamps();
         });
 

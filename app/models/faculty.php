@@ -14,7 +14,11 @@ class Faculty extends Model
 
 
     protected $fillable =[
-        'nombre'
+        'nombre',
+        'usuario_creador',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
 
     protected $guarded =[

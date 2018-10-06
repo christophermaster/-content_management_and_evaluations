@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->integer('id_cargo')->unsigned();//identificador de la facultad que pertenece la escuela           
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('usuario_creador');
+            $table->string('usuario_modificador');
             $table->rememberToken();
             $table->timestamps();
         });

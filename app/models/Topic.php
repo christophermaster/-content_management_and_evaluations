@@ -17,6 +17,10 @@ class Topic extends Model
         'numero_tema',
         'descripcion',
         'id_modulo',
+        'usuario_creador',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
 
     protected $guarded =[

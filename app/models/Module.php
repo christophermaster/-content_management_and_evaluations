@@ -16,6 +16,10 @@ class Module extends Model
         'nombre',
         'descripcion',
         'id_materia',
+        'usuario_creador',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
 
     protected $guarded =[
