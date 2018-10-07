@@ -346,18 +346,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="{{url('gestion/solucion')}}">
-                                        <span class="sidebar-mini"> CS </span>
-                                        <span class="sidebar-normal"> Crear Solución </span>
+                                    <a class="nav-link" href="{{url('facultad/profe')}}">
+                                        <span class="sidebar-mini"> PP </span>
+                                        <span class="sidebar-normal">Profesores y Peparadores</span>
                                     </a>
                                 </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="pages/login.html">
-                                        <span class="sidebar-mini"> SE </span>
-                                        <span class="sidebar-normal"> Subir Ejercicio </span>
-                                    </a>
-                                </li>
-
+                               
                             </ul>
                         </div>
                     </li>
@@ -615,9 +609,10 @@
     <!-- WIRIS script -->
     <script type="text/javascript" src="{{asset('js/wirislib.js')}}"></script>
 
-    <!-- Google Analytics -->
-    <script src="{{asset('js/google_analytics.js')}}"></script>
+    <!-- Google Analytics
+    <script src="{{asset('js/google_analytics.js')}}"></script> -->
 
+ 
     <script>
         if (typeof urlParams !== 'undefined') {
             var selectLang = document.getElementById('lang_select');

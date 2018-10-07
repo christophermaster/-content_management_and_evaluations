@@ -43,7 +43,7 @@
                                 <input type="text" name="descripcion"  value ="{{$content->descripcion}}" class="form-control">
                             </div>
                         </div>
-                        <input type="hidden" value="{{$content->id_tema}}" name="id_catedra" /> 
+                        <input type="hidden" value="{{$content->id_tema}}" name="id_tema" /> 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Guardar</button>

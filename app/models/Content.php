@@ -16,6 +16,10 @@ class Content extends Model
         'nombre',
         'descripcion',
         'id_tema',
+        'usuario_creador',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
 
     protected $guarded =[

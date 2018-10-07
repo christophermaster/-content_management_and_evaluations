@@ -16,9 +16,17 @@ class Cathedra extends Model
     protected $fillable =[
         'nombre',
         "descripcion",
-        'id_escuela'
+        'id_escuela',
+        'usuario_creador',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
 
     protected $guarded =[
     ];
+    public static function cathedras($id){
+        return Cathedra::where('id_escuela','=',$id)
+        ->get();
+    }
 }

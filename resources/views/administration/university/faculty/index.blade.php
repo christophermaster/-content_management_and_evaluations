@@ -36,6 +36,10 @@
                             <th>Id</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
+                            <th>Usuario Creador</th>
+                            <th>Usuario Modificador</th>
+                            <th>Fecha de Creación</th>
+                            <th>Fecha de Modificación</th>
                             <th>Opciones</th>
 
                         </thead>
@@ -45,7 +49,10 @@
                                 <td>{{$fac ->id}}</td>
                                 <td>{{$fac ->nombre}}</td>
                                 <td>{{$fac ->descripcion}}</td>
-
+                                <td>{{$fac ->usuario_creador}}</td>
+                                <td>{{$fac ->usuario_modificador}}</td>
+                                <td>{{$fac ->created_at}}</td>
+                                <td>{{$fac ->updated_at}}</td>
                                 <td class="td-actions">
                                     <a href="{{route('escuela',['id' => $fac->id])}}">
                                         <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Carreras" title="Ver escuelas">

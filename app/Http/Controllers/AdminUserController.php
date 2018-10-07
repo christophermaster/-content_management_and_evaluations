@@ -6,35 +6,56 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use gestion\Http\Requests\FacultyFormRequest;
 use gestion\models\Faculty;
+use gestion\models\School;
+use gestion\models\Cathedra;
+use gestion\models\Matter;
+
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
-class FacultyController extends Controller
+class AdminUserController extends Controller
 {
    public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('admin');
     }
+
     public function index(Request $request)
     {
         if ($request)
         {
-            $query=trim($request->get('searchText'));
             $faculty=DB::table('faculties as f')
-            //->join('categoria as c','a.idcategoria','=',"c.idcategoria")
-            ->select('f.id','f.nombre','f.descripcion','f.usuario_creador'
-            ,'f.usuario_modificador','f.created_at','f.updated_at')
-            ->where('f.nombre','LIKE','%'.$query.'%')
-            //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('f.id','asc')
-            ->paginate(10);
-
-            return view('administration.university.faculty.index',["faculty"=>$faculty,"searchText"=>$query]);
+            ->select('f.id','f.nombre')
+            ->get();
+            return view('administration.user.index',["faculty"=>$faculty]);
         }
 
     }
+
+    public function getSchool(Request $request, $id){
+        if($request->ajax()){
+            $school = School::schools($id);
+            return response()->json($school);
+        }
+    }
+
+    public function getCathedra(Request $request, $id){
+        if($request->ajax()){
+            $school = Cathedra::cathedras($id);
+            return response()->json($school);
+        }
+    }
+
+    public function getMatter(Request $request, $id){
+        if($request->ajax()){
+            $school = Matter::matters($id);
+            return response()->json($school);
+        }
+    }
+
+
     public function create()
     {
         /*$categorias = DB::table('categoria')->where('condicion','=','1')->get();*/

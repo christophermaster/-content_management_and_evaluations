@@ -25,12 +25,12 @@ class ModuleController extends Controller
             $module=DB::table('modules as m')
             //->join('categoria as c','a.idcategoria','=',"c.idcategoria")
             ->select('m.id','m.nombre','m.descripcion','m.usuario_creador'
-            ,'m.usuario_modificador','m.created_at','updated_at')
+            ,'m.usuario_modificador','m.created_at','m.updated_at')
             ->where('m.nombre','LIKE','%'.$query.'%')
             ->where('m.id_materia',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
             ->orderBy('m.id','asc')
-            ->paginate(3);
+            ->paginate(10);
 
             return view('administration.university.module.index',["module"=>$module,"id_materia"=>$id,"searchText"=>$query]);
         }

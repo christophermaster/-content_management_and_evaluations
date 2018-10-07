@@ -32,6 +32,10 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
+                                <th>Usuario Creador</th>
+                                <th>Usuario Modificador</th>
+                                <th>Fecha de Creación</th>
+                                <th>Fecha de Modificación</th>
                                 <th>Opciones</th>
 
                             </thead>
@@ -40,6 +44,10 @@
                                     <td>{{$cat ->id}}</td>
                                     <td>{{$cat ->nombre}}</td>
                                     <td>{{$cat ->descripcion}}</td>
+                                    <td>{{$cat ->usuario_creador}}</td>
+                                    <td>{{$cat ->usuario_modificador}}</td>
+                                    <td>{{$cat ->created_at}}</td>
+                                    <td>{{$cat ->updated_at}}</td>
                                     <td class="td-actions">
                                         <a href="{{route('materia',['id' => $cat->id])}}">
                                             <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Materias" title="Ver Materias">

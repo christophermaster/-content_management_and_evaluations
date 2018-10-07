@@ -31,6 +31,10 @@
                             <th>Id</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
+                            <th>Usuario Creador</th>
+                            <th>Usuario Modificador</th>
+                            <th>Fecha de Creación</th>
+                            <th>Fecha de Modificación</th>
                             <th>Opciones</th>
                         </thead>
 
@@ -39,6 +43,10 @@
                             <td>{{$sch ->id}}</td>
                             <td>{{$sch ->nombre}}</td>
                             <td>{{$sch ->descripcion}}</td>
+                            <td>{{$sch ->usuario_creador}}</td>
+                            <td>{{$sch ->usuario_modificador}}</td>
+                            <td>{{$sch ->created_at}}</td>
+                            <td>{{$sch ->updated_at}}</td>
                             <td class="td-actions">
                                 <a href="{{route('catedra',['id' => $sch->id])}}">
                                     <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Catedras" title="Ver Catedras">

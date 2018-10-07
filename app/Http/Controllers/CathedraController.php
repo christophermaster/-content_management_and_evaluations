@@ -25,12 +25,13 @@ class CathedraController extends Controller
             $query=trim($request->get('searchText'));
             $cathedra=DB::table('cathedras as c')
             //->join('categoria as c','a.idcategoria','=',"c.idcategoria")
-            ->select('c.id','c.nombre','c.descripcion')
+            ->select('c.id','c.nombre','c.descripcion','c.usuario_creador'
+            ,'c.usuario_modificador','c.created_at','c.updated_at')
             ->where('c.nombre','LIKE','%'.$query.'%')
             ->where('c.id_escuela',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
             ->orderBy('c.id','asc')
-            ->paginate(3);
+            ->paginate(10);
 
             return view('administration.university.cathedra.index',["cathedra"=>$cathedra,"id_escuela"=>$id,"searchText"=>$query]);
         }
@@ -45,9 +46,17 @@ class CathedraController extends Controller
     public function store (CathedraFormRequest $request)
     {
         $cathedra=new Cathedra;
+        $usuario = Auth::user()->name;
+        $hoy = date("Y-m-d H:i:s"); 
         $cathedra->nombre=$request->get('nombre');
         $cathedra->descripcion=$request->get('descripcion');
         $cathedra->id_escuela=$request->get('id_escuela');
+        if(Auth::check()){
+            $cathedra->usuario_creador=$usuario;
+            $cathedra->usuario_modificador= $usuario;
+        }
+        $cathedra->created_at = $hoy;
+        $cathedra->updated_at = $hoy;
 
         $cathedra->save();
        
@@ -66,9 +75,15 @@ class CathedraController extends Controller
     public function update(CathedraFormRequest $request, $id)
     {
         $cathedra = Cathedra::findOrfail($id);
+        $usuario = Auth::user()->name;
+        $hoy = date("Y-m-d H:i:s"); 
         $cathedra->nombre=$request->get('nombre');
         $cathedra->descripcion=$request->get('descripcion');
         $cathedra->id_escuela=$request->get('id_escuela');
+        if(Auth::check()){
+            $cathedra->usuario_modificador= $usuario;
+        }
+        $cathedra->updated_at = $hoy;
         $cathedra->update();
         return Redirect::to('facultad/catedra/'.$request->get('id_escuela'));
     }

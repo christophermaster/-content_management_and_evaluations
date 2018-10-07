@@ -105,6 +105,21 @@ Route::get('facultad/contenido/modificar/{id}', ['as' => 'updateContenido', 'use
 Route::post('facultad/contenido/modificar/{id}', 'ContentController@update');
 Route::post('facultad/contenido','ContentController@store');
 
+/**
+ * Administraccion de usuario 
+ */
+Route::resource('facultad/profe','AdminUserController');
+
+/**
+ * select
+ */
+
+Route::get('/school/{id}','AdminUserController@getSchool');
+Route::get('/cathedra/{id}','AdminUserController@getCathedra');
+Route::get('/matter/{id}','AdminUserController@getMatter');
+
+
+
 /*
 Route::get('administracion/facultad', function () {
     if(Auth::user()->id_persona == 1){

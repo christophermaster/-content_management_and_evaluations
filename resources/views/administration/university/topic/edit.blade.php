@@ -23,13 +23,20 @@
                     </h4>
                  </div>
                 <div class="card-body">
-               <form method="post" action="/facultad/tema/modificar/{{$matter->id}}" >
+               <form method="post" action="/facultad/tema/modificar/{{$topic->id}}" >
                  @csrf
               
                  <input type="hidden" value="{{csrf_token()}}" name="_token" /> 
                  
-                    <div class="row">                                        
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <label for="numero_tema">Nº Tema</label>
+                                <input type="number" name="numero_tema"  value ="{{$topic->numero_tema}}" class="form-control">
+                            </div>
+                        </div> 
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                  
                                 <label for="nombre">Nombre</label>
@@ -37,13 +44,13 @@
                             </div>
                         </div>
                     
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                 <label for="descripcion">Descripción</label>
                                 <input type="text" name="descripcion"  value ="{{$topic->descripcion}}" class="form-control">
                             </div>
                         </div>
-                        <input type="hidden" value="{{$topic->id_catedra}}" name="id_catedra" /> 
+                        <input type="hidden" value="{{$topic->id_modulo}}" name="id_modulo" /> 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Guardar</button>

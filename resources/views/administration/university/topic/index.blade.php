@@ -18,7 +18,7 @@
             <div class="card-header">
                 <div class= "col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
                     <h3> 
-                        <a href = "{{route('createTopic',['id' => $id_tema])}}">
+                        <a href = "{{route('createTema',['id' => $id_modulo])}}">
                             <button class ="btn btn-success">Nuevo</button>
                         </a>
                     </h3>
@@ -33,7 +33,12 @@
                                 <th>Nº Tema</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
+                                <th>Usuario Creador</th>
+                                <th>Usuario Modificador</th>
+                                <th>Fecha de Creación</th>
+                                <th>Fecha de Modificación</th>
                                 <th>Opciones</th>
+                                
 
                             </thead>
 
@@ -43,8 +48,12 @@
                                     <td>{{$top ->numero_tema}}</td>
                                     <td>{{$top ->nombre}}</td>
                                     <td>{{$top ->descripcion}}</td>
+                                    <td>{{$top ->usuario_creador}}</td>
+                                    <td>{{$top ->usuario_modificador}}</td>
+                                    <td>{{$top ->created_at}}</td>
+                                    <td>{{$top ->updated_at}}</td>
                                     <td class="td-actions">
-                                        <a href="{{route('tema',['id' => $top->id])}}">
+                                        <a href="{{route('contenido',['id' => $top->id])}}">
                                             <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Catedras" title="Ver modulos">
                                                 <i class="material-icons">visibility</i>
                                             </button>
@@ -70,7 +79,7 @@
              </div>
          </div>
          <div class="text-center">
-            {{$matter ->render()}}
+            {{$topic ->render()}}
          </div>
       
     </div>

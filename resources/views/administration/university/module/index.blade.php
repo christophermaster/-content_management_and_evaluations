@@ -50,7 +50,7 @@
                                     <td>{{$mod ->created_at}}</td>
                                     <td>{{$mod ->updated_at}}</td>
                                     <td class="td-actions">
-                                        <a href="{{route('modulo',['id' => $mod->id])}}">
+                                        <a href="{{route('tema',['id' => $mod->id])}}">
                                             <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Catedras" title="Ver Temas">
                                                 <i class="material-icons">visibility</i>
                                             </button>

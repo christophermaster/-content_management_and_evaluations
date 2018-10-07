@@ -25,12 +25,13 @@ class SchoolController extends Controller
             $query=trim($request->get('searchText'));
             $school=DB::table('schools as s')
             //->join('categoria as c','a.idcategoria','=',"c.idcategoria")
-            ->select('s.id','s.nombre','s.descripcion')
+            ->select('s.id','s.nombre','s.descripcion','s.usuario_creador'
+            ,'s.usuario_modificador','s.created_at','s.updated_at')
             ->where('s.nombre','LIKE','%'.$query.'%')
             ->where('s.id_facultad',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
             ->orderBy('s.id','asc')
-            ->paginate(3);
+            ->paginate(10);
 
             return view('administration.university.school.index',["school"=>$school,"id_facultad"=>$id,"searchText"=>$query]);
         }
@@ -45,9 +46,17 @@ class SchoolController extends Controller
     public function store (SchoolFormRequest $request)
     {
         $school=new School;
+        $usuario = Auth::user()->name;
+        $hoy = date("Y-m-d H:i:s"); 
         $school->nombre=$request->get('nombre');
         $school->descripcion=$request->get('descripcion');
         $school->id_facultad=$request->get('id_facultad');
+        if(Auth::check()){
+            $school->usuario_creador=$usuario;
+            $school->usuario_modificador= $usuario;
+        }
+        $school->created_at = $hoy;
+        $school->updated_at = $hoy;
 
         $school->save();
        
@@ -66,9 +75,15 @@ class SchoolController extends Controller
     public function update(SchoolFormRequest $request, $id)
     {
         $school = School::findOrfail($id);
+        $usuario = Auth::user()->name;
+        $hoy = date("Y-m-d H:i:s"); 
         $school->nombre=$request->get('nombre');
         $school->descripcion=$request->get('descripcion');
         $school->id_facultad=$request->get('id_facultad');
+        if(Auth::check()){
+            $school->usuario_modificador= $usuario;
+        }
+        $school->updated_at = $hoy;
         $school->update();
         return Redirect::to('facultad/escuela/'.$request->get('id_facultad'));
     }

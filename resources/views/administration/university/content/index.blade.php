@@ -32,6 +32,10 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
+                                <th>Usuario Creador</th>
+                                <th>Usuario Modificador</th>
+                                <th>Fecha de Creación</th>
+                                <th>Fecha de Modificación</th>
                                 <th>Opciones</th>
 
                             </thead>
@@ -41,12 +45,11 @@
                                     <td>{{$con ->id}}</td>
                                     <td>{{$con ->nombre}}</td>
                                     <td>{{$con ->descripcion}}</td>
+                                    <td>{{$con ->usuario_creador}}</td>
+                                    <td>{{$con ->usuario_modificador}}</td>
+                                    <td>{{$con ->created_at}}</td>
+                                    <td>{{$con ->updated_at}}</td>
                                     <td class="td-actions">
-                                        <a href="{{route('contenido',['id' => $con->id])}}">
-                                            <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Catedras" title="Ver modulos">
-                                                <i class="material-icons">visibility</i>
-                                            </button>
-                                        </a>
                                         <a href="{{route('updateContenido',['id' => $con->id])}}">
                                             <button type="button" rel="tooltip" class="btn btn-success btn-link" data-original-title="Editar" title="Editar">
                                                 <i class="material-icons">edit</i>

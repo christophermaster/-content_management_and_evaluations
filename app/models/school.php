@@ -24,4 +24,8 @@ class School extends Model
 
     protected $guarded =[
     ];
+    public static function schools($id){
+        return School::where('id_facultad','=',$id)
+        ->get();
+    }
 }

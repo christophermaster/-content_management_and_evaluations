@@ -25,4 +25,8 @@ class Matter extends Model
 
     protected $guarded =[
     ];
+    public static function matters($id){
+        return Matter::where('id_catedra','=',$id)
+        ->get();
+    }
 }

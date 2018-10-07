@@ -32,6 +32,10 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
+                                <th>Usuario Creador</th>
+                                <th>Usuario Modificador</th>
+                                <th>Fecha de Creación</th>
+                                <th>Fecha de Modificación</th>
                                 <th>Opciones</th>
 
                             </thead>
@@ -41,6 +45,10 @@
                                     <td>{{$mat ->id}}</td>
                                     <td>{{$mat ->nombre}}</td>
                                     <td>{{$mat ->descripcion}}</td>
+                                    <td>{{$mat ->usuario_creador}}</td>
+                                    <td>{{$mat ->usuario_modificador}}</td>
+                                    <td>{{$mat ->created_at}}</td>
+                                    <td>{{$mat ->updated_at}}</td>
                                     <td class="td-actions">
                                         <a href="{{route('modulo',['id' => $mat->id])}}">
                                             <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Catedras" title="Ver modulos">
