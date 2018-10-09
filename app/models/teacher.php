@@ -14,7 +14,11 @@ class Teacher extends Model
 
     protected $fillable =[
         'id_materia',
-        'id_persona'
+        'id_persona',
+        'usuario_creador',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
 
     protected $guarded =[

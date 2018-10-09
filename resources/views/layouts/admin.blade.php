@@ -32,7 +32,7 @@
     <script type="text/javascript" src="{{asset('js/codemirror.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/xml.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js')}}"></script>
-
+    <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
     <script>
         if (window.location.search !== '') {
             var urlParams = window.location.search.split('&')[1].split('=');
@@ -97,13 +97,13 @@
                         <div class="collapse" id="collapseExample">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{url('miperfil')}}">
+                                    <a class="nav-link" href="{{url('mi/perfil')}}">
                                         <span class="sidebar-mini"> MP </span>
                                         <span class="sidebar-normal"> Mi Perfil </span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{url('mi/perfil/'.Auth::user()->id_persona.'/edit')}}">
                                         <span class="sidebar-mini"> CS </span>
                                         <span class="sidebar-normal"> Conf. de Seguridad </span>
                                     </a>
@@ -298,7 +298,7 @@
                     <!--
                         ADINISTRACION UNIVERSITARIA
                     -->
-                    @if (Auth::user()->id_persona == 1)
+                    @if (Auth::user()->id_cargo == 1)
                       <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#universidad">
                             <i class="material-icons">account_balance</i>
@@ -357,6 +357,30 @@
                     </li>
                     @endif
 
+                     @if (Auth::user()->id_cargo == 2)
+                      <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#universidad">
+                            <i class="material-icons">account_balance</i>
+                            <p>Admin. de Usuario
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                    <!--
+                        lISTA DE EJERCICIO
+                    -->
+                        <div class="collapse" id="universidad">
+                            <ul class="nav">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{url('facultad/profe')}}">
+                                        <span class="sidebar-mini"> PP </span>
+                                        <span class="sidebar-normal">Profesores y Peparadores</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    @endif
+
                 
                 </ul>
 
@@ -380,8 +404,9 @@
                             </button>
                         </div>
 
-
-                        <a class="navbar-brand" href="#pablo">Dashboard</a>
+                     
+                        <a class="navbar-brand" href="#pablo">Menú</a>
+                   
                     </div>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
@@ -405,14 +430,6 @@
                         </form>-->
 
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <i class="material-icons">dashboard</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Stats
-                                    </p>
-                                </a>
-                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="http://example.com/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications</i>
@@ -430,13 +447,24 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#pablo" id = "salir" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">person</i>
                                     <p class="d-lg-none d-md-block">
                                         Account
                                     </p>
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                   Cerrar Sessión
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
                             </li>
                         </ul>
 
@@ -494,6 +522,7 @@
 
     <!--   Core JS Files   -->
     <script src="{{asset('js/core/jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/dropdown.js')}}"></script>
     <script src="{{asset('js/core/popper.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
 
@@ -513,7 +542,7 @@
     <script src="{{asset('js/plugins/jquery.bootstrap-wizard.js')}}"></script>
 
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script src="{{asset('js/plugins/bootstrap-selectpicker.js')}}"></script>
+   
 
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
     <script src="{{asset('js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
@@ -630,7 +659,20 @@
 
         });
     </script>
+<script>
+ 
+   CKFinder.setupCKEditor(null,'/gestion/contenido/create/ckfinder/');
+    CKEDITOR.replace('example', {
+        extraPlugins: 'ckeditor_wiris',
+        language: 'es'
+    });
 
+   CKEDITOR.replace('exampleA', {
+            extraPlugins: 'ckeditor_wiris',
+            language: 'es'
+    });
+    
+</script>
 
 </body>
 

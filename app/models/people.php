@@ -15,7 +15,11 @@ class People extends Model
     protected $fillable =[
         'nombre',
         'apellido',
-        'cedula'
+        'cedula',
+        'usuario_creador',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
 
     protected $guarded =[

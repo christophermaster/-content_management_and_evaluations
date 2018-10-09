@@ -84,8 +84,9 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content tab-space tab-subcategories">
-                        <div class="tab-pane active" id="link7">
+
+                    <div class="tab-content tab-space tab-subcategories adjoined-bottom">
+                        <div class="tab-pane active grid-container" id="link7">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <textarea name="contenido" id="example" requerid value="{{old('contenido')}}" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="true" role="textbox" aria-label="Rich Text Editor, example" title="Rich Text Editor, example">
@@ -97,7 +98,7 @@
                         <div class="tab-pane" id="link8">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea name ="contenidoB" id="exampleA" " contenteditable="true" tabindex="0" spellcheck="true" role="textbox" aria-label="Rich Text Editor, exampleA" title="Rich Text Editor, exampleA">
+                                    <textarea name ="contenidoB" id="exampleA"  contenteditable="true" tabindex="0" spellcheck="true" role="textbox" aria-label="Rich Text Editor, exampleA" title="Rich Text Editor, exampleA">
                                      
                                     </textarea>
                                 </div>
@@ -159,15 +160,6 @@
 
 
 
-<script>
-    CKEDITOR.replace('example', {
-        extraPlugins: 'ckeditor_wiris',
-        language: 'es'
-    });
-    CKEDITOR.replace('exampleA', {
-        extraPlugins: 'ckeditor_wiris',
-        language: 'es'
-    });
-</script>
+
 
 @endsection

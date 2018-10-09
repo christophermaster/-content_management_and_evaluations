@@ -1,4 +1,4 @@
-{!! Form::open(array('url' => 'facultad/escuela/'.$id_facultad, 'method'=> 'Get','autocomplete' =>'off','role' => 'search'))!!}
+{!! Form::open(array('url' => 'facultad/profe', 'method'=> 'Get','autocomplete' =>'off','role' => 'search'))!!}
 
 <div class = "form-group">
     <div class="input-group no-border">

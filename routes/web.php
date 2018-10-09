@@ -10,12 +10,42 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/**
+ * Pruebas
+ */
+Route::get('mis/ejercicios', function () {
+    return view('ejercicio/miejercicios/ejercicios');
+});
+Route::get('otros/ejercicios', function () {
+    return view('ejercicio/todoLosEjercicios/ejercicios');
+});
+Route::get('gestion/solucion', function () {
+    return view('gestion/solucion/solucion');
+});
+/*
+Route::get('administracion/facultad', function () {
+    if(Auth::user()->id_persona == 1){
+        return view('administration/university/faculty/index');
+    }
+    return view('perfil/myPerfil');
+});
+*/
+Route::get('pdf',function(){
 
-Auth::routes();
+    $pdf = PDF::loadView('indexx');
+    return $pdf->download('archivo.pdf');
 
-Route::auth();
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Prueba
+
+Route::get('/iniciar', function () {
+    return view('login');
+});
+
+
+
+
 
 
 // LOGIN
@@ -33,18 +63,9 @@ Route::Resource('/gestion/contenido','ContenidoController');
 /**
  * Perfil
  */
-Route::get('/miperfil', function () {
-    return view('perfil/myPerfil');
-});
-Route::get('mis/ejercicios', function () {
-    return view('ejercicio/miejercicios/ejercicios');
-});
-Route::get('otros/ejercicios', function () {
-    return view('ejercicio/todoLosEjercicios/ejercicios');
-});
-Route::get('gestion/solucion', function () {
-    return view('gestion/solucion/solucion');
-});
+Route::Resource('mi/perfil', 'MiPerfilController');
+
+
 /**
  * Facultad
 */
@@ -113,30 +134,14 @@ Route::resource('facultad/profe','AdminUserController');
 /**
  * select
  */
-
 Route::get('/school/{id}','AdminUserController@getSchool');
 Route::get('/cathedra/{id}','AdminUserController@getCathedra');
 Route::get('/matter/{id}','AdminUserController@getMatter');
 
 
+Auth::routes();
 
-/*
-Route::get('administracion/facultad', function () {
-    if(Auth::user()->id_persona == 1){
-        return view('administration/university/faculty/index');
-    }
-    return view('perfil/myPerfil');
-});
-*/
-Route::get('pdf',function(){
+Route::auth();
 
-    $pdf = PDF::loadView('indexx');
-    return $pdf->download('archivo.pdf');
+Route::get('/home', 'HomeController@index')->name('home');
 
-});
-
-// Prueba
-
-Route::get('/iniciar', function () {
-    return view('login');
-});

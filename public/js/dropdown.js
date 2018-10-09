@@ -1,8 +1,19 @@
 $("#faculty").change(function(event) {
 
     $.get("/school/" + event.target.value + "", function(response, faculty) {
+
         $("#school").empty();
+        $("#cathedra").empty();
+        $("#matter").empty();
         $('#school').append($('<option>', {
+            value: 0,
+            text: 'Seleccione'
+        }));
+        $('#cathedra').append($('<option>', {
+            value: 0,
+            text: 'Seleccione'
+        }));
+        $('#matter').append($('<option>', {
             value: 0,
             text: 'Seleccione'
         }));
@@ -20,7 +31,12 @@ $("#school").change(function(event) {
 
     $.get("/cathedra/" + event.target.value + "", function(response, faculty) {
         $("#cathedra").empty();
+        $("#matter").empty();
         $('#cathedra').append($('<option>', {
+            value: 0,
+            text: 'Seleccione'
+        }));
+        $('#matter').append($('<option>', {
             value: 0,
             text: 'Seleccione'
         }));
