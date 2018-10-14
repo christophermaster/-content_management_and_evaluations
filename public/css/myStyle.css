@@ -163,6 +163,9 @@ nav#navigation-example {
     .pagination {
         display: inline-flex !important;
     }
+    /**
+    * Pantalla de creacion de los ejercicios 
+    */
     
     .recuadro {
         background: #d8dadc;
@@ -170,4 +173,16 @@ nav#navigation-example {
         margin: 0px;
         padding: 0px;
         color: #000
+    }
+    
+    .milabel {
+        color: #000 !important;
+    }
+    
+    .miform {
+        margin: 5px
+    }
+    
+    .miInput {
+        background-image: linear-gradient(to top, #00bcd4 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #212529 1px, rgba(210, 210, 210, 0) 1px) !important;
     }

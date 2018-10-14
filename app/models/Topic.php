@@ -25,4 +25,9 @@ class Topic extends Model
 
     protected $guarded =[
     ];
+
+    public static function topics($id){
+        return Topic::where('id_materia','=',$id)
+        ->get();
+    }
 }

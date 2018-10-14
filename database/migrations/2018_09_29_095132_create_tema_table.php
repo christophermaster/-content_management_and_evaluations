@@ -16,6 +16,7 @@ class CreateTemaTable extends Migration
         Schema::create('topics', function (Blueprint $table) {
             $table->increments('id');//identificador de la tabla
             $table->integer('id_modulo')->unsigned();//identificador de la facultad que pertenece la escuela
+            $table->integer('id_materia');
             $table->integer('numero_tema');//identificador de la facultad que pertenece la escuela            
             $table->string('nombre'); //nombre de la Escuela de la universidad de carabobo
             $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo

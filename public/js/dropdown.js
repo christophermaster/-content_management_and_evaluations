@@ -58,8 +58,45 @@ $("#cathedra").change(function(event) {
             value: 0,
             text: 'Seleccione'
         }));
+        $('#topic').append($('<option>', {
+            value: 0,
+            text: 'Seleccione'
+        }));
         for (i = 0; i < response.length; i++) {
             $('#matter').append($('<option>', {
+                value: response[i].id,
+                text: response[i].nombre
+            }));
+        }
+    });
+
+});
+$("#matter").change(function(event) {
+    $.get("/topic/" + event.target.value + "", function(response, faculty) {
+        $("#topic").empty();
+        $('#topic').append($('<option>', {
+            value: 0,
+            text: 'Seleccione'
+        }));
+        for (i = 0; i < response.length; i++) {
+            $('#topic').append($('<option>', {
+                value: response[i].id,
+                text: response[i].nombre
+            }));
+        }
+    });
+
+});
+
+$("#topic").change(function(event) {
+    $.get("/content/" + event.target.value + "", function(response, faculty) {
+        $("#content").empty();
+        $('#content').append($('<option>', {
+            value: 0,
+            text: 'Seleccione'
+        }));
+        for (i = 0; i < response.length; i++) {
+            $('#content').append($('<option>', {
                 value: response[i].id,
                 text: response[i].nombre
             }));

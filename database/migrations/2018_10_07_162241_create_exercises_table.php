@@ -20,8 +20,23 @@ class CreateExercisesTable extends Migration
             $table->string('usuario_modificador');
             $table->longText('contenido'); //nombre de la Escuela de la universidad de carabobo
             $table->integer('id_dificultad')->unsigned(); //nombre de la Escuela de la universidad de carabobo
+            $table->integer('dificultad');
+            $table->longText('titulo')->nullable();
             $table->boolean('aprobado');
             $table->integer('id_contenido')->unsigned();
+            $table->string('nombre_contenido');
+            $table->integer('id_facultad');
+            $table->string('facultad');
+            $table->integer('id_escuela');
+            $table->string('escuela');
+            $table->integer('id_catedra');
+            $table->string('catedra');
+            $table->integer('id_materia');
+            $table->string('materia');
+            $table->integer('id_tema');
+            $table->string('tema');
+            $table->integer('id_tipo');
+            $table->string('tipo_nombre');
             $table->timestamps();
         });
 

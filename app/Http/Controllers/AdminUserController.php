@@ -12,6 +12,8 @@ use gestion\User;
 use gestion\models\School;
 use gestion\models\Cathedra;
 use gestion\models\Matter;
+use gestion\models\Topic;
+use gestion\models\Content;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Auth\Middleware\Authenticate;
@@ -74,7 +76,18 @@ class AdminUserController extends Controller
         }
     }
 
-
+    public function getTopic(Request $request, $id){
+        if($request->ajax()){
+            $topic = Topic::topics($id);
+            return response()->json($topic);
+        }
+    }
+    public function getContent(Request $request, $id){
+        if($request->ajax()){
+            $content = Content::contents($id);
+            return response()->json($content);
+        }
+    }
     public function create()
     {
         $faculty=DB::table('faculties as f')

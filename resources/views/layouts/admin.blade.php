@@ -167,7 +167,7 @@
                                 </li>
 
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="{{url('gestion/contenido/create')}}">
+                                    <a class="nav-link" href="{{url('gestion/ejercicio/create')}}">
                                         <span class="sidebar-mini"> CE </span>
                                         <span class="sidebar-normal">Crear Ejercicio</span>
                                     </a>

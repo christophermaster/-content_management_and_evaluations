@@ -24,4 +24,9 @@ class Content extends Model
 
     protected $guarded =[
     ];
+
+    public static function contents($id){
+        return Content::where('id_tema','=',$id)
+        ->get();
+    }
 }

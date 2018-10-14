@@ -4,10 +4,9 @@ namespace gestion\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Difficulty extends Model
+class TypeExercise extends Model
 {
-   //
-    protected $table='difficulties';
+    protected $table='typeexercises';
     protected $primaryKey='id';
 
     public $timestamps = false;

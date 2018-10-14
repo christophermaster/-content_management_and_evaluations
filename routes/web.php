@@ -13,14 +13,16 @@
 /**
  * Pruebas
  */
-Route::get('mis/ejercicios', function () {
-    return view('ejercicio/miejercicios/ejercicios');
-});
+
 Route::get('otros/ejercicios', function () {
     return view('ejercicio/todoLosEjercicios/ejercicios');
 });
 Route::get('gestion/solucion', function () {
     return view('gestion/solucion/solucion');
+});
+
+Route::get('create', function () {
+    return view('gestion/ejercicio/create');
 });
 /*
 Route::get('administracion/facultad', function () {
@@ -41,12 +43,7 @@ Route::get('pdf',function(){
 
 Route::get('/iniciar', function () {
     return view('login');
-});
-
-
-
-
-
+}); 
 
 // LOGIN
 
@@ -137,6 +134,14 @@ Route::resource('facultad/profe','AdminUserController');
 Route::get('/school/{id}','AdminUserController@getSchool');
 Route::get('/cathedra/{id}','AdminUserController@getCathedra');
 Route::get('/matter/{id}','AdminUserController@getMatter');
+Route::get('/topic/{id}','AdminUserController@getTopic');
+Route::get('/content/{id}','AdminUserController@getContent');
+
+ /**
+  * Gestion de ejercicio 
+  */
+Route::resource('gestion/ejercicio','ExerciseController');
+Route::get('mis/ejercicios','ExerciseController@todosMisEjercicios');
 
 
 Auth::routes();
