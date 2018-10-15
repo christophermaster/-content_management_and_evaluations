@@ -22,6 +22,7 @@
     <!-- CSS Files -->
     <link href="{{asset('css/material-dashboard.min40a0.css?v=2.0.2')}}" rel="stylesheet" />
     <link href="{{asset('css/myStyle.css')}}" rel="stylesheet" />
+    <link href="{{url('https://fonts.googleapis.com/css?family=Poppins:300,400,700')}}" rel="stylesheet">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
 

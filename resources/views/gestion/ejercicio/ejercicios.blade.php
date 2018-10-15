@@ -26,38 +26,8 @@
                         <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Materia">
-                                                <option value="Afghanistan"> Elementos discreto I </option>
-                                                <option value="Albania"> Elementos discreto II </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Tema">
-                                                <option value="Afghanistan"> Logica </option>
-                                                <option value="Albania"> Conjuntos </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Sub Tema">
-                                                <option value="Afghanistan"> Simplificación </option>
-                                                <option value="Albania"> Simbolización </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Dificultad">
-                                                <option value="Afghanistan"> Facíl </option>
-                                                <option value="Albania"> Intermedio </option>
-                                                <option value="Afghanistan"> Dificil </option>
-                                            </select>
-                                        </div>
+                                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                                    @include('gestion.ejercicio.search')
                                     </div>
                                 </div>
                             </div>
@@ -79,11 +49,16 @@
                     <i class="material-icons">description</i>
                 </div>
                 <p class="card-category">Ejercicios</p>
-                <h3 class="card-title">84</h3>
+                <h3 class="card-title">{{$cantEjercicio->cantidad}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
                     <i class="material-icons">description</i>Ejercicios subidos
+                </div>
+                <div >
+                    <a  href="{{route('soloEjercicio')}}">
+                        <i class="material-icons">arrow_right_alt</i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -95,7 +70,7 @@
                     <i class="material-icons">extension</i>
                 </div>
                 <p class="card-category">Soluciones</p>
-                <h3 class="card-title">14</h3>
+                <h3 class="card-title">{{$cantSoluciones->cantidad}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -151,16 +126,27 @@ tITULO
 -->
 <div class="row">
     @foreach($ejercicio as $eje)
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12">
             <div class="card ">
-                <div class="card-header ">
-                    <h4 class="card-title">Elementos I -
-                        <small class="description">Simbolización</small>
+                <div class="card-header titulo ">
+                    <h4 class="card-title">{{$eje->materia}}-
+                        <small class="description">{{$eje->tema}}</small>
                     </h4>
+
+                    <div class="mystats text-right">
+
+                        <a class="nav-item menu" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons munu">more_vert</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#"><i class="material-icons">art_track</i> Detalles</a>
+                         </div>
+
+                    </div>
                 </div>
                 <div class="card-body ">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
                             <!--
                                 color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                                 -->
@@ -182,7 +168,7 @@ tITULO
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8">
                             <div class="tab-content">
                                 <div class="tab-pane active class_div" id="link1{{$eje->esID}}">
                                   <?php echo $eje->contenido; ?>
@@ -191,7 +177,19 @@ tITULO
                                      <?php echo $eje->contSol; ?>
                                 </div>
                                 <div class="tab-pane class_div" id="link3{{$eje->esID}}">
-
+                                    <label><b>Detalle del Ejercicio</b></label>
+                                    <hr>
+                                    <label>Facultad: </label><p>{{$eje->facultad}}</p>
+                                    <label>Escuela: </label><p>{{$eje->escuela}}</p>
+                                    <label>Catedra: </label><p>{{$eje->catedra}}</p>
+                                    <label>Materia: </label><p>{{$eje->materia}}</p>
+                                    <label>Tema: </label><p>{{$eje->tema}}</p>
+                                    <label>Dificultad: </label><p>{{$eje->dificultad}}</p>
+                                    <label>Tipo de Ejercicio: </label><p>{{$eje->tipo_nombre}}</p>
+                                    <label>Usuario Creador: </label><p>{{$eje->usuario_creador}}</p>
+                                    <label>Fecha de Creación: </label><p>{{$eje->created_at}}</p>
+                                    <label>Usuario Modificación: </label><p>{{$eje->usuario_modificador}}</p>
+                                    <label>Ultima Fecha de Modificación: </label><p>{{$eje->updated_at}}</p>
                                 </div>
                             </div>
                         </div>

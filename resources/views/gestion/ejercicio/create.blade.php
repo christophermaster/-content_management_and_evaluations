@@ -34,7 +34,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <label for="exampleFormControlSelect2" class="milabel">Facultad</label>
             <select id="faculty" name="id_facultad" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7">
-                <option>Seleccione...</option>
+                <option value>Seleccione...</option>
                 @foreach($faculty as $fac)
                     <option value="{{$fac->id}}">{{$fac->nombre}}</option>
                 @endforeach
@@ -43,19 +43,19 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <label for="exampleFormControlSelect2" class="milabel">Escuela</label>
             <select id="school" name="id_escuela" class="form-control miInput" data-style="select-with-transition" title="Escuela" data-size="7">
-                <option>Seleccione...</option>
+                <option value>Seleccione...</option>
             </select>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <label for="exampleFormControlSelect2" class="milabel">Catedra</label>
             <select id="cathedra" name="id_catedra" class="form-control miInput" data-style="select-with-transition" title="Escuela" data-size="7">
-                <option>Seleccione...</option>
+                <option value>Seleccione...</option>
             </select>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <label for="exampleFormControlSelect2" class="milabel">Materia</label>
             <select id="matter" name="id_materia"  data-style="select-with-transition"  class="form-control miInput" data-style="select-with-transition" title="Escuela" data-size="7">
-                <option>Seleccione...</option>
+                <option value>Seleccione...</option>
             </select>
         </div>
     </div>
@@ -63,19 +63,19 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <label for="exampleFormControlSelect2" class="milabel">Tema</label>
             <select id="topic" name="id_tema" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7">
-                <option>Seleccione...</option>
+                <option value>Seleccione...</option>
             </select>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <label for="exampleFormControlSelect2" class="milabel">Contenido</label>
             <select id="content" name="id_contenido" class="form-control miInput" data-style="select-with-transition" title="Escuela" data-size="7">
-                <option>Seleccione...</option>
+                <option value>Seleccione...</option>
             </select>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <label for="exampleFormControlSelect2" class="milabel">Tipo Ejercicio</label>
             <select id="cathdra" name="id_tipo" class="form-control miInput" data-style="select-with-transition" title="Escuela" data-size="7">
-                <option>Seleccione...</option>
+                <option value>Seleccione...</option>
                 @foreach($tipo_ejercicio as $type)
                     <option value="{{$type->id}}">{{$type->nombre}}</option>
                 @endforeach
@@ -84,7 +84,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <label for="exampleFormControlSelect2" class="milabel">Dificultad</label>
             <select id="dificultad" name="id_dificultad"  data-style="select-with-transition"  class="form-control miInput" data-style="select-with-transition" title="Escuela" data-size="7">
-                <option>Seleccione...</option>
+                <option value>Seleccione...</option>
                 @foreach($dificultad as $dif)
                     <option value="{{$dif->id}}">{{$dif->nombre}}</option>
                 @endforeach

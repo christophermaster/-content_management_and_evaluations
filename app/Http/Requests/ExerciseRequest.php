@@ -30,7 +30,9 @@ class ExerciseRequest extends FormRequest
             'id_facultad' =>'required',
             'id_catedra' =>'required',
             'id_dificultad' =>'required',
-            'id_contenido',
+            'id_contenido' =>'required',
+            'id_tema'=>'required',
+            'id_tipo'=>'required',
         ];
     }
 }

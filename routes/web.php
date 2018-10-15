@@ -142,7 +142,7 @@ Route::get('/content/{id}','AdminUserController@getContent');
   */
 Route::resource('gestion/ejercicio','ExerciseController');
 Route::get('mis/ejercicios','ExerciseController@todosMisEjercicios');
-
+Route::get('solo/ejercicios', ['as' => 'soloEjercicio', 'uses' => 'ExerciseController@soloEjercicios']);
 
 Auth::routes();
 

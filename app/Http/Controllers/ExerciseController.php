@@ -39,21 +39,77 @@ class ExerciseController extends Controller
     }
 
     /**
+     * Solo los ejercicios realizados por mi 
+     */
+    public function soloEjercicios(){
+        return view("gestion.ejercicio.soloEjercicios");
+    }
+
+
+    /**
      * Funcion que nos permite mostrar todos nuestros ejercicios con soluciones y sus detalles 
      */
-    public function todosMisEjercicios(){
+
+    public function todosMisEjercicios(Request $request){
+
         $usuario = Auth::user();
         $ejercicio=DB::table('exercises as exx')
-            ->join('example_and_solutions as es','exx.id','=',"es.id_ejercicio")
-            ->join('solutions as sol','sol.id','=',"es.id_solucion")
-            ->select('es.id_ejercicio','es.id as esID', 'exx.*',
-            'sol.contenido as contSol' )
-            ->groupBy("es.id_ejercicio")
+            ->join('solutions as sol','sol.id_ejercicio','=',"exx.id")
+            ->select('sol.id as esID',
+            'sol.contenido as contSol', 'exx.*' )
+            ->groupBy("exx.id")
             ->where('exx.id_usuario','=', $usuario->id)
-            ->orderBy('es.id','asc')
+            ->orderBy('exx.id','asc')
             ->paginate(10);
-    
-       return view('gestion.ejercicio.ejercicios',["ejercicio"=>$ejercicio]);
+
+        if($request->get('facultad') && $request->get('facultad') != '' ){
+            $ejercicio =  $ejercicio->where('id_facultad','=',$request->get('facultad'));
+        }
+        if($request->get('dificultad') && $request->get('dificultad') != '' ){
+            $ejercicio =  $ejercicio->where('id_dificultad','=',$request->get('dificultad'));
+        }
+        if($request->get('escuela') && $request->get('escuela') != '' ){
+            $ejercicio =  $ejercicio->where('id_escuela','=',$request->get('escuela'));
+        }
+        if($request->get('catedra') && $request->get('catedra') != '' ){
+            $ejercicio =  $ejercicio->where('id_catedra','=',$request->get('catedra'));
+        }
+        if($request->get('materia') && $request->get('materia') != '' ){
+            $ejercicio =  $ejercicio->where('id_materia','=',$request->get('materia'));
+        }
+        if($request->get('contenido') && $request->get('contenido') != '' ){
+            $ejercicio =  $ejercicio->where('id_contenido','=',$request->get('contenido'));
+        }
+        if($request->get('dificultad') && $request->get('dificultad') != '' ){
+            $ejercicio =  $ejercicio->where('id_dificultad','=',$request->get('dificultad'));
+        }
+        if($request->get('tipo') && $request->get('tipo') != '' ){
+            $ejercicio =  $ejercicio->where('id_tipo','=',$request->get('tipo'));
+        }
+        //cabtidad de ejercicio subido por usuario
+        $cantEjercicio = DB::table('exercises as exx')
+        ->select(DB::raw('count(*) as cantidad'))
+        ->where('exx.id_usuario','=', $usuario->id)
+        ->get()
+        ->first();
+        //cabtidad de soluciones subido por usuario
+        $cantSoluciones = DB::table('solutions as sol')
+        ->select(DB::raw('count(*) as cantidad'))
+        ->where('sol.id_usuario','=', $usuario->id)
+        ->get()
+        ->first();
+        $faculty=DB::table('faculties as f')
+        ->select('f.id','f.nombre')
+        ->get();
+        $dificultad=DB::table('difficulties as d')
+        ->select('d.id','d.nombre')
+        ->get();
+        $tipo_ejercicio=DB::table('typeexercises as te')
+        ->select('te.id','te.nombre')
+        ->get();
+       return view('gestion.ejercicio.ejercicios',["ejercicio"=>$ejercicio,
+       "cantEjercicio"=>$cantEjercicio,"cantSoluciones"=>$cantSoluciones,"faculty"=>$faculty,
+       "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
     }
     //Muestra la vista de creacion de ejercicio 
     public function create()
@@ -104,7 +160,7 @@ class ExerciseController extends Controller
         $exercise->escuela = $escuela->nombre ;
         $exercise->facultad = $faculty->nombre;
         $exercise->catedra = $catedra->nombre;
-        $exercise->dificultad = $dificultad->nombre ;
+        $exercise->dificultad = $dificultad->nombre;
         $exercise->tipo_nombre = $tipo->nombre ;
         $exercise->nombre_contenido = $contenido->nombre;
     
