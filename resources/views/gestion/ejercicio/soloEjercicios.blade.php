@@ -22,17 +22,9 @@
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">..s.</div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...s</div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">.s..</div>
-</div>
-
-<script>
-
-</script>
-
-
-  <div class="blog-card">
+  <div class="container">
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+     <div class="blog-card">
     <div class="meta">
       <div class="photoo" 
       style="background-image: url(https://www.kademvakfi.org/Assets/Upload/Content/duygularin-dili2-jpg14012018115911.jpg)"></div>
@@ -58,6 +50,19 @@
       </p>
     </div>
   </div>
+  </div>
+
+  </div>
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...s</div>
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">.s..</div>
+</div>
+
+<script>
+
+</script>
+
+
+ 
 
   
 @endsection

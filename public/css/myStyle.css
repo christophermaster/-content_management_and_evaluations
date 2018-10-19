@@ -402,6 +402,7 @@ body {
 .nav-tab {
     border-bottom: 1px solid #dee2e6;
     padding: 0 0 !important;
+    margin-bottom: 20px;
 }
 
 .nav-tabs .nav-item .a {
