@@ -1,5 +1,14 @@
 @extends('layouts.admin') @section('contenido')
-
+<div class="container-fluid">
+    <div class="breadcrumb">
+       <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Mi perfil</li>
+            </ol>
+        </nav>
+    </div>
+</div>
 
 @foreach($user as $us)
   <div class="content">
@@ -106,7 +115,7 @@
                             </div>
                             <div class="mystats text-right">
                                 <a href ="{{URL::action('MiPerfilController@edit', $us->id)}}">
-                                    <button type="button" rel="tooltip" class="btn btn-success btn-link" data-original-title="Editar" title="Editar">
+                                    <button type="button" rel="tooltip" class="btn  btn-link" data-original-title="Editar" title="Editar">
                                     <i class="material-icons">edit</i>
                                     </button>
                                 </a>

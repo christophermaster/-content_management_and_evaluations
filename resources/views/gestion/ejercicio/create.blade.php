@@ -1,5 +1,14 @@
 @extends('layouts.admin') @section('contenido')
-
+    <div class="breadcrumb">
+       <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('mis/ejercicios')}}">Detalles de mis Ejercicios</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios')}}">Ejercicios y Soluciones</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Crear Ejercicio</li>
+            </ol>
+        </nav>
+    </div>
   <a href="{{url('http://www.wiris.com/plugins/demo/ckeditor/php')}}" title="PHP">
   <input type="hidden" id="php_logo" class="wrs_tech_logo" alt="PHP"></a>
 

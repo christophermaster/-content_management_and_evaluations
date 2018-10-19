@@ -1,5 +1,12 @@
 @extends('layouts.admin') @section('contenido')
-
+    <div class="breadcrumb">
+       <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detalles de mis Ejercicios</li>
+            </ol>
+        </nav>
+    </div>
 <!--
     FILTRAR LOS EJERCICIOS 
 -->

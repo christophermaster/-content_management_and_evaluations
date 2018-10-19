@@ -191,7 +191,7 @@
                 <span class="badge badge-pill badge-info">Another Title</span>
                 </div>
                 <div class="timeline-body">
-                <p>Called I Miss the Old Kanye That’s all it was Kanye And I love you like Kanye loves Kanye Famous viewing @ Figueroa and 12th in downtown LA 11:10PM</p>
+                <p>Called I Miss the Old Kanye That’s all it was Kanye And I love you like Kanye loves Kanye Famous Vering @ Figueroa and 12th in downtown LA 11:10PM</p>
                 <p>What if Kanye made a song about Kanye Royère doesn't make a Polar bear bed but the Polar bear couch is my favorite piece of furniture we own It wasn’t any Kanyes Set on his goals Kanye</p>
                 <hr>
                 <div class="dropdown pull-left">
@@ -229,18 +229,18 @@
 <div class="row">
 
     <div class="col-md-12 text-center">
-        <h2>RECURSOS EN LINEAS</h2>
+        <h1>RECURSOS EN LINEAS</h1>
         <hr>
     </div>
     <div class="col-md-12 text-center">
         <p>
-            El repositorio de la UC-FACYT-COMPUTACIÓN albergan Ejercicios,Soluciones, bibliografía, y materiales digitalizados, subidos y creador por los miembros de la comunidad UC-FACYT y las facultades adscritas a la Universidad de carabobo.
+            El repositorio de la Facultad de Ciencias y Tecnologías albergan Ejercicios,Soluciones, bibliografía, y materiales digitalizados, subidos y creador por los miembros de la comunidad UC-FACYT y las facultades adscritas a la Universidad de carabobo.
         </p>
     </div>
     <br>
 
     <div class="col-md-12 text-center ">
-        <h3><b>Repositorio UC-FACYT Computación</b></h3>
+        <h3><b>Repositorio de la Facultad de Ciencias y Tecnologías</b></h3>
         <br><br><br>
     </div>
 
@@ -262,7 +262,7 @@
 
                     </div>
                     <h4 class="card-title">
-                        <a href="#pablo">Repositorio de material digitalizado </a>
+                        <a href="#pablo"><b>Repositorio de material digitalizado</b></a>
                     </h4>
                     <div class="card-description">
                         Reúne los contenidos digitales producidos por la comunidad universitaria resultantes de su actividad docente, investigadora e institucional.
@@ -287,7 +287,7 @@
 
                     </div>
                     <h4 class="card-title">
-                        <a href="#pablo"> Repositorio de Ejercicios y Soluciones </a>
+                        <a href="#pablo"><b>Repositorio de Ejercicios y Soluciones</b></a>
                     </h4>
                     <div class="card-description">
                         Reúne los ejercicios y su soluciones producidas por la comunidad docente de la institución universitaria de la Facyt.
@@ -312,7 +312,7 @@
 
                     </div>
                     <h4 class="card-title">
-                        <a href="#pablo">Repositorio de Evaluaciones</a>
+                        <a href="#pablo"><b>Repositorio de Evaluaciones</b></a>
                     </h4>
                     <div class="card-description">
                         Reúne las evaluaciones producidas por la comunidad docente de la institución universitaria de la Facyt.

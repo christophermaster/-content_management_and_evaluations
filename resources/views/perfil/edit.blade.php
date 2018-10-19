@@ -1,5 +1,17 @@
 @extends ('layouts.admin')
 @section ('contenido')
+
+
+    <div class="breadcrumb">
+       <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{{url('mi/perfil')}}">Mi perfil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Editar perfil</li>
+            </ol>
+        </nav>
+    </div>
+
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<h3>Editar Perfil: {{ $people->nombre}}</h3>
