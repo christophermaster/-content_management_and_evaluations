@@ -3596,7 +3596,7 @@ tbody.collapse.show {
 .nav-tabs .nav-link.active {
     color: #495057;
     background-color: #fafafa;
-    border-color: #dee2e6 #dee2e6 #fafafa
+    border-bottom: solid;
 }
 
 .nav-tabs .dropdown-menu {

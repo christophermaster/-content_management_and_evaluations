@@ -1,6 +1,13 @@
 @extends('layouts.admin') 
 @section('contenido')
-
+<div class="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+        </ol>
+    </nav>
+</div>
 <div class="row ">
      <div class= "col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ">
       <h1>  <img src="{{asset('img/logo-uc.png')}}" width="100" height="150" > UC - Universidad De Carabobo</h1>

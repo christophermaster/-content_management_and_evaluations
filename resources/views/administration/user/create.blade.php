@@ -1,5 +1,15 @@
 @extends ('layouts.admin')
+
 @section ('contenido')
+<div class="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
+            <li class="breadcrumb-item active"><a href="{{url('/facultad/profe')}}">Usuarios</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Crear</li>
+        </ol>
+    </nav>
+</div>
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<h3>Nuevo Usuario</h3>
@@ -114,7 +124,9 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Guardar</button>
-                                <button class="btn btn-danger" type="reset">Cancelar</button>
+                                <a  href="{{url('/facultad/profe')}}">
+                                <button class="btn btn-danger" type="button">Cancelar</button>
+                                </a>
                             </div>
                         </div>
                     </div>
