@@ -42,15 +42,31 @@ class ExerciseController extends Controller
      * Solo los ejercicios realizados por mi 
      */
     public function soloEjercicios(){
-        return view("gestion.ejercicio.soloEjercicios");
+
+        $usuario = Auth::user();
+        $ejercicio=DB::table('exercises as exx')
+            ->select('exx.*')
+            ->where('exx.id_usuario','=', $usuario->id)
+            ->orderBy('exx.id','asc')
+            ->paginate(10);
+        return view("gestion.ejercicio.soloEjercicios",["ejercicio"=>$ejercicio]);
     }
 
+    /**Detalles de los ejercicios */
+    public function detallesDeEjercicios($id){
+        $ejercicio = Exercise::findOrfail($id);
+        $solucion  = DB::table('solutions as sol')
+            ->select('sol.*')
+            ->where('sol.id_ejercicio','=', $id)->get();
+        return view("gestion.ejercicio.detallesEjercicio",["ejercicio"=>$ejercicio,"solucion"=>$solucion]);
+    }
 
     /**
      * Funcion que nos permite mostrar todos nuestros ejercicios con soluciones y sus detalles 
      */
 
     public function todosMisEjercicios(Request $request){
+        
 
         $usuario = Auth::user();
         $ejercicio=DB::table('exercises as exx')

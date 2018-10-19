@@ -143,6 +143,11 @@ Route::get('/content/{id}','AdminUserController@getContent');
 Route::resource('gestion/ejercicio','ExerciseController');
 Route::get('mis/ejercicios','ExerciseController@todosMisEjercicios');
 Route::get('solo/ejercicios', ['as' => 'soloEjercicio', 'uses' => 'ExerciseController@soloEjercicios']);
+Route::get('solo/ejercicios/detalles/{id}', ['as' => 'detallesEjercicio', 'uses' => 'ExerciseController@detallesDeEjercicios']);
+Route::get('imageUpload',['as'=>'imageUpload', 'uses'=>'UploadController@upload']);
+Route::put('imageUpload',['as'=>'imageUpload','uses'=>'UploadController@uploadd']);
+/**Subida de archivos  */
+
 
 Auth::routes();
 

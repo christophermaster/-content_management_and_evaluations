@@ -34,6 +34,11 @@
     <script type="text/javascript" src="{{asset('js/xml.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
+	
+
+    
     <script>
         if (window.location.search !== '') {
             var urlParams = window.location.search.split('&')[1].split('=');
@@ -381,7 +386,12 @@
                         </div>
                     </li>
                     @endif
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('subir/archivo')}}">
+                            <i class="material-icons">cloud_upload</i>
+                            <p> Subir Archivo</p>
+                        </a>
+                    </li>
                 
                 </ul>
 
