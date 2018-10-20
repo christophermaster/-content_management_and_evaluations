@@ -9,7 +9,6 @@ use gestion\Http\Requests\ExerciseRequest;
 use gestion\models\Faculty;
 use gestion\models\People;
 use gestion\models\Teacher;
-use gestion\User;
 use gestion\models\School;
 use gestion\models\Cathedra;
 use gestion\models\Matter;
@@ -18,11 +17,13 @@ use gestion\models\Exercise;
 use gestion\models\TypeExercise;
 use gestion\models\Difficulty;
 use gestion\models\Content;
+use gestion\models\Upload;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Middleware\Authenticate;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use gestion\User;
 
 class ExerciseController extends Controller
 {
@@ -49,7 +50,13 @@ class ExerciseController extends Controller
             ->where('exx.id_usuario','=', $usuario->id)
             ->orderBy('exx.id','asc')
             ->paginate(10);
-        return view("gestion.ejercicio.soloEjercicios",["ejercicio"=>$ejercicio]);
+        $upload = DB::table('uploads as upl')
+            ->select('upl.*')
+            ->where('upl.id_usuario','=', $usuario->id)
+            ->where('upl.id_categoria','=', "1")
+            ->orderBy('upl.id','asc')
+            ->paginate(10);
+        return view("gestion.ejercicio.soloEjercicios",["ejercicio"=>$ejercicio,"upload"=>$upload]);
     }
 
     /**Detalles de los ejercicios */

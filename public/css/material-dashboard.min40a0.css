@@ -5000,7 +5000,8 @@ button.close {
 }
 
 .modal-backdrop.show {
-    opacity: .26
+    opacity: .26;
+    z-index: auto;
 }
 
 .modal-header {

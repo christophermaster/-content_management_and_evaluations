@@ -34,11 +34,11 @@
     <script type="text/javascript" src="{{asset('js/xml.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
-<script type="text/javascript" src="{{asset('dropzone/dist/dropzone.js')}}"></script>
-		<link rel="stylesheet" type="text/css" href="{{asset('dropzone/dist/dropzone.css')}}">
-	
+    <script type="text/javascript" src="{{asset('dropzone/dist/dropzone.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('dropzone/dist/dropzone.css')}}">
 
-    
+    <script type="text/javascript" src="{{asset('ckeditor4/ckeditor.js')}}"></script>
+
     <script>
         if (window.location.search !== '') {
             var urlParams = window.location.search.split('&')[1].split('=');
@@ -48,7 +48,6 @@
         }
     </script>
 
-    <script type="text/javascript" src="{{asset('ckeditor4/ckeditor.js')}}"></script>
 
     <script>
         (function(w, d, s, l, i) {
@@ -66,7 +65,7 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
     </script>
-   
+
 
 
 
@@ -84,7 +83,7 @@
                 </a>
 
                 <a href="" class="simple-text logo-normal">
-                   Cestión
+                    Cestión
                 </a></div>
 
             <div class="sidebar-wrapper">
@@ -139,7 +138,7 @@
                                 <b class="caret"></b>
                             </p>
                         </a>
-                    <!--
+                        <!--
                         lISTA DE EJERCICIO
                     -->
                         <div class="collapse" id="pagesExamples">
@@ -296,7 +295,7 @@
                                         <span class="sidebar-normal"> Subir Evaluación </span>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </div>
                     </li>
@@ -305,14 +304,14 @@
                         ADINISTRACION UNIVERSITARIA
                     -->
                     @if (Auth::user()->id_cargo == 1)
-                      <li class="nav-item ">
+                    <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#universidad">
                             <i class="material-icons">account_balance</i>
                             <p>Admin. Universidad
                                 <b class="caret"></b>
                             </p>
                         </a>
-                    <!--
+                        <!--
                         lISTA DE EJERCICIO
                     -->
                         <div class="collapse" id="universidad">
@@ -357,21 +356,19 @@
                                         <span class="sidebar-normal">Profesores y Peparadores</span>
                                     </a>
                                 </li>
-                               
+
                             </ul>
                         </div>
                     </li>
-                    @endif
-
-                     @if (Auth::user()->id_cargo == 2)
-                      <li class="nav-item ">
+                    @endif @if (Auth::user()->id_cargo == 2)
+                    <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#universidad">
                             <i class="material-icons">account_balance</i>
                             <p>Admin. de Usuario
                                 <b class="caret"></b>
                             </p>
                         </a>
-                    <!--
+                        <!--
                         lISTA DE EJERCICIO
                     -->
                         <div class="collapse" id="universidad">
@@ -387,12 +384,12 @@
                     </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('subir/archivo')}}">
+                        <a class="nav-link" href="{{url('imageUpload')}}">
                             <i class="material-icons">cloud_upload</i>
                             <p> Subir Archivo</p>
                         </a>
                     </li>
-                
+
                 </ul>
 
 
@@ -415,9 +412,9 @@
                             </button>
                         </div>
 
-                     
+
                         <a class="navbar-brand" href="#pablo">Menú</a>
-                   
+
                     </div>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
@@ -430,7 +427,7 @@
                     <div class="collapse navbar-collapse justify-content-end">
 
 
-                <!--        <form class="navbar-form">
+                        <!--        <form class="navbar-form">
                             <div class="input-group no-border">
                                 <input type="text" value="" class="form-control" placeholder="Search...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -459,23 +456,22 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#pablo" id = "salir" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link" href="#pablo" id="salir" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">person</i>
                                     <p class="d-lg-none d-md-block">
                                         Account
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                   Cerrar Sessión
-                                </a>
+                                        Cerrar Sessión
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
                             </li>
                         </ul>
 
@@ -514,82 +510,54 @@
                                     Computación
                                 </a>
                             </li>
-   
+
                         </ul>
                     </nav>
                     <div class="copyright float-right">
                         &copy;
                         <script>
                             document.write(new Date().getFullYear())
-                        </script>, Universidad de Carabobo<i class="material-icons">favorite</i> 
+                        </script>, Universidad de Carabobo<i class="material-icons">favorite</i>
                     </div>
                 </div>
             </footer>
         </div>
     </div>
-
-
-
-
     <!--   Core JS Files   -->
     <script src="{{asset('js/core/jquery.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/dropdown.js')}}"></script>
     <script src="{{asset('js/core/popper.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
-
     <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-
-
     <!-- Plugin for the momentJs  -->
     <script src="{{asset('js/plugins/moment.min.js')}}"></script>
-
     <!--  Plugin for Sweet Alert -->
     <script src="{{asset('js/plugins/sweetalert2.js')}}"></script>
-
     <!-- Forms Validations Plugin -->
     <script src="{{asset('js/plugins/jquery.validate.min.js')}}"></script>
-
     <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
     <script src="{{asset('js/plugins/jquery.bootstrap-wizard.js')}}"></script>
-
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-   
-
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
     <script src="{{asset('js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
-
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
     <script src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
-
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
     <script src="{{asset('js/plugins/bootstrap-tagsinput.js')}}"></script>
-
     <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
     <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
-
     <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
     <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
-
     <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
     <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
-
     <!-- Library for adding dinamically elements -->
     <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
-
-
     <!-- Chartist JS -->
     <script src="{{asset('js/plugins/chartist.min.js')}}"></script>
-
     <!--  Notifications Plugin    -->
     <script src="{{asset('js/plugins/bootstrap-notify.js')}}"></script>
-
-
-
-
-
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{asset('js/material-dashboard.min40a0.js?v=2.0.2')}}" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
@@ -652,113 +620,37 @@
     <!-- Google Analytics
     <script src="{{asset('js/google_analytics.js')}}"></script> -->
 
- 
+
     <script>
         if (typeof urlParams !== 'undefined') {
             var selectLang = document.getElementById('lang_select');
             selectLang.value = urlParams[1];
         }
     </script>
-    <script src="{{asset('ckeditor4/ckeditor.js')}}"></script>
+    
 
-    <script>
+
+
+     <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
             md.initDashboardPageCharts();
-
             md.initVectorMap();
 
         });
     </script>
-<script>
- 
-   CKFinder.setupCKEditor(null,'/gestion/contenido/create/ckfinder/');
-    CKEDITOR.replace('example', {
-        extraPlugins: 'ckeditor_wiris',
-        language: 'es'
-    });
-
-   CKEDITOR.replace('exampleA', {
+    <script>
+        CKFinder.setupCKEditor(null, '/gestion/contenido/create/ckfinder/');
+        CKEDITOR.replace('example', {
             extraPlugins: 'ckeditor_wiris',
             language: 'es'
-    });
-    
-</script>
+        });
 
-<script>
-$(document).ready(function (){
- 
-        /* INICIA CONFIGURACIÓN DE DROPZONE */
- Dropzone.options.myDropzone = {
- dictDefaultMessage: "Arrastre aqui archivos para subir.",
- addRemoveLinks: true,
-     init: function() {
-         thisDropzone = this;
-                /* ESTE CODIGO SIRVE PARA MOSTRAR LOS ARCHIVOS ACTUALES EN EL SERVIDOR*/
-         $.get('file_upload/index.php', function(data) {
- 
-             $.each(data, function(key,value){  
-                 var mockFile = { name: value.name, size: value.size};       
-                 thisDropzone.options.addedfile.call(thisDropzone, mockFile);
-                 thisDropzone.options.thumbnail.call(thisDropzone, mockFile, "file_upload/docs/"+value.name);
-     thisDropzone.emit("complete", mockFile);
-     var ext = mockFile.name.split(".")[1];
-     switch(ext){
-      case "xls":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/excel.png');
-      break;
-      case "xlsx":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/excel.png');
-      break;
-      case "pdf":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/pdf.png');
-      break;
-      case "doc":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/doc.png');
-      case "docx":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/doc.png');
-      break;
-      case "zip":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/zip.png');
-      break;
-      case "rar":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/rar.png');
-      break;
-      case "ppt":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/ppt.png');
-      break;
-      case "pptx":
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/ppt.png');
-      break;
-      case "png":
-      break;
-      case "jpg":
-      break;
-      case "jpeg":
-      break;
-      default:
-      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/nose.png');
-      break;
-     } 
-             });
-         });
-     },
-         
-            /* ESTE EVENTO NOS PERMITE ELIMINAR REALMENTE EL ARCHIVO DEL SERVIDOR */
-     removedfile: function(file) {
-      $.get( "eliminarArchivo.php", { 
-      nombre: file.name
-      }).done(function( data ) {
-     var _ref;
-      return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-     });
-     }
- };
- 
-});
-</script>
-
-
+        CKEDITOR.replace('exampleA', {
+            extraPlugins: 'ckeditor_wiris',
+            language: 'es'
+        });
+    </script>
 </body>
 
 </html>

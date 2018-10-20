@@ -192,6 +192,14 @@
         z-index: 0;
     }
     
+    .bCard {
+        height: 200px;
+    }
+    
+    .des {
+        overflow: auto;
+    }
+    
     .blog-card a {
         color: inherit;
     }

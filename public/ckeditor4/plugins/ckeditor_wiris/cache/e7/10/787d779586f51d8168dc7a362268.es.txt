@@ -1,1 +1,0 @@
-{"result":{"text":"raíz con índice h h h y radical h h h fin raíz"},"status":"ok"}

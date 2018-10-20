@@ -8,6 +8,14 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use gestion\Http\Requests\ExerciseRequest;
+use gestion\models\Faculty;
+use gestion\models\School;
+use gestion\models\Cathedra;
+use gestion\models\Matter;
+use gestion\models\Topic;
+use gestion\models\Exercise;
+use gestion\models\Content;
 use File;
 use DB;
 
@@ -32,6 +40,12 @@ class UploadController extends Controller
         $upload = new Upload;
         $usuario = Auth::user();
         $hoy = date("Y-m-d H:i:s");
+        $faculty = Faculty::findOrfail($request->get('id_facultad'));
+        $escuela = School::findOrfail($request->get('id_escuela'));
+        $catedra = Cathedra::findOrfail($request->get('id_catedra'));
+        $materia = Matter::findOrfail($request->get('id_materia'));
+        $tema = Topic::findOrfail($request->get('id_tema'));
+        $contenido = Content::findOrfail($request->get('id_contenido'));
         if($request->hasFile('file'))
     	{
             $upload->id_usuario = $usuario->id;
@@ -40,14 +54,39 @@ class UploadController extends Controller
             $upload->created_at = $hoy;
             $upload->updated_at = $hoy;
             $upload->id_facultad =$request->id_facultad;
+            $upload->facultad =$faculty->nombre;
+            $upload->id_escuela =$request->id_escuela;
+            $upload->escuela =$escuela->nombre;
+            $upload->id_catedra =$request->id_catedra;
+            $upload->catedra =$catedra->nombre;
+            $upload->id_materia =$request->id_materia;
+            $upload->materia =$materia->nombre;
+            $upload->id_tema =$request->id_tema;
+            $upload->tema =$tema->nombre;
+            $upload->id_contenido =$request->id_contenido;
+            $upload->contenido =$contenido->nombre;
+            $upload->id_categoria =$request->id_categoria;
+            $upload->categoria =$request->id_categoria;
+            if($usuario->id == 1 && $usuario->id == 2){
+                $upload->aprobado = 1;
+            }else{
+                $upload->aprobado = 0;
+            }
+            $upload->titulo =$request->titulo;
+            $upload->descripcion =$request->descripcion;
     		$imageFile = $request->file('file');
             $imageName = $imageFile->getClientOriginalName();
-            $upload->tipo_nombre = $imageFile->getClientMimeType();
+            $upload->tipo_archivo = $imageFile->getClientMimeType();
             $upload->ruta = 'uploads/'.$imageName;
             $upload->save();
             $imageFile->move(public_path('uploads'), $imageName);
         }
         
         return Redirect::to('gestion/contenido');
+    }
+    public function downloadFile($id){
+      $upload = Upload::findOrfail($id);;
+      $pathtoFile = public_path()."/".$upload->ruta;
+      return response()->download($pathtoFile);
     }
 }

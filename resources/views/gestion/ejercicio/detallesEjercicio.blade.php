@@ -94,7 +94,7 @@
             <h3 class="detalle">Soluciones</h3>
         
             <div class="mystats miEditar">
-                <a class="nav-item menu" href="#" rel="tooltip" title="Agregar">
+                <a class="nav-item menu" href="{{route('agregarSolucion',['id' => $ejercicio->id])}}" rel="tooltip" title="Agregar">
                     <i class="material-icons munu">add</i>
                 </a>
             </div>

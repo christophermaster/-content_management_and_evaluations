@@ -144,11 +144,18 @@ Route::resource('gestion/ejercicio','ExerciseController');
 Route::get('mis/ejercicios','ExerciseController@todosMisEjercicios');
 Route::get('solo/ejercicios', ['as' => 'soloEjercicio', 'uses' => 'ExerciseController@soloEjercicios']);
 Route::get('solo/ejercicios/detalles/{id}', ['as' => 'detallesEjercicio', 'uses' => 'ExerciseController@detallesDeEjercicios']);
+
+/**Subida de archivos  */
 Route::get('imageUpload',['as'=>'imageUpload', 'uses'=>'UploadController@upload']);
 Route::put('imageUpload',['as'=>'imageUpload','uses'=>'UploadController@uploadd']);
-/**Subida de archivos  */
 
+/** Descargar Archivo*/
+Route::get('download/{id}', ['as' => 'downloadFile', 'uses' => 'UploadController@downloadFile']);
 
+/*Solucion */
+Route::get('solucion/{id}', ['as' => 'agregarSolucion', 'uses' => 'SolutionController@create']);
+Route::post('solucion/save','SolutionController@store');
+Auth::routes();
 Auth::routes();
 
 Route::auth();

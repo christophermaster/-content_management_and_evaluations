@@ -15,11 +15,12 @@ class Uploads extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->increments('id');//identificador de la tabla
+            $table->longText('titulo');
+            $table->longText('descripcion');
             $table->integer('id_usuario')->unsigned();//identificador de la facultad que pertenece la escuela
             $table->string('usuario_creador');
             $table->string('usuario_modificador');
             $table->longText('ruta'); //nombre de la Escuela de la universidad de carabobo
-            $table->longText('titulo');
             $table->boolean('aprobado')->nullable();
             $table->integer('id_facultad');
             $table->string('facultad');
@@ -31,8 +32,11 @@ class Uploads extends Migration
             $table->string('materia');
             $table->integer('id_tema');
             $table->string('tema');
-            $table->integer('id_tipo');
-            $table->string('tipo_nombre');
+            $table->integer('id_contenido');
+            $table->string('contenido');
+            $table->integer('id_categoria');
+            $table->string('categoria');
+            $table->string('tipo_archivo');
             $table->timestamps();
         });
 
