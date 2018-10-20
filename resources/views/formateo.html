@@ -1,6 +1,4 @@
-{!!Form::open(array('url'=>'subir/archivo','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!} {{Form::token()}} @if (session()->has('info'))
-<div class="alert alert-success">{{session('info')}}</div>
-@endif
+{!!Form::open(array('url'=>'subir/archivo','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!} {{Form::token()}}
 <p><label for="archivo">
         <input type="file" name="archivo" id="">
     </label></p>

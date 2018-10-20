@@ -34,8 +34,8 @@
     <script type="text/javascript" src="{{asset('js/xml.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
+<script type="text/javascript" src="{{asset('dropzone/dist/dropzone.js')}}"></script>
+		<link rel="stylesheet" type="text/css" href="{{asset('dropzone/dist/dropzone.css')}}">
 	
 
     
@@ -684,6 +684,80 @@
     });
     
 </script>
+
+<script>
+$(document).ready(function (){
+ 
+        /* INICIA CONFIGURACIÓN DE DROPZONE */
+ Dropzone.options.myDropzone = {
+ dictDefaultMessage: "Arrastre aqui archivos para subir.",
+ addRemoveLinks: true,
+     init: function() {
+         thisDropzone = this;
+                /* ESTE CODIGO SIRVE PARA MOSTRAR LOS ARCHIVOS ACTUALES EN EL SERVIDOR*/
+         $.get('file_upload/index.php', function(data) {
+ 
+             $.each(data, function(key,value){  
+                 var mockFile = { name: value.name, size: value.size};       
+                 thisDropzone.options.addedfile.call(thisDropzone, mockFile);
+                 thisDropzone.options.thumbnail.call(thisDropzone, mockFile, "file_upload/docs/"+value.name);
+     thisDropzone.emit("complete", mockFile);
+     var ext = mockFile.name.split(".")[1];
+     switch(ext){
+      case "xls":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/excel.png');
+      break;
+      case "xlsx":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/excel.png');
+      break;
+      case "pdf":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/pdf.png');
+      break;
+      case "doc":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/doc.png');
+      case "docx":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/doc.png');
+      break;
+      case "zip":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/zip.png');
+      break;
+      case "rar":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/rar.png');
+      break;
+      case "ppt":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/ppt.png');
+      break;
+      case "pptx":
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/ppt.png');
+      break;
+      case "png":
+      break;
+      case "jpg":
+      break;
+      case "jpeg":
+      break;
+      default:
+      thisDropzone.createThumbnailFromUrl(mockFile, 'dist/img/nose.png');
+      break;
+     } 
+             });
+         });
+     },
+         
+            /* ESTE EVENTO NOS PERMITE ELIMINAR REALMENTE EL ARCHIVO DEL SERVIDOR */
+     removedfile: function(file) {
+      $.get( "eliminarArchivo.php", { 
+      nombre: file.name
+      }).done(function( data ) {
+     var _ref;
+      return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+     });
+     }
+ };
+ 
+});
+</script>
+
 
 </body>
 
