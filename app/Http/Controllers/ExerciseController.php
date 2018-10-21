@@ -146,7 +146,7 @@ class ExerciseController extends Controller
                 ->select('exx.*')
                 ->where('exx.id_usuario','=', $usuario->id)
                 ->orderBy('exx.id','asc')
-                ->paginate(20);
+                ->paginate(2);
             }else{
                 $ejercicio=DB::table('exercises as exx')
                 ->select('exx.*')
@@ -154,7 +154,7 @@ class ExerciseController extends Controller
                 ->join('roles as rol','us.id_cargo','=',"rol.id")
                 ->where('rol.id','=',"3")
                 ->orderBy('exx.id','asc')
-                ->paginate(20);
+                ->paginate(2);
             }
           
 
@@ -285,8 +285,8 @@ class ExerciseController extends Controller
           $tipo_ejercicio=DB::table('typeexercises as te')
         ->select('te.id','te.nombre')
         ->get();
-        return view("gestion.ejercicio.create",["faculty"=>$faculty,"dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
-    
+        //return view("gestion.ejercicio.create",["faculty"=>$faculty,"dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
+        return back();
     }
     public function show($id)
     {

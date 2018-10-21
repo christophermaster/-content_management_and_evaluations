@@ -120,6 +120,9 @@
                 </div>
             </div>
             @endforeach
+            <div class="text-center">
+                {{$ejercicio ->render()}}
+            </div>
         </div>
     </div>
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Category extends Migration
+class SubtypeEvaluations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Category extends Migration
      */
     public function up()
     {
-       Schema::create('update_categories', function (Blueprint $table) {
+        Schema::create('subtype_evaluations', function (Blueprint $table) {
             $table->increments('id');
              $table->string('nombre');
              $table->timestamps();
@@ -27,6 +27,6 @@ class Category extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('update_categories');
+        Schema::dropIfExists('subtype_evaluations');
     }
 }

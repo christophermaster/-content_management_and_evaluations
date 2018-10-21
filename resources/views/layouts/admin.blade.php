@@ -284,7 +284,7 @@
                                     </div>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="components/buttons.html">
+                                    <a class="nav-link" href="{{url('generar/evaluacion')}}">
                                         <span class="sidebar-mini"> CE </span>
                                         <span class="sidebar-normal"> Crear Evaluación </span>
                                     </a>
@@ -530,7 +530,10 @@
     <script src="{{asset('js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
     <!-- Plugin for the momentJs  -->
-    <script src="{{asset('js/plugins/moment.min.js')}}"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+ /
     <!--  Plugin for Sweet Alert -->
     <script src="{{asset('js/plugins/sweetalert2.js')}}"></script>
     <!-- Forms Validations Plugin -->
@@ -539,7 +542,7 @@
     <script src="{{asset('js/plugins/jquery.bootstrap-wizard.js')}}"></script>
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="{{asset('js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
+/
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
     <script src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->

@@ -162,6 +162,13 @@ Route::get('solucion/delete/{id}','SolutionController@destroy');
 Route::get('solucion/modificar/{id}', ['as' => 'solutionEditar', 'uses' => 'SolutionController@edit']);
 Route::post('solucion/modificar/{id}', 'SolutionController@update');
 
+
+/**evaluacion */
+Route::get('generar/evaluacion', ['as' => 'generarEvaluacion', 'uses' => 'EvaluationController@index']);
+Route::post('salvar/evaluacion','EvaluationController@create');
+Route::get('crear/evaluacion/{id}', ['as' => 'evaluacion', 'uses' => 'EvaluationController@crearEvaluacion']);
+Route::get('editar/evaluacion/{id}', ['as' => 'editarEvaluacion', 'uses' => 'EvaluationController@editarEvaluacion']);
+Route::post('agregar/ejercicio','EvaluationController@agregarEjercicio');
 Auth::routes();
 
 Route::auth();
