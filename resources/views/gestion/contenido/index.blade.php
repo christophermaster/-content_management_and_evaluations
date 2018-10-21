@@ -262,7 +262,7 @@
 
                     </div>
                     <h4 class="card-title">
-                        <a href="#pablo"><b>Repositorio de material digitalizado</b></a>
+                        <a href="{{route('materialDigitalizado')}}"><b>Repositorio de material digitalizado</b></a>
                     </h4>
                     <div class="card-description">
                         Reúne los contenidos digitales producidos por la comunidad universitaria resultantes de su actividad docente, investigadora e institucional.
@@ -274,7 +274,7 @@
         <div class="col-md-4">
             <div class="card card-product">
                 <div class="card-header card-header-image" data-header-animation="true">
-                    <a href="#pablo">
+                    <a  href="{{route('materialDigitalizado')}}">
                         <img class="img" src="{{asset('img/card-3.jpg')}}" width="400" height="300">
                     </a>
                 </div>
@@ -287,7 +287,7 @@
 
                     </div>
                     <h4 class="card-title">
-                        <a href="#pablo"><b>Repositorio de Ejercicios y Soluciones</b></a>
+                        <a href="{{route('repositorioEjerSol')}}"><b>Repositorio de Ejercicios y Soluciones</b></a>
                     </h4>
                     <div class="card-description">
                         Reúne los ejercicios y su soluciones producidas por la comunidad docente de la institución universitaria de la Facyt.

@@ -384,7 +384,7 @@
                     </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('imageUpload')}}">
+                        <a class="nav-link" href="{{url('materiales/digitalizados/subir')}}">
                             <i class="material-icons">cloud_upload</i>
                             <p> Subir Archivo</p>
                         </a>

@@ -4,8 +4,8 @@
 
 
 
-      <div class="container-fluid">
-        <div class="row">
+<div class="container-fluid">
+<div class="row">
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
             <div class="card-header card-header-success card-header-icon">
@@ -13,7 +13,7 @@
                     <i class="material-icons">description</i>
                 </div>
                 <p class="card-category">Ejercicios</p>
-                <h3 class="card-title">84</h3>
+                <h3 class="card-title">{{$cantEjercicio->cantidad}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -29,7 +29,7 @@
                     <i class="material-icons">extension</i>
                 </div>
                 <p class="card-category">Soluciones</p>
-                <h3 class="card-title">14</h3>
+                <h3 class="card-title">{{$cantSoluciones->cantidad}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">

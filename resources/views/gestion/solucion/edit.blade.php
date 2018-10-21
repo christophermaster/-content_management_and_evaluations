@@ -6,7 +6,7 @@
             <li class="breadcrumb-item active" aria-current="page"><a href="{{url('mis/ejercicios')}}">Detalles de mis
                     Ejercicios</a></li>
             <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios')}}">Ejercicios</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios/detalles/')}}/{{$id_ejercicio}}">Detalles</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios/detalles/')}}/{{$solucion->id_ejercicio}}">Detalles</a></li>
             <li class="breadcrumb-item active" aria-current="page">Solución</li>
         </ol>
     </nav>
@@ -48,26 +48,30 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                {!!Form::open(array('url'=>'solucion/save','method'=>'POST','autocomplete'=>'off'))!!} {{Form::token()}}
+               <form method="post" action="/solucion/modificar/{{$solucion->id}}" >
+                 @csrf
+              
+                 <input type="hidden" value="{{csrf_token()}}" name="_token" /> 
                     <div class="tab-content tab-space tab-subcategories">
                         <div class="tab-pane active" id="link7">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea name="contenido" id="example" requerid value="{{old('contenido')}}" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="true" role="textbox" 
+                                    <textarea name="contenido" id="example" requerid value ="{{$solucion->contenido}}" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="true" role="textbox" 
                                     aria-label="Rich Text Editor, example" title="Rich Text Editor, example" required>
+                                    {{$solucion->contenido}}
                                     </textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
-              <input type="hidden" value="{{$id_ejercicio}}" name ="id_ejercicio">
+              <input type="hidden" value="{{$solucion->id_ejercicio}}" name ="id_ejercicio">
                     <div class="row">
                         <div class="col-md-12 text-center">
                             <button class="btn btn-primary" type="submit">Guardar</button>
                             <button class="btn btn-danger" type="reset">Cancelar</button>
                         </div>
                     </div>
-                {!!Form::close()!!}
+               </form>
             </div>
         </div>
     </div>

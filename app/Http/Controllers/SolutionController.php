@@ -1,7 +1,7 @@
 <?php
 
 namespace gestion\Http\Controllers;
-
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use gestion\Http\Requests\SolutionRequest;
 use gestion\models\Exercise;
@@ -15,6 +15,26 @@ use gestion\User;
 
 class SolutionController extends Controller
 {
+
+    public function edit($id)
+    {
+        $solucion = Solution::findOrfail($id);
+        return view("gestion.solucion.edit",["solucion"=>$solucion]);
+    }
+     public function update(SolutionRequest $request, $id)
+    {
+        $solucion = Solution::findOrfail($id);
+        $usuario = Auth::user()->name;
+        $hoy = date("Y-m-d H:i:s");  
+        $solucion->contenido=$request->get('contenido');
+        if(Auth::check()){
+            $solucion->usuario_modificador= $usuario;
+        }
+        $solucion->updated_at = $hoy;
+        $solucion->update();
+        flash('Se actualizo de forma Correcta')->success();
+        return Redirect::to('solo/ejercicios/detalles/'.$request->get('id_ejercicio'));
+    }
     public function create($id)
     {
         /*$categorias = DB::table('categoria')->where('condicion','=','1')->get();*/
@@ -22,7 +42,7 @@ class SolutionController extends Controller
     }
     public function store (SolutionRequest $request)
     {
-        $ejercicio = Exercise :: findOrfail($id);
+        $ejercicio = Exercise :: findOrfail($request->get('id_ejercicio'));
         $solucion = new Solution; 
         $usuario = Auth::user();
         $hoy = date("Y-m-d H:i:s");  
@@ -33,14 +53,31 @@ class SolutionController extends Controller
                 $solucion->usuario_modificador= $usuario->name;
                 $solucion->id_usuario= $usuario->id;
             }
-            $solucion->id_ejercicio = $id;
+            $solucion->id_ejercicio = $request->get('id_ejercicio');
             $solucion->created_at = $hoy;
             $solucion->updated_at = $hoy;
-            $solucion->contenido = $request->get('contenido');;
-            $solucion->save();   
-            return flash('Se guardo de forma Correcta')->success();
+            $solucion->contenido = $request->get('contenido');
+           
+            if( $usuario->id_cargo == 1 ||  $usuario->id_cargo == 2){
+                $solucion->aprobado = 1;
+            } else{
+                $solucion->aprobado = 0;
+            }
+            $solucion->save();  
+            flash('Se guardo de forma Correcta')->success();
+            return back() ;
         }
-        return flash('Se guardo de forma Correcta')->error();
+        flash('No se guardo de forma Correcta')->error();
+        return back() ;
 
     }
+
+    public function destroy($id)
+    {
+        Solution::destroy($id);
+        flash('Se elimino Correctamente')->success();
+        return back() ;
+
+    }
+
 }

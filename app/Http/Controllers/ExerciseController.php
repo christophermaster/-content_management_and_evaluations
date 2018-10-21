@@ -134,6 +134,83 @@ class ExerciseController extends Controller
        "cantEjercicio"=>$cantEjercicio,"cantSoluciones"=>$cantSoluciones,"faculty"=>$faculty,
        "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
     }
+
+    /**Muestra todos los ejercicios  */
+    public function todosLosEjercicios(Request $request){
+
+        $usuario = Auth::user();
+        if($request){
+
+            if($usuario->id_cargo == 1 || $usuario->id_cargo == 2 ){
+                $ejercicio=DB::table('exercises as exx')
+                ->select('exx.*')
+                ->where('exx.id_usuario','=', $usuario->id)
+                ->orderBy('exx.id','asc')
+                ->paginate(20);
+            }else{
+                $ejercicio=DB::table('exercises as exx')
+                ->select('exx.*')
+                ->join('users as us','exx.id_usuario','=',"us.id")
+                ->join('roles as rol','us.id_cargo','=',"rol.id")
+                ->where('rol.id','=',"3")
+                ->orderBy('exx.id','asc')
+                ->paginate(20);
+            }
+          
+
+            if($request->get('facultad') && $request->get('facultad') != '' ){
+            $ejercicio =  $ejercicio->where('id_facultad','=',$request->get('facultad'));
+            }
+            if($request->get('dificultad') && $request->get('dificultad') != '' ){
+                $ejercicio =  $ejercicio->where('id_dificultad','=',$request->get('dificultad'));
+            }
+            if($request->get('escuela') && $request->get('escuela') != '' ){
+                $ejercicio =  $ejercicio->where('id_escuela','=',$request->get('escuela'));
+            }
+            if($request->get('catedra') && $request->get('catedra') != '' ){
+                $ejercicio =  $ejercicio->where('id_catedra','=',$request->get('catedra'));
+            }
+            if($request->get('materia') && $request->get('materia') != '' ){
+                $ejercicio =  $ejercicio->where('id_materia','=',$request->get('materia'));
+            }
+            if($request->get('contenido') && $request->get('contenido') != '' ){
+                $ejercicio =  $ejercicio->where('id_contenido','=',$request->get('contenido'));
+            }
+            if($request->get('dificultad') && $request->get('dificultad') != '' ){
+                $ejercicio =  $ejercicio->where('id_dificultad','=',$request->get('dificultad'));
+            }
+            if($request->get('tipo') && $request->get('tipo') != '' ){
+                $ejercicio =  $ejercicio->where('id_tipo','=',$request->get('tipo'));
+            }
+            //cabtidad de ejercicio subido por usuario
+            $cantEjercicio = DB::table('exercises as exx')
+            ->select(DB::raw('count(*) as cantidad'))
+            ->where('exx.id_usuario','=', $usuario->id)
+            ->get()
+            ->first();
+            //cabtidad de soluciones subido por usuario
+            $cantSoluciones = DB::table('solutions as sol')
+            ->select(DB::raw('count(*) as cantidad'))
+            ->where('sol.id_usuario','=', $usuario->id)
+            ->get()
+            ->first();
+            $faculty=DB::table('faculties as f')
+            ->select('f.id','f.nombre')
+            ->get();
+            $dificultad=DB::table('difficulties as d')
+            ->select('d.id','d.nombre')
+            ->get();
+            $tipo_ejercicio=DB::table('typeexercises as te')
+            ->select('te.id','te.nombre')
+            ->get();
+        return view('gestion.ejercicio.todo',["ejercicio"=>$ejercicio,
+        "cantEjercicio"=>$cantEjercicio,"cantSoluciones"=>$cantSoluciones,"faculty"=>$faculty,
+        "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
+
+        }
+    }
+
+
     //Muestra la vista de creacion de ejercicio 
     public function create()
     {

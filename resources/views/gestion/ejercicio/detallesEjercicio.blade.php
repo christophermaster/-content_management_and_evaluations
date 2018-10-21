@@ -10,6 +10,7 @@
         </ol>
     </nav>
 </div>
+ @include('flash::message')
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
         <div class="row titulo">
@@ -113,8 +114,8 @@
                 <i class="material-icons munu">more_vert</i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#"><i class="material-icons">edit</i>Editar</a>
-                <a class="dropdown-item" href="#"><i class="material-icons">clear</i>Eliminar</a>
+                <a class="dropdown-item" href="{{route('solutionEditar',['id' => $sol->id])}}"><i class="material-icons">edit</i>Editar</a>
+                <a class="dropdown-item" href="#" data-target="#modal-delete-{{$sol->id}}" data-toggle="modal"><i class="material-icons">clear</i>Eliminar</a>
             </div>
         </div>
         </div>
@@ -122,6 +123,7 @@
 </div>
 <br>
 <hr>
+
 <div class="row recuadro">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="row miform">
@@ -148,7 +150,11 @@
         </div>
     </div>
 </div>
+ @include('gestion.ejercicio.modal')
 <br>
 
 @endforeach
+<script>
+$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 @endsection

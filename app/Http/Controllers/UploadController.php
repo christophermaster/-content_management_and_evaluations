@@ -21,6 +21,59 @@ use DB;
 
 class UploadController extends Controller
 {
+
+    public function index(Request $request){
+        $usuario = Auth::user();
+        if($request){
+
+            $query=trim($request->get('searchText'));
+            if($usuario->id = 1 || $usuario->id = 1 ){
+               
+                $upload=DB::table('uploads as upl')
+                ->select('upl.*')
+                //->where('upl.nombre','LIKE','%'.$query.'%')
+                //->orwhere('a.codigo','LIKE','%'.$query.'%')
+                ->orderBy('upl.id','asc')
+                ->paginate(40);
+               
+
+            }else{
+                $upload=DB::table('uploads as upl')
+                ->select('upl.*')
+                ->join('users as us','upl.id_usuario','=',"us.id")
+                ->join('roles as rol','us.id_cargo','=',"rol.id")
+                ->where('rol.id','=',"3")
+                ->orderBy('upl.id','asc')
+                ->paginate(40);
+            }  
+
+              //cabtidad de ejercicio subido por usuario
+            $cantEjercicio = DB::table('exercises as exx')
+            ->select(DB::raw('count(*) as cantidad'))
+            ->where('exx.id_usuario','=', $usuario->id)
+            ->get()
+            ->first();
+            //cabtidad de soluciones subido por usuario
+            $cantSoluciones = DB::table('solutions as sol')
+            ->select(DB::raw('count(*) as cantidad'))
+            ->where('sol.id_usuario','=', $usuario->id)
+            ->get()
+            ->first();
+            $faculty=DB::table('faculties as f')
+            ->select('f.id','f.nombre')
+            ->get();
+            $dificultad=DB::table('difficulties as d')
+            ->select('d.id','d.nombre')
+            ->get();
+            $tipo_ejercicio=DB::table('typeexercises as te')
+            ->select('te.id','te.nombre')
+            ->get();
+
+            return view('upload.index',["upload"=>$upload,"searchText"=>$query,"faculty"=>$faculty,
+        "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
+        }
+
+    }
     public function upload(){
 
          $faculty=DB::table('faculties as f')
@@ -82,7 +135,7 @@ class UploadController extends Controller
             $imageFile->move(public_path('uploads'), $imageName);
         }
         
-        return Redirect::to('gestion/contenido');
+        return Redirect::to('materiales/digitalizados/subir');
     }
     public function downloadFile($id){
       $upload = Upload::findOrfail($id);;

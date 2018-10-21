@@ -146,16 +146,22 @@ Route::get('solo/ejercicios', ['as' => 'soloEjercicio', 'uses' => 'ExerciseContr
 Route::get('solo/ejercicios/detalles/{id}', ['as' => 'detallesEjercicio', 'uses' => 'ExerciseController@detallesDeEjercicios']);
 
 /**Subida de archivos  */
-Route::get('imageUpload',['as'=>'imageUpload', 'uses'=>'UploadController@upload']);
+Route::get('materiales/digitalizados/subir',['as'=>'imageUpload', 'uses'=>'UploadController@upload']);
 Route::put('imageUpload',['as'=>'imageUpload','uses'=>'UploadController@uploadd']);
 
+/**PAntalla de inicio  */
+Route::get('materiales/digitalizados',['as'=>'materialDigitalizado','uses'=>'UploadController@index']);
+Route::get('ejercicos/soluciones/digitalizados',['as'=>'repositorioEjerSol','uses'=>'ExerciseController@todosLosEjercicios']);
 /** Descargar Archivo*/
 Route::get('download/{id}', ['as' => 'downloadFile', 'uses' => 'UploadController@downloadFile']);
 
 /*Solucion */
 Route::get('solucion/{id}', ['as' => 'agregarSolucion', 'uses' => 'SolutionController@create']);
 Route::post('solucion/save','SolutionController@store');
-Auth::routes();
+Route::get('solucion/delete/{id}','SolutionController@destroy');
+Route::get('solucion/modificar/{id}', ['as' => 'solutionEditar', 'uses' => 'SolutionController@edit']);
+Route::post('solucion/modificar/{id}', 'SolutionController@update');
+
 Auth::routes();
 
 Route::auth();

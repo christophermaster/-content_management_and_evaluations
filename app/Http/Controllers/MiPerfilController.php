@@ -31,7 +31,8 @@ class MiPerfilController extends Controller
     {
         if ($request)
         {
-            $usuario = Auth::user()->name;
+
+            $usuario = Auth::user();
             $user=DB::table('faculties as fac')
             ->join('schools as sch','fac.id','=',"sch.id_facultad")
             ->join('cathedras as cat','sch.id','=',"cat.id_escuela")
@@ -43,9 +44,22 @@ class MiPerfilController extends Controller
             ->select('peo.id as id','fac.nombre as facultad','sch.nombre as escuela'
             ,'mat.nombre as materia','cat.nombre as catedra','rol.nombre as cargo','peo.nombre','peo.apellido',
             'peo.cedula','peo.descripcion','use.name','use.email')
-            ->where('use.name','=',$usuario)->get();
+            ->where('use.name','=',$usuario->name)->get();
 
-            return view('perfil.index',["user"=>$user]);
+            //cabtidad de ejercicio subido por usuario
+            $cantEjercicio = DB::table('exercises as exx')
+            ->select(DB::raw('count(*) as cantidad'))
+            ->where('exx.id_usuario','=', $usuario->id)
+            ->get()
+            ->first();
+            //cabtidad de soluciones subido por usuario
+            $cantSoluciones = DB::table('solutions as sol')
+            ->select(DB::raw('count(*) as cantidad'))
+            ->where('sol.id_usuario','=', $usuario->id)
+            ->get()
+            ->first();
+
+            return view('perfil.index',["user"=>$user,"cantEjercicio"=>$cantEjercicio,"cantSoluciones"=>$cantSoluciones]);
         }
 
     }
