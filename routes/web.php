@@ -141,7 +141,7 @@ Route::get('/content/{id}','AdminUserController@getContent');
   * Gestion de ejercicio 
   */
 Route::resource('gestion/ejercicio','ExerciseController');
-Route::get('mis/ejercicios','ExerciseController@todosMisEjercicios');
+Route::get('gestion/contenido/mi/resumen','ExerciseController@todosMisEjercicios');
 Route::get('solo/ejercicios', ['as' => 'soloEjercicio', 'uses' => 'ExerciseController@soloEjercicios']);
 Route::get('solo/ejercicios/detalles/{id}', ['as' => 'detallesEjercicio', 'uses' => 'ExerciseController@detallesDeEjercicios']);
 
@@ -161,6 +161,7 @@ Route::post('solucion/save','SolutionController@store');
 Route::get('solucion/delete/{id}','SolutionController@destroy');
 Route::get('solucion/modificar/{id}', ['as' => 'solutionEditar', 'uses' => 'SolutionController@edit']);
 Route::post('solucion/modificar/{id}', 'SolutionController@update');
+Route::get('gestion/contenido/resumen/soluciones',['as' => 'misSoluciones', 'uses' => 'SolutionController@index']);
 
 
 /**evaluacion */
@@ -169,6 +170,8 @@ Route::post('salvar/evaluacion','EvaluationController@create');
 Route::get('crear/evaluacion/{id}', ['as' => 'evaluacion', 'uses' => 'EvaluationController@crearEvaluacion']);
 Route::get('editar/evaluacion/{id}', ['as' => 'editarEvaluacion', 'uses' => 'EvaluationController@editarEvaluacion']);
 Route::post('agregar/ejercicio','EvaluationController@agregarEjercicio');
+Route::get('evaluacion/delete/{id}','EvaluationController@eliminarParcial');
+Route::post('evaluacion/modificar/{id}','EvaluationController@modificarParcial');
 Auth::routes();
 
 Route::auth();

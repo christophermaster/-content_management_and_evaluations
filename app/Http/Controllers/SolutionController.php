@@ -15,7 +15,27 @@ use gestion\User;
 
 class SolutionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
+    public function index(Request $request)
+    {
+        $usuario = Auth::user();
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $solucion=DB::table('solutions as sol')
+            ->select('sol.*')
+            ->where('sol.id_usuario','=',$usuario->id)
+            ->orderBy('sol.id','asc')
+            ->paginate(10);
+
+            return view('gestion.solucion.index',["solucion"=>$solucion]);
+        }
+
+    }
     public function edit($id)
     {
         $solucion = Solution::findOrfail($id);

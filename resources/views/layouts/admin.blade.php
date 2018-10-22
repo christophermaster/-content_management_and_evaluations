@@ -9,26 +9,19 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    <title>
-        Gestion De Contenido
-    </title>
+    <title>Gestion De Contenido</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-
-    <!--     Fonts and icons     -->
+    <!--    Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="{{url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons')}}" />
-
     <!-- CSS Files -->
     <link href="{{asset('css/material-dashboard.min40a0.css?v=2.0.2')}}" rel="stylesheet" />
     <link href="{{asset('css/myStyle.css')}}" rel="stylesheet" />
     <link href="{{url('https://fonts.googleapis.com/css?family=Poppins:300,400,700')}}" rel="stylesheet">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
-
     <!-- Editor Plugin -->
     <link type="text/css" rel="stylesheet" href="{{asset('ckeditor4/ckeditor.js')}}" />
-
     <script type="text/javascript" src="{{url('https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/codemirror.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/xml.min.js')}}"></script>
@@ -66,28 +59,20 @@
         })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
     </script>
 
-
-
-
-
 </head>
 
 <body class="sidebar-mini">
 
+    <!-- Menu lateral -->
     <div class="wrapper">
-
         <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('img/nav.gif')}}">
-
-            <div class="logo"><a href="" class="simple-text logo-mini">
-                    GC
-                </a>
-
+            <div class="logo">
+                <a href="" class="simple-text logo-mini">GC</a>
                 <a href="" class="simple-text logo-normal">
                     Cestión
                 </a></div>
 
             <div class="sidebar-wrapper">
-
                 <div class="user">
                     <div class="photo">
                         <img src="{{asset('img/faces/avatar.jpg')}}" />
@@ -121,181 +106,82 @@
                     <!--
                         Inicio
                     -->
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="{{url('gestion/contenido')}}">
                             <i class="material-icons">dashboard</i>
                             <p> Inicio </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('gestion/contenido/mi/resumen')}}"">
+                            <i class="material-icons">grid_on</i>
+                            <p>Publicaciones</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{url('gestion/contenido')}}">
+                            <i class="material-icons">favorite</i>
+                            <p>Favorito</p>
+                        </a>
+                    </li>
                     <!--
                         GESTION DE EJERCICIO
                     -->
-
-                    <li class="nav-item ">
-                        <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
-                            <i class="material-icons">image</i>
-                            <p>Gestion Ejercicios
+                         <li class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#pagesExampless">
+                            <i class="material-icons">extension</i>
+                            <p>Ejercicios
                                 <b class="caret"></b>
                             </p>
                         </a>
                         <!--
                         lISTA DE EJERCICIO
-                    -->
-                        <div class="collapse" id="pagesExamples">
+                       -->
+                        <div class="collapse" id="pagesExampless">
                             <ul class="nav">
-
                                 <li class="nav-item ">
-                                    <a class="nav-link" data-toggle="collapse" href="#ejercicios">
-                                        <span class="sidebar-mini"> E </span>
-                                        <span class="sidebar-normal">Ejercicios
-                                            <b class="caret"></b>
-                                        </span>
-
+                                    <a class="nav-link" href="{{route('repositorioEjerSol')}}">
+                                        <span class="sidebar-mini"> L.E </span>
+                                        <span class="sidebar-normal">Listar</span>
                                     </a>
-
-                                    <div class="collapse" id="ejercicios">
-                                        <ul class="nav">
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="{{url('mis/ejercicios')}}">
-                                                    <span class="sidebar-mini"> ME </span>
-                                                    <span class="sidebar-normal"> Mis Ejercicios </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="{{url('otros/ejercicios')}}">
-                                                    <span class="sidebar-mini"> TE </span>
-                                                    <span class="sidebar-normal"> Todos Los Ejercicios </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </li>
-
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{{url('gestion/ejercicio/create')}}">
-                                        <span class="sidebar-mini"> CE </span>
-                                        <span class="sidebar-normal">Crear Ejercicio</span>
+                                        <span class="sidebar-mini"> C.E </span>
+                                        <span class="sidebar-normal">Crear</span>
                                     </a>
                                 </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{url('gestion/solucion')}}">
-                                        <span class="sidebar-mini"> CS </span>
-                                        <span class="sidebar-normal"> Crear Solución </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="pages/login.html">
-                                        <span class="sidebar-mini"> SE </span>
-                                        <span class="sidebar-normal"> Subir Ejercicio </span>
-                                    </a>
-                                </li>
-
                             </ul>
                         </div>
                     </li>
+
                     <!--
                         GESTION DE EVALUACION 
                     -->
 
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#evaluaciones">
-                            <i class="material-icons">apps</i>
-                            <p> Gestion de Evaluación
+                            <i class="material-icons">assignment</i>
+                            <p>Evaluacines
                                 <b class="caret"></b>
                             </p>
                         </a>
 
                         <div class="collapse" id="evaluaciones">
                             <ul class="nav">
+  
                                 <li class="nav-item ">
-                                    <a class="nav-link" data-toggle="collapse" href="#misevaluaciones">
-                                        <span class="sidebar-mini"> MI </span>
-                                        <span class="sidebar-normal"> Mis Evaluaciones
-                                            <b class="caret"></b>
-                                        </span>
-
+                                    <a class="nav-link" href="{{url('generar/evaluacion')}}">
+                                        <span class="sidebar-mini"> LE </span>
+                                        <span class="sidebar-normal">Listar </span>
                                     </a>
-
-                                    <div class="collapse" id="misevaluaciones">
-                                        <ul class="nav">
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
-                                                    <span class="sidebar-mini"> P </span>
-                                                    <span class="sidebar-normal"> Parciales </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
-                                                    <span class="sidebar-mini"> Q </span>
-                                                    <span class="sidebar-normal"> Quices </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
-                                                    <span class="sidebar-mini"> T </span>
-                                                    <span class="sidebar-normal"> Tareas </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
-                                                    <span class="sidebar-mini"> O </span>
-                                                    <span class="sidebar-normal"> Otros </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" data-toggle="collapse" href="#todasevaluaciones">
-                                        <span class="sidebar-mini"> MI </span>
-                                        <span class="sidebar-normal"> Todas Las Evaluaciones
-                                            <b class="caret"></b>
-                                        </span>
-
-                                    </a>
-
-                                    <div class="collapse" id="todasevaluaciones">
-                                        <ul class="nav">
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
-                                                    <span class="sidebar-mini"> P </span>
-                                                    <span class="sidebar-normal"> Parciales </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
-                                                    <span class="sidebar-mini"> Q </span>
-                                                    <span class="sidebar-normal"> Quices </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
-                                                    <span class="sidebar-mini"> T </span>
-                                                    <span class="sidebar-normal"> Tareas </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="#0">
-                                                    <span class="sidebar-mini"> O </span>
-                                                    <span class="sidebar-normal"> Otros </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{{url('generar/evaluacion')}}">
                                         <span class="sidebar-mini"> CE </span>
-                                        <span class="sidebar-normal"> Crear Evaluación </span>
+                                        <span class="sidebar-normal">Crear</span>
                                     </a>
                                 </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="components/grid.html">
-                                        <span class="sidebar-mini"> SE </span>
-                                        <span class="sidebar-normal"> Subir Evaluación </span>
-                                    </a>
-                                </li>
-
                             </ul>
                         </div>
                     </li>
@@ -307,43 +193,13 @@
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#universidad">
                             <i class="material-icons">account_balance</i>
-                            <p>Admin. Universidad
+                            <p>Administracción
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <!--
-                        lISTA DE EJERCICIO
-                    -->
+                        <!-- lISTA DE EJERCICIO-->
                         <div class="collapse" id="universidad">
                             <ul class="nav">
-
-                                <!--<li class="nav-item ">
-                                    <a class="nav-link" data-toggle="collapse" href="#ejercicios">
-                                        <span class="sidebar-mini"> E </span>
-                                        <span class="sidebar-normal">Ejercicios
-                                            <b class="caret"></b>
-                                        </span>
-
-                                    </a>
-
-                                    <div class="collapse" id="ejercicios">
-                                        <ul class="nav">
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="{{url('mis/ejercicios')}}">
-                                                    <span class="sidebar-mini"> ME </span>
-                                                    <span class="sidebar-normal"> Mis Ejercicios </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link" href="{{url('otros/ejercicios')}}">
-                                                    <span class="sidebar-mini"> TE </span>
-                                                    <span class="sidebar-normal"> Todos Los Ejercicios </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>-->
-
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{{url('administracion/facultad')}}">
                                         <span class="sidebar-mini"> F </span>
@@ -360,7 +216,7 @@
                             </ul>
                         </div>
                     </li>
-                    @endif @if (Auth::user()->id_cargo == 2)
+                    @endif @if (Auth::user()->id_cargo == 3)
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#universidad">
                             <i class="material-icons">account_balance</i>
@@ -383,17 +239,33 @@
                         </div>
                     </li>
                     @endif
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('materiales/digitalizados/subir')}}">
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#subir">
                             <i class="material-icons">cloud_upload</i>
-                            <p> Subir Archivo</p>
+                            <p>Archivos
+                                <b class="caret"></b>
+                            </p>
                         </a>
+                        <!-- lISTA DE EJERCICIO-->
+                        <div class="collapse" id="subir">
+                            <ul class="nav">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{url('materiales/digitalizados')}}">
+                                        <span class="sidebar-mini">L.A</span>
+                                        <span class="sidebar-normal">Listar</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{url('materiales/digitalizados/subir')}}">
+                                        <span class="sidebar-mini">S.A</span>
+                                        <span class="sidebar-normal">Subir</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
                     </li>
-
                 </ul>
-
-
-
             </div>
         </div>
 
@@ -530,10 +402,10 @@
     <script src="{{asset('js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
     <!-- Plugin for the momentJs  -->
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
- /
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    /
     <!--  Plugin for Sweet Alert -->
     <script src="{{asset('js/plugins/sweetalert2.js')}}"></script>
     <!-- Forms Validations Plugin -->
@@ -542,7 +414,7 @@
     <script src="{{asset('js/plugins/jquery.bootstrap-wizard.js')}}"></script>
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-/
+    /
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
     <script src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
@@ -630,11 +502,11 @@
             selectLang.value = urlParams[1];
         }
     </script>
-    
 
 
 
-     <script>
+
+    <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
             md.initDashboardPageCharts();

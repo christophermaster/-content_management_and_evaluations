@@ -56,7 +56,17 @@ class ExerciseController extends Controller
             ->where('upl.id_categoria','=', "1")
             ->orderBy('upl.id','asc')
             ->paginate(10);
-        return view("gestion.ejercicio.soloEjercicios",["ejercicio"=>$ejercicio,"upload"=>$upload]);
+        $faculty=DB::table('faculties as f')
+        ->select('f.id','f.nombre')
+        ->get();
+        $dificultad=DB::table('difficulties as d')
+        ->select('d.id','d.nombre')
+        ->get();
+        $tipo_ejercicio=DB::table('typeexercises as te')
+        ->select('te.id','te.nombre')
+        ->get();
+        return view("gestion.ejercicio.soloEjercicios",["ejercicio"=>$ejercicio,"upload"=>$upload,"faculty"=>$faculty,
+       "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
     }
 
     /**Detalles de los ejercicios */
@@ -74,7 +84,6 @@ class ExerciseController extends Controller
 
     public function todosMisEjercicios(Request $request){
         
-
         $usuario = Auth::user();
         $ejercicio=DB::table('exercises as exx')
             ->join('solutions as sol','sol.id_ejercicio','=',"exx.id")
@@ -130,7 +139,7 @@ class ExerciseController extends Controller
         $tipo_ejercicio=DB::table('typeexercises as te')
         ->select('te.id','te.nombre')
         ->get();
-       return view('gestion.ejercicio.ejercicios',["ejercicio"=>$ejercicio,
+       return view('gestion.ejercicio.historial',["ejercicio"=>$ejercicio,
        "cantEjercicio"=>$cantEjercicio,"cantSoluciones"=>$cantSoluciones,"faculty"=>$faculty,
        "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
     }
@@ -147,6 +156,10 @@ class ExerciseController extends Controller
                 ->where('exx.id_usuario','=', $usuario->id)
                 ->orderBy('exx.id','asc')
                 ->paginate(2);
+
+                 $solucion  = DB::table('solutions as sol')
+                ->select('sol.*')
+                ->where('sol.id_usuario','=',$usuario->id)->get();
             }else{
                 $ejercicio=DB::table('exercises as exx')
                 ->select('exx.*')
@@ -155,8 +168,11 @@ class ExerciseController extends Controller
                 ->where('rol.id','=',"3")
                 ->orderBy('exx.id','asc')
                 ->paginate(2);
+
+                $solucion  = DB::table('solutions as sol')
+                ->select('sol.*')
+                ->where('sol.id_usuario','=','3')->get();
             }
-          
 
             if($request->get('facultad') && $request->get('facultad') != '' ){
             $ejercicio =  $ejercicio->where('id_facultad','=',$request->get('facultad'));
@@ -203,9 +219,10 @@ class ExerciseController extends Controller
             $tipo_ejercicio=DB::table('typeexercises as te')
             ->select('te.id','te.nombre')
             ->get();
+
         return view('gestion.ejercicio.todo',["ejercicio"=>$ejercicio,
         "cantEjercicio"=>$cantEjercicio,"cantSoluciones"=>$cantSoluciones,"faculty"=>$faculty,
-        "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
+        "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio,"solucion"=>$solucion]);
 
         }
     }

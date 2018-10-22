@@ -284,7 +284,8 @@
         margin-left: -4px;
     }
     
-    .blog-card .description {
+    .blog-card .description,
+    .blog-card .descriptionB {
         padding: 1rem;
         background: #fff;
         position: relative;
@@ -292,17 +293,21 @@
     }
     
     .blog-card .description h1,
-    .blog-card .description h2 {
+    .blog-card .description h2,
+    .blog-card .descriptionB h1,
+    .blog-card .descriptionB h2 {
         font-family: Poppins, sans-serif;
     }
     
-    .blog-card .description h1 {
+    .blog-card .description h1,
+    .blog-card .descriptionB h1 {
         line-height: 1;
         margin: 0;
         font-size: 1.7rem;
     }
     
-    .blog-card .description h2 {
+    .blog-card .description h2,
+    .blog-card .descriptionB h2 {
         font-size: 1rem;
         font-weight: 300;
         text-transform: uppercase;
@@ -368,6 +373,9 @@
         .blog-card .description {
             flex-basis: 60%;
         }
+        .blog-card .descriptionB {
+            flex-basis: 100%;
+        }
         .blog-card .description:before {
             transform: skewX(-3deg);
             content: "";
@@ -390,6 +398,10 @@
         .blog-card.alt .details {
             padding-left: 25px;
         }
+    }
+    
+    .descriptionB {
+        color: #6c757d;
     }
     /*Menu de los ejercicios */
     

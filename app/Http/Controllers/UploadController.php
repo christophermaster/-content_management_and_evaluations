@@ -16,27 +16,42 @@ use gestion\models\Matter;
 use gestion\models\Topic;
 use gestion\models\Exercise;
 use gestion\models\Content;
+use gestion\User;
 use File;
 use DB;
 
+/**
+ * Controlador que se usa Para subir y descargar archivos
+ */
 class UploadController extends Controller
 {
+    /**
+     * Verificamos que el usaurio este logiado 
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
+    /** Lista Todos Los Archivos*/
     public function index(Request $request){
+        //obtenemos el usuario 
         $usuario = Auth::user();
+
+        //verificamo que haya respuesta 
         if($request){
 
-            $query=trim($request->get('searchText'));
-            if($usuario->id = 1 || $usuario->id = 1 ){
-               
+            /**
+             * verificamos el rol del usuario 
+             * 1-Administrador
+             * 2-profesor
+             * 3-preparador         
+             */
+            if($usuario->id_cargo == 1 || $usuario->id_cargo == 2 ){
                 $upload=DB::table('uploads as upl')
                 ->select('upl.*')
-                //->where('upl.nombre','LIKE','%'.$query.'%')
-                //->orwhere('a.codigo','LIKE','%'.$query.'%')
                 ->orderBy('upl.id','asc')
                 ->paginate(40);
-               
-
             }else{
                 $upload=DB::table('uploads as upl')
                 ->select('upl.*')
@@ -45,20 +60,34 @@ class UploadController extends Controller
                 ->where('rol.id','=',"3")
                 ->orderBy('upl.id','asc')
                 ->paginate(40);
-            }  
-
-              //cabtidad de ejercicio subido por usuario
-            $cantEjercicio = DB::table('exercises as exx')
-            ->select(DB::raw('count(*) as cantidad'))
-            ->where('exx.id_usuario','=', $usuario->id)
-            ->get()
-            ->first();
-            //cabtidad de soluciones subido por usuario
-            $cantSoluciones = DB::table('solutions as sol')
-            ->select(DB::raw('count(*) as cantidad'))
-            ->where('sol.id_usuario','=', $usuario->id)
-            ->get()
-            ->first();
+            } 
+            
+            //Filtramos
+            if($request->get('facultad') && $request->get('facultad') != '' ){
+                $upload =  $upload->where('id_facultad','=',$request->get('facultad'));
+            }
+            if($request->get('dificultad') && $request->get('dificultad') != '' ){
+                $upload =  $upload->where('id_dificultad','=',$request->get('dificultad'));
+            }
+            if($request->get('escuela') && $request->get('escuela') != '' ){
+                $upload =  $upload->where('id_escuela','=',$request->get('escuela'));
+            }
+            if($request->get('catedra') && $request->get('catedra') != '' ){
+                $upload =  $upload->where('id_catedra','=',$request->get('catedra'));
+            }
+            if($request->get('materia') && $request->get('materia') != '' ){
+                $upload =  $upload->where('id_materia','=',$request->get('materia'));
+            }
+            if($request->get('contenido') && $request->get('contenido') != '' ){
+                $upload =  $upload->where('id_contenido','=',$request->get('contenido'));
+            }
+            if($request->get('dificultad') && $request->get('dificultad') != '' ){
+                $upload =  $upload->where('id_dificultad','=',$request->get('dificultad'));
+            }
+            if($request->get('tipo') && $request->get('tipo') != '' ){
+                $upload =  $upload->where('id_tipo','=',$request->get('tipo'));
+            }
+            
             $faculty=DB::table('faculties as f')
             ->select('f.id','f.nombre')
             ->get();
@@ -69,7 +98,7 @@ class UploadController extends Controller
             ->select('te.id','te.nombre')
             ->get();
 
-            return view('upload.index',["upload"=>$upload,"searchText"=>$query,"faculty"=>$faculty,
+            return view('upload.index',["upload"=>$upload,"faculty"=>$faculty,
         "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
         }
 

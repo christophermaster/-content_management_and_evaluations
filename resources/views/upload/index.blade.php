@@ -13,8 +13,8 @@
             <h3 class="detalle">Materiales Digitalizados</h3>
         
             <div class="mystats miEditar">
-                <a class="nav-item menu" href="{{url('materiales/digitalizados/subi')}}" rel="tooltip" title="Agregar">
-                    <i class="material-icons munu">add</i>
+                <a class="nav-item menu" href="{{url('materiales/digitalizados/subir')}}" rel="tooltip" title="Subir">
+                    <i class="material-icons munu">backup</i>
                 </a>
             </div>
         </div>
@@ -65,21 +65,22 @@
         @foreach($upload as $upl)
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 cardCenter">
                 <div class="card " style="width:197px; height:197px " >
-                    @if($upl->tipo_archivo == "image/png" )
-                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset($upl->ruta)}}" id="{{$upl->id}}" alt="Card image cap" height="140px" width="200px" onclick="ampliar({{$upl->id}})">
-                    @elseif($upl->tipo_archivo == "application/pdf" )
-                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/pdf.png')}}" id="{{$upl->id}}" alt="Card image cap" height="140px" width="200px" onclick="ampliar({{$upl->id}})">
+                   
+                    @if($upl->tipo_archivo == "application/pdf" )
+                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/pdf.png')}}" id="{{$upl->id}}" alt="Card image cap" height="120px" width="200px" onclick="ampliar({{$upl->id}})">
                     @elseif($upl->tipo_archivo == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" )
-                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/doc.png')}}" id="{{$upl->id}}" alt="Card image cap" height="140px" width="200px" onclick="ampliar({{$upl->id}})">
+                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/doc.png')}}" id="{{$upl->id}}" alt="Card image cap" height="120px" width="200px" onclick="ampliar({{$upl->id}})">
                     @elseif($upl->tipo_archivo == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $upl->tipo_archivo == "application/vnd.ms-excel" )
-                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/excel.png')}}" id="{{$upl->id}}" alt="Card image cap" height="140px" width="200px" onclick="ampliar({{$upl->id}})">
+                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/excel.png')}}" id="{{$upl->id}}" alt="Card image cap" height="120px" width="200px" onclick="ampliar({{$upl->id}})">
                     @elseif($upl->tipo_archivo == "application/zip, application/x-compressed-zip" )
-                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/rar.png')}}" id="{{$upl->id}}" alt="Card image cap" height="140px" width="200px" onclick="ampliar({{$upl->id}})">
+                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/rar.png')}}" id="{{$upl->id}}" alt="Card image cap" height="120px" width="200px" onclick="ampliar({{$upl->id}})">
                     @elseif($upl->tipo_archivo == "application/vnd.ms-powerpointtd>" ||$upl->tipo_archivo == "application/vnd.openxmlformats-officedocument.presentationml.presentation"  )
-                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/ppt.png')}}" id="{{$upl->id}}" alt="Card image cap" height="140px" width="200px" onclick="ampliar({{$upl->id}})">
+                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset('img/ppt.png')}}" id="{{$upl->id}}" alt="Card image cap" height="120px" width="200px" onclick="ampliar({{$upl->id}})">
+                    @else
+                        <img  rel="tooltip" title="Expandir" class="card-img-top myImg" src="{{asset($upl->ruta)}}" id="{{$upl->id}}" alt="Card image cap" height="120px" width="200px" onclick="ampliar({{$upl->id}})">
                     @endif
                     <div class="card-body miScrool">
-                        <p class="card-title ctitulo"><b>{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}{{$upl->titulo}}</b></p>
+                        <p class="card-title ctitulo"><b>{{$upl->titulo}}</b></p>
                     </div>
                     <div class="card-footer cfooter" >
                         <a class="nav-item menu" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -95,72 +96,76 @@
             </div>
                 <!-- Modal -->
             <div class="modal fade bd-example-modal-lg" id="modal{{$upl->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detalles - {{$upl->titulo}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                
-                </div>
-                <hr>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Facultad: </label> <p>{{$upl->facultad}}</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Escuela: </label><p>{{$upl->escuela}}</p> 
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Catedra: </label><p>{{$upl->catedra}}</p> 
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Materia: </label> <p>{{$upl->materia}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Tema: </label><p>{{$upl->tema}}</p> 
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">contenido: </label><p>{{$upl->contenido}}</p> 
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Categoria: </label> <p>{{$upl->categoria}}</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Usaurio: </label><p>{{$upl->usuario_creador}}</p> 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">fecha: </label><p>{{$upl->created_at}}</p> 
-                        </div>
-                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Nombre: </label> <p>{{$upl->titulo}}</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Peso: </label><p>{{$upl->usuario_creador}}</p> 
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="" class="">Tipo: </label><p>{{$upl->tipo_archivo}}</p> 
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label for="" class="">Descripción: </label> <p>{{$upl->descripcion}}</p>
-                        </div>
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detalles - {{$upl->titulo}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <hr>
+                    <div class="modal-body">
+                    <div class="container">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Facultad: </label> <p>{{$upl->facultad}}</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Escuela: </label><p>{{$upl->escuela}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Catedra: </label><p>{{$upl->catedra}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Materia: </label> <p>{{$upl->materia}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Tema: </label><p>{{$upl->tema}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">contenido: </label><p>{{$upl->contenido}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Categoria: </label> <p>{{$upl->categoria}}</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Usaurio: </label><p>{{$upl->usuario_creador}}</p> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">fecha: </label><p>{{$upl->created_at}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Nombre: </label> <p>{{$upl->titulo}}</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Peso: </label><p>{{$upl->usuario_creador}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Tipo: </label><p>{{$upl->tipo_archivo}}</p> 
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label for="" class="">Descripción: </label> <p>{{$upl->descripcion}}</p>
+                            </div>
+                        </div>
+                     </div>
+                    </div>
+
+                    <hr>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-                </div>
-            </div>
             </div>
         @endforeach
     </div>

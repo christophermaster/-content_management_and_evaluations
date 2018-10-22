@@ -4,10 +4,10 @@ namespace gestion\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Difficulty extends Model
+class NumberEvaluation extends Model
 {
-   //
-    protected $table='difficulties';
+    //
+    protected $table='number_evaluations';
     protected $primaryKey='id';
 
     public $timestamps = false;

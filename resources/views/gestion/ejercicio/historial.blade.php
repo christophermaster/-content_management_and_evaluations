@@ -3,7 +3,7 @@
        <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Detalles de mis Ejercicios</li>
+                <li class="breadcrumb-item active" aria-current="page">Mi Resumen</li>
             </ol>
         </nav>
     </div>
@@ -83,6 +83,11 @@
                 <div class="stats">
                     <i class="material-icons">extension</i>Soluciones subidas
                 </div>
+                <div >
+                    <a  href="{{route('misSoluciones')}}">
+                        <i class="material-icons">arrow_right_alt</i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -98,6 +103,11 @@
             <div class="card-footer">
                 <div class="stats">
                     <i class="material-icons">favorite</i> Ejer. o Sol. favoritas
+                </div>
+                <div >
+                    <a  href="{{route('soloEjercicio')}}">
+                        <i class="material-icons">arrow_right_alt</i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -116,6 +126,11 @@
                 <div class="stats">
                     <i class="material-icons">update</i> Ejer. o Sol. por ser Confirmadas
                 </div>
+                <div >
+                    <a  href="{{route('soloEjercicio')}}">
+                        <i class="material-icons">arrow_right_alt</i>
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -125,12 +140,17 @@
 tITULO 
 -->
 <div class="row">
-    <h4>Lista de Ejercicios</h4>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="row titulo">
+            <h3 class="detalle">Historias</h3>
+        </div>
+    </div>
 </div>
 <hr>
 <!--
     CARDS DE LOS EJERCICIOS 
 -->
+@if(count($ejercicio)>0)
 <div class="row">
     @foreach($ejercicio as $eje)
         <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12">
@@ -146,7 +166,7 @@ tITULO
                             <i class="material-icons munu">more_vert</i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#"><i class="material-icons">art_track</i> Detalles</a>
+                            <a class="dropdown-item" href="{{route('detallesEjercicio',['id' => $eje->id])}}"><i class="material-icons">art_track</i> Detalles</a>
                          </div>
 
                     </div>
@@ -206,5 +226,12 @@ tITULO
         </div>
      @endforeach
 </div>
+@else
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <h4>No tienes historias recientes </h4>
+        </div>
+    </div>
+@endif
 
 @endsection

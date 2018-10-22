@@ -3,12 +3,12 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('mis/ejercicios')}}">Detalles de mis
-                    Ejercicios</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mi/resumen')}}">Mi resumen</a></li>
             <li class="breadcrumb-item active" aria-current="page">Ejercicios</li>
         </ol>
     </nav>
 </div>
+
 
 <ul class="nav nav-tabs nav-tab" id="myTab" role="tablist">
     <li class="nav-item">
@@ -30,6 +30,45 @@ category
 
 <div class="tab-content">
     <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+        <!--
+    FILTRAR LOS EJERCICIOS 
+-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div id="accordion" role="tablist">
+                    <div class="card-collapse">
+                        <!--
+                            ENCABEZADO
+                        -->
+                        <div class="card-header" role="tab" id="headingTwo">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Filtrar
+                                    <i class="material-icons">import_export</i>
+                                </a>
+                            </h5>
+                        </div>
+                        <!--
+                            BODY
+                        -->
+                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                                    @include('gestion.ejercicio.search')
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         <div class="container">
             @foreach($ejercicio as $ejer)
                 <div class="blog-card bCard">

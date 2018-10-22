@@ -112,7 +112,7 @@
             autoProcessQueue: false,
             parallelUploads: 1,
             maxFilesize: 1,
-            minFilesize: 1,
+            acceptedFiles: '.jpg, .jpeg, .png .pdf',
             renameFile: function (file) {
                 var dt = new Date();
                 var time = dt.getTime();
@@ -136,6 +136,11 @@
                     e.stopPropagation();
                     dzClosure.processQueue();
                 });
+                this.on("error", function(file, response) { 
+                // do stuff here. 
+                alert(response);
+
+                }); 
 
             },
             /* EL EVENTO ACCEPT NOS PERMITE CAMBIAR LA IMAGEN DE VISTA PREVIA QUE SE MUESTRA */
@@ -187,6 +192,8 @@
                         });
                 }
             },
+            // Borrar archivos 
+
         };
 </script>
 @endsection

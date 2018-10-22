@@ -10,8 +10,9 @@
     </nav>
 </div>
 <!--Detalles para editar-->
-{!!Form::open(array('url'=>'salvar/evaluacion','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
-{{Form::token()}}
+<form method="post" action="/evaluacion/modificar/{{$evaluacion->id}}" >
+    @csrf
+    <input type="hidden" value="{{csrf_token()}}" name="_token" /> 
     <div class="row">
         <div class="card">
             <div class="card-body">
@@ -87,33 +88,39 @@
                         <label for="exampleFormControlSelect2" class="milabel">Número de evaluación</label>
                         <select id="" name="numero_evaluacion" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7" required>
                             <option value>Seleccione...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
+                           @foreach($numero_evaluacion as $num)
+							@if($num->nombre == $evaluacion->numero_evaluacion)
+							<option value="{{$num->id}}" selected>{{$num->nombre}}</option>
+							@else
+							<option value="{{$num->id}}">{{$num->nombre}}</option>
+                            @endif
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <label for="exampleFormControlSelect2" class="milabel">Evaluación</label>
                         <select id="" name="id_tipo_evaluacion" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7" required>
                             <option value>Seleccione...</option>
-                            <option value="1">Parcial</option>
-                            <option value="2">Quiz</option>
-                            <option value="3">Tarea</option>
-                            <option value="3">Otros..</option>
+                            @foreach($tipo_evaluacion as $tip)
+							@if($tip->id == $evaluacion->id_tipo_evaluacion)
+							<option value="{{$tip->id}}" selected>{{$tip->nombre}}</option>
+							@else
+							<option value="{{$tip->id}}">{{$tip->nombre}}</option>
+                            @endif
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <label for="exampleFormControlSelect2" class="milabel">Tipo de evaluación</label>
                         <select id="" name="id_subtipo_evaluacion" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7" required>
                             <option value>Seleccione...</option>
-                            <option value="1">Teorico</option>
-                            <option value="2">Practico</option>
-                            <option value="3">Teorico/Practivo</option>
-                            <option value="3">Investigación</option>
+                            @foreach($subtipo_evaluacion as $tip)
+							@if($tip->id == $evaluacion->id_subtipo_evaluacion)
+							<option value="{{$tip->id}}" selected>{{$tip->nombre}}</option>
+							@else
+							<option value="{{$tip->id}}">{{$tip->nombre}}</option>
+                            @endif
+                            @endforeach
                         </select>
                     </div>
 
@@ -122,19 +129,19 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <label for="exampleFormControlSelect2" class="milabel">Fecha de la evaluación</label>
                         <div class="form-group">
-                            <input type="date" class="form-control miInput" name="fecha">
+                            <input type="date" class="form-control miInput" name="fecha" value="{{$evaluacion->fecha}}">
                         </div>
                     </div>
                 </div>
                 <div class="row miform text-center">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <button class ="btn btn-primary" type="submit">Crear Parcial</button>
+                        <button class ="btn btn-primary" type="submit">Modificar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-{!!Form::close()!!}
+</form>
 
 
 
@@ -144,9 +151,6 @@
         <div class="row titulo">
             <h3 class="detalle">Ejercicios Seleccionado</h3>
             <div class="mystats miEditar">
-                <a class="nav-item menu" href="{{url('materiales/digitalizados/subi')}}" rel="tooltip" title="Agregar">
-                    <i class="material-icons munu">add</i>
-                </a>
             </div>
         </div>
     </div>
@@ -167,7 +171,7 @@
                         <div class="card-header" role="tab" id="headingOne">
                             <h5 class="mb-0">
                                 <a class="collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    Ejercicio Seleccionado
+                                    Ejercicios Seleccionados
                                     <i class="material-icons">import_export</i>
                                 </a>
                             </h5>
@@ -228,12 +232,7 @@
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
         <div class="row titulo">
-            <h3 class="detalle">Selecciones Los Ejercicios</h3>
-            <div class="mystats miEditar">
-                <a class="nav-item menu" href="{{url('materiales/digitalizados/subi')}}" rel="tooltip" title="Agregar">
-                    <i class="material-icons munu">add</i>
-                </a>
-            </div>
+            <h3 class="detalle">Seleccione Los Ejercicios</h3>
         </div>
     </div>
 </div>

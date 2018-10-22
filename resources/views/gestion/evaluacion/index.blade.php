@@ -65,33 +65,27 @@
                         <label for="exampleFormControlSelect2" class="milabel">Número de evaluación</label>
                         <select id="" name="numero_evaluacion" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7" required>
                             <option value>Seleccione...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
+                            @foreach($numero_evaluacion as $num)
+                            <option value="{{$num->id}}">{{$num->nombre}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <label for="exampleFormControlSelect2" class="milabel">Evaluación</label>
                         <select id="" name="id_tipo_evaluacion" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7" required>
                             <option value>Seleccione...</option>
-                            <option value="1">Parcial</option>
-                            <option value="2">Quiz</option>
-                            <option value="3">Tarea</option>
-                            <option value="3">Otros..</option>
+                            @foreach($tipo_evaluacion as $tip)
+                            <option value="{{$tip->id}}">{{$tip->nombre}}</option>
+                            @endforeach>
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <label for="exampleFormControlSelect2" class="milabel">Tipo de evaluación</label>
                         <select id="" name="id_subtipo_evaluacion" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7" required>
                             <option value>Seleccione...</option>
-                            <option value="1">Teorico</option>
-                            <option value="2">Practico</option>
-                            <option value="3">Teorico/Practivo</option>
-                            <option value="3">Investigación</option>
+                           @foreach($subtipo_evaluacion as $sub)
+                            <option value="{{$sub->id}}">{{$sub->nombre}}</option>
+                            @endforeach>
                         </select>
                     </div>
 
@@ -138,11 +132,12 @@
                     @endif
                     <h6 class="card-subtitle mb-2 text-muted">{{$tem->tema}}</h6>
                     <p class="card-text">{{$tem->fecha}}</p>
-                    <a href="#" class="card-link">Eliminar</a>
+                    <a class="card-link" href="" data-target="#modal-delete-{{$tem->id}}" data-toggle="modal" >Eliminar</a>
                     <a href="{{route('editarEvaluacion',['id' => $tem->id])}}" class="card-link">Editar</a>
                     <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">ver</a>
                     <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">Imprimir</a>
                 </div>
+                @include('gestion.evaluacion.modal')
             </div>
     </div>
     @endforeach

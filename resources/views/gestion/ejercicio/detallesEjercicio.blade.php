@@ -3,8 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('mis/ejercicios')}}">Detalles de mis
-                    Ejercicios</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mi/resumen')}}">Mi resumen</a></li>
             <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios')}}">Ejercicios</a></li>
              <li class="breadcrumb-item active" aria-current="page">Detalles</li>
         </ol>
@@ -81,7 +80,7 @@
 <br>
 <div class="container">
     <div class="blog-card">
-        <div class="description">
+        <div class="descriptionB">
             <h1>{{$ejercicio->tema}}</h1>
             <h2>{{$ejercicio->nombre_contenido}}</h2>
             <p><?php echo $ejercicio->contenido; ?> </p>
