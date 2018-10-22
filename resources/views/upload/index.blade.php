@@ -13,7 +13,7 @@
             <h3 class="detalle">Materiales Digitalizados</h3>
         
             <div class="mystats miEditar">
-                <a class="nav-item menu" href="{{url('materiales/digitalizados/subir')}}" rel="tooltip" title="Subir">
+                <a class="nav-item menu" href="{{url('gestion/contenido/materiales/digitalizados/subir')}}" rel="tooltip" title="Subir">
                     <i class="material-icons munu">backup</i>
                 </a>
             </div>
@@ -83,6 +83,16 @@
                         <p class="card-title ctitulo"><b>{{$upl->titulo}}</b></p>
                     </div>
                     <div class="card-footer cfooter" >
+                        <form method="post" action="/favorito/archivos/{{$upl->id}}">
+                            @csrf
+                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                            <div class="row text-left">
+                                <div >
+                                    <button class="noFavorito margen" type="submit" rel="tooltip" title="Agregar a favoritos"><i
+                                            class="material-icons">favorite_border</i></button>
+                                </div>
+                            </div>
+                        </form>
                         <a class="nav-item menu" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="material-icons munu">more_vert</i>
                         </a>

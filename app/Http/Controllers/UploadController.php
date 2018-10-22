@@ -103,6 +103,69 @@ class UploadController extends Controller
         }
 
     }
+    public function miMaterialDigitalizado(Request $request){
+
+        //obtenemos el usuario 
+        $usuario = Auth::user();
+
+        //verificamo que haya respuesta 
+        if($request){
+
+            /**
+             * verificamos el rol del usuario 
+             * 1-Administrador
+             * 2-profesor
+             * 3-preparador         
+             */
+            $upload=DB::table('uploads as upl')
+            ->select('upl.*')
+            ->where('upl.id_usuario','=',$usuario->id)
+            ->orderBy('upl.id','asc')
+            ->paginate(40);
+
+            //Filtramos
+            if($request->get('facultad') && $request->get('facultad') != '' ){
+                $upload =  $upload->where('id_facultad','=',$request->get('facultad'));
+            }
+            if($request->get('dificultad') && $request->get('dificultad') != '' ){
+                $upload =  $upload->where('id_dificultad','=',$request->get('dificultad'));
+            }
+            if($request->get('escuela') && $request->get('escuela') != '' ){
+                $upload =  $upload->where('id_escuela','=',$request->get('escuela'));
+            }
+            if($request->get('catedra') && $request->get('catedra') != '' ){
+                $upload =  $upload->where('id_catedra','=',$request->get('catedra'));
+            }
+            if($request->get('materia') && $request->get('materia') != '' ){
+                $upload =  $upload->where('id_materia','=',$request->get('materia'));
+            }
+            if($request->get('contenido') && $request->get('contenido') != '' ){
+                $upload =  $upload->where('id_contenido','=',$request->get('contenido'));
+            }
+            if($request->get('dificultad') && $request->get('dificultad') != '' ){
+                $upload =  $upload->where('id_dificultad','=',$request->get('dificultad'));
+            }
+            if($request->get('tipo') && $request->get('tipo') != '' ){
+                $upload =  $upload->where('id_tipo','=',$request->get('tipo'));
+            }
+            
+            $faculty=DB::table('faculties as f')
+            ->select('f.id','f.nombre')
+            ->get();
+            $dificultad=DB::table('difficulties as d')
+            ->select('d.id','d.nombre')
+            ->get();
+            $tipo_ejercicio=DB::table('typeexercises as te')
+            ->select('te.id','te.nombre')
+            ->get();
+
+            return view('upload.miMaterialDigitalizado',["upload"=>$upload,"faculty"=>$faculty,
+        "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
+        }
+
+    }
+
+
     public function upload(){
 
          $faculty=DB::table('faculties as f')
@@ -164,7 +227,7 @@ class UploadController extends Controller
             $imageFile->move(public_path('uploads'), $imageName);
         }
         
-        return Redirect::to('materiales/digitalizados/subir');
+        return Redirect::to('gestion/contenido/materiales/digitalizados/subir');
     }
     public function downloadFile($id){
       $upload = Upload::findOrfail($id);;

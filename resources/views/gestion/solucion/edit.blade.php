@@ -3,10 +3,10 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mi/resumen')}}">Detalles de mis
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones')}}">Detalles de mis
                     Ejercicios</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios')}}">Ejercicios</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios/detalles/')}}/{{$solucion->id_ejercicio}}">Detalles</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones/ejercicios')}}">Ejercicios</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones/ejercicios/detalles/')}}/{{$solucion->id_ejercicio}}">Detalles</a></li>
             <li class="breadcrumb-item active" aria-current="page">Solución</li>
         </ol>
     </nav>
@@ -43,8 +43,6 @@
         </div>
     </div>
     <div class="row">
-
-
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">

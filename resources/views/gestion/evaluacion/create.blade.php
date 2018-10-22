@@ -16,7 +16,7 @@
         <div class="row titulo">
             <h3 class="detalle">Ejercicios Seleccionado</h3>
             <div class="mystats miEditar">
-                <a class="nav-item menu" href="{{url('materiales/digitalizados/subi')}}" rel="tooltip" title="Agregar">
+                <a class="nav-item menu" href="{{url('gestion/contenido/materiales/digitalizados/subi')}}" rel="tooltip" title="Agregar">
                     <i class="material-icons munu">add</i>
                 </a>
             </div>
@@ -102,7 +102,7 @@
         <div class="row titulo">
             <h3 class="detalle">Selecciones Los Ejercicios</h3>
             <div class="mystats miEditar">
-                <a class="nav-item menu" href="{{url('materiales/digitalizados/subi')}}" rel="tooltip" title="Agregar">
+                <a class="nav-item menu" href="{{url('gestion/contenido/materiales/digitalizados/subi')}}" rel="tooltip" title="Agregar">
                     <i class="material-icons munu">add</i>
                 </a>
             </div>

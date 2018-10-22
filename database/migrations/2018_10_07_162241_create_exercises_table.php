@@ -37,7 +37,8 @@ class CreateExercisesTable extends Migration
             $table->string('tema');
             $table->integer('id_tipo');
             $table->string('tipo_nombre');
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
         Schema::table('exercises', function($table){

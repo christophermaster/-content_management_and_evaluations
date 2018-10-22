@@ -3,8 +3,8 @@
        <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mi/resumen')}}">Detalles de mis Ejercicios</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios')}}">Ejercicios y Soluciones</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones')}}">Detalles de mis Ejercicios</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones/ejercicios')}}">Ejercicios y Soluciones</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Crear Ejercicio</li>
             </ol>
         </nav>

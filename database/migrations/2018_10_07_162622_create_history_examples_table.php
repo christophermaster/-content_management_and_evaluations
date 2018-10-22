@@ -18,7 +18,8 @@ class CreateHistoryExamplesTable extends Migration
             $table->increments('id');//identificador de la tabla
             $table->integer('id_ejercicio')->unsigned();
             $table->Integer('id_motivo')->unsigned();
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
         Schema::table('history_examples', function($table){

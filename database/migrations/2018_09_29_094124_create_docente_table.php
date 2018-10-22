@@ -19,7 +19,8 @@ class CreateDocenteTable extends Migration
             $table->integer('id_persona')->unsigned();
             $table->string('usuario_creador');
             $table->string('usuario_modificador');
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
         Schema::table('teachers', function($table){

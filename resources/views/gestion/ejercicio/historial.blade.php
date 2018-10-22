@@ -3,7 +3,7 @@
        <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Mi Resumen</li>
+                <li class="breadcrumb-item active" aria-current="page">Publicaciones</li>
             </ol>
         </nav>
     </div>
@@ -98,14 +98,14 @@
                     <i class="material-icons">favorite</i>
                 </div>
                 <p class="card-category">favorito</p>
-                <h3 class="card-title">64</h3>
+                <h3 class="card-title">{{$cantfavorites->cantidad}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
                     <i class="material-icons">favorite</i> Ejer. o Sol. favoritas
                 </div>
                 <div >
-                    <a  href="{{route('soloEjercicio')}}">
+                    <a  href="{{url('gestion/contenido/mis/favoritos')}}">
                         <i class="material-icons">arrow_right_alt</i>
                     </a>
                 </div>
@@ -116,18 +116,18 @@
         <div class="card card-stats">
             <div class="card-header card-header-info card-header-icon">
                 <div class="card-icon">
-                    <i class="material-icons">offline_pin</i>
+                    <i class="material-icons">cloud_upload</i>
                 </div>
-                <p class="card-category">Por Confirmar</p>
-                <h3 class="card-title">4</h3>
+                <p class="card-category">Archivos</p>
+                <h3 class="card-title">{{$cantUpdate->cantidad}}</h3>
             </div>
 
             <div class="card-footer">
                 <div class="stats">
-                    <i class="material-icons">update</i> Ejer. o Sol. por ser Confirmadas
+                    <i class="material-icons">cloud_upload</i>Materiales Subidos
                 </div>
                 <div >
-                    <a  href="{{route('soloEjercicio')}}">
+                    <a  href="{{url('gestion/contenido/mis/materiales/digitalizados')}}">
                         <i class="material-icons">arrow_right_alt</i>
                     </a>
                 </div>

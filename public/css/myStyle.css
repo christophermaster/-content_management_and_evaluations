@@ -401,6 +401,7 @@
     }
     
     .descriptionB {
+        overflow: auto;
         color: #6c757d;
     }
     /*Menu de los ejercicios */
@@ -468,4 +469,24 @@
         padding-bottom: 0px;
         margin-bottom: -23px;
         margin-right: 13px;
+    }
+    
+    button.noFavorito,
+    button.favorito {
+        background: #9990;
+        border: 0px;
+        cursor: pointer;
+    }
+    
+    button.noFavorito:hover {
+        color: red
+    }
+    
+    button.favorito {
+        color: red
+    }
+    
+    .margen {
+        margin-top: 7px;
+        margin-right: 8px;
     }

@@ -31,8 +31,31 @@ class SolutionController extends Controller
             ->where('sol.id_usuario','=',$usuario->id)
             ->orderBy('sol.id','asc')
             ->paginate(10);
+            
+            $usuario=DB::table('users as user')
+            ->select('user.*')
+            ->get();
 
-            return view('gestion.solucion.index',["solucion"=>$solucion]);
+            if($request->get('usuario') && $request->get('usuario') != '' ){
+                $solucion =  $solucion->where('id_usuario','=',$request->get('usuario'));
+            }
+            if($request->get('fecha_inicial') && $request->get('fecha_inicial') != '' &&
+                $request->get('fecha_final') && $request->get('fecha_final') != ''  ){
+                     $solucion =  $solucion->where('created_at','>=',$request->get('fecha_incial'))
+                     ->where('created_at','<=',$request->get('fecha_final'));
+
+            }else{
+
+                if($request->get('fecha_inicial') && $request->get('fecha_inicial') != '' ){
+                    $solucion =  $solucion->where('created_at','=',$request->get('fecha_inicial'));
+                }
+                if($request->get('fecha_final') && $request->get('fecha_final') != '' ){
+                    $solucion =  $solucion->where('created_at','=',$request->get('fecha_final'));
+                }
+            }
+            
+
+            return view('gestion.solucion.index',["solucion"=>$solucion,"usuario"=>$usuario]);
         }
 
     }
@@ -53,7 +76,7 @@ class SolutionController extends Controller
         $solucion->updated_at = $hoy;
         $solucion->update();
         flash('Se actualizo de forma Correcta')->success();
-        return Redirect::to('solo/ejercicios/detalles/'.$request->get('id_ejercicio'));
+        return Redirect::to('gestion/contenido/mis/publicaciones/ejercicios/detalles/'.$request->get('id_ejercicio'));
     }
     public function create($id)
     {
@@ -98,6 +121,17 @@ class SolutionController extends Controller
         flash('Se elimino Correctamente')->success();
         return back() ;
 
+    }
+    public function favorito($id){
+        $solucion = Solution::findOrfail($id);
+        if($solucion->favorito == 1){
+            $solucion->favorito = 0;
+        }else{
+            $solucion->favorito = 1;
+        }
+        
+        $solucion->update();
+        return back();
     }
 
 }

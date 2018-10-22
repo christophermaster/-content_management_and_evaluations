@@ -4,7 +4,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('materiales/digitalizados')}}">Material Digitalizado</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/materiales/digitalizados')}}">Material Digitalizado</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Subir Archicos</li>
             </ol>
         </nav>

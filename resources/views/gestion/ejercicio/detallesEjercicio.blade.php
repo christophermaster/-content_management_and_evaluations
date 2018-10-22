@@ -3,9 +3,9 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mi/resumen')}}">Mi resumen</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('solo/ejercicios')}}">Ejercicios</a></li>
-             <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones')}}">Publicaciones</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones/ejercicios')}}">Ejercicios</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Detalles</li>
         </ol>
     </nav>
 </div>
@@ -21,8 +21,8 @@
                 <i class="material-icons munu">more_vert</i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#"><i class="material-icons">edit</i>Editar</a>
-                <a class="dropdown-item" href="#"><i class="material-icons">clear</i>Eliminar</a>
+                <a class="dropdown-item" href="{{route('editarEjercicio',['id' => $ejercicio->id])}}"><i class="material-icons">edit</i>Editar</a>
+                <a class="dropdown-item" href="#" data-target="#modal-delete-{{$ejercicio->id}}" data-toggle="modal"><i class="material-icons">clear</i>Eliminar</a>
             </div>
         </div>
         </div>
@@ -84,9 +84,19 @@
             <h1>{{$ejercicio->tema}}</h1>
             <h2>{{$ejercicio->nombre_contenido}}</h2>
             <p><?php echo $ejercicio->contenido; ?> </p>
+            <form method="post" action="/favorito/ejercicio/{{$ejercicio->id}}">
+            @csrf
+            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+            <div class="row text-right">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="noFavorito" type="submit" rel="tooltip" title="Agregar a favoritos"><i class="material-icons">favorite_border</i></button>
+                </div>
+            </div>
+            </form>
         </div>
     </div>
 </div>
+ @include('gestion.ejercicio.eliminarEjercicioModal')
 <br>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -143,9 +153,18 @@
 </div>
 <div class="container">
     <div class="blog-card">
-        <div class="description">
+        <div class="descriptionB">
             <h1>Solución</h1>
             <p><?php echo $sol->contenido; ?> </p>
+             <form method="post" action="/favorito/solucion/{{$sol->id}}">
+            @csrf
+            <input type="hidden" value="{{csrf_token()}}" name="_token" />
+            <div class="row text-right">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+                    <button class="noFavorito" type="submit" rel="tooltip" title="Agregar a favoritos"><i class="material-icons">favorite_border</i></button>
+                </div>
+            </div>
+            </form>
         </div>
     </div>
 </div>

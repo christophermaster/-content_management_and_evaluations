@@ -140,17 +140,31 @@ Route::get('/content/{id}','AdminUserController@getContent');
  /**
   * Gestion de ejercicio 
   */
+/**
+ * vista de publicaciones 
+ */
+//vista de inicio de mi publicaciones 
+Route::get('gestion/contenido/mis/publicaciones','ExerciseController@todosMisEjercicios');
+//vista de mis ejercicios 
+Route::get('gestion/contenido/mis/publicaciones/ejercicios', ['as' => 'soloEjercicio', 'uses' => 'ExerciseController@soloEjercicios']);
+//detalles de mis ejercicios 
+Route::get('gestion/contenido/mis/publicaciones/ejercicios/detalles/{id}', ['as' => 'detallesEjercicio', 'uses' => 'ExerciseController@detallesDeEjercicios']);
+//editar ejercicios
+Route::get('gestion/contenido/mis/publicaciones/ejercicios/detalles/editar/{id}', ['as' => 'editarEjercicio', 'uses' => 'ExerciseController@edit']);
+Route::post('gestion/contenido/mis/publicaciones/ejercicios/detalles/editar/{id}', ['as' => 'editarEjercicio', 'uses' => 'ExerciseController@update']);
+//eliminar mis ejercicios
+Route::get('gestion/contenido/mis/publicaciones/ejercicios/eliminar/{id}','ExerciseController@destroy');
+//TODO pendiente de revisar
 Route::resource('gestion/ejercicio','ExerciseController');
-Route::get('gestion/contenido/mi/resumen','ExerciseController@todosMisEjercicios');
-Route::get('solo/ejercicios', ['as' => 'soloEjercicio', 'uses' => 'ExerciseController@soloEjercicios']);
-Route::get('solo/ejercicios/detalles/{id}', ['as' => 'detallesEjercicio', 'uses' => 'ExerciseController@detallesDeEjercicios']);
+
 
 /**Subida de archivos  */
-Route::get('materiales/digitalizados/subir',['as'=>'imageUpload', 'uses'=>'UploadController@upload']);
+Route::get('gestion/contenido/materiales/digitalizados/subir',['as'=>'imageUpload', 'uses'=>'UploadController@upload']);
 Route::put('imageUpload',['as'=>'imageUpload','uses'=>'UploadController@uploadd']);
 
 /**PAntalla de inicio  */
-Route::get('materiales/digitalizados',['as'=>'materialDigitalizado','uses'=>'UploadController@index']);
+Route::get('gestion/contenido/materiales/digitalizados',['as'=>'materialDigitalizado','uses'=>'UploadController@index']);
+Route::get('gestion/contenido/mis/materiales/digitalizados/',['as'=>'misMaterialDigitalizado','uses'=>'UploadController@miMaterialDigitalizado']);
 Route::get('ejercicos/soluciones/digitalizados',['as'=>'repositorioEjerSol','uses'=>'ExerciseController@todosLosEjercicios']);
 /** Descargar Archivo*/
 Route::get('download/{id}', ['as' => 'downloadFile', 'uses' => 'UploadController@downloadFile']);
@@ -173,7 +187,18 @@ Route::post('agregar/ejercicio','EvaluationController@agregarEjercicio');
 Route::get('evaluacion/delete/{id}','EvaluationController@eliminarParcial');
 Route::post('evaluacion/modificar/{id}','EvaluationController@modificarParcial');
 Auth::routes();
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * favoritos
+ */
+Route::post('favorito/ejercicio/{id}', ['as' => 'favoritoEjercicio', 'uses' => 'FavoriteController@agregarFavoriteEjercicio']);
+Route::post('favorito/solucion/{id}', ['as' => 'favoritoSolucion', 'uses' => 'FavoriteController@agregarFavoriteSolucion']);
+Route::post('favorito/archivos/{id}', ['as' => 'favoritoSolucion', 'uses' => 'FavoriteController@agregarFavoriteArchivo']);
+//Vista de Favoritos*/
+Route::get('gestion/contenido/mis/favoritos','FavoriteController@favorito');
+//qui de favoritos
+Route::get('quitar/favorito/{id}', ['as' => 'quitarFavoritoEjercicio', 'uses' => 'FavoriteController@quitarFavorite']);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::auth();
 
 Route::get('/home', 'HomeController@index')->name('home');

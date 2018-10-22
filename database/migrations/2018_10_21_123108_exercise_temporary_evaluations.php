@@ -17,7 +17,8 @@ class ExerciseTemporaryEvaluations extends Migration
             $table->increments('id');
             $table->integer('id_temporal_evaluation')->unsigned();
             $table->integer('id_ejercicio');
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
         Schema::table('exerciseTemporaryEvaluations', function($table){
             $table->foreign('id_temporal_evaluation')->references('id')->on('temporaryEvaluations')->onDelete('cascade');

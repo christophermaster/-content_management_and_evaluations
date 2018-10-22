@@ -22,7 +22,8 @@ class CreateTemaTable extends Migration
             $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
             $table->string('usuario_creador');
             $table->string('usuario_modificador');
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
         Schema::table('topics', function($table){

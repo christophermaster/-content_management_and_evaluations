@@ -21,7 +21,8 @@ class CreatePersonaTable extends Migration
             $table->string('usuario_creador');
             $table->string('usuario_modificador');
             $table->string('descripcion')->nullable();
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
     }

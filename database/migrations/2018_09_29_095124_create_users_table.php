@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('usuario_creador');
             $table->string('usuario_modificador');
             $table->rememberToken();
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
         Schema::table('users', function($table){

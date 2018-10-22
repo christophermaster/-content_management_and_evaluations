@@ -35,7 +35,8 @@ class TemporaryEvaluations extends Migration
             $table->integer('id_usuario');
             $table->string('usuario_creador');
             $table->string('usuario_modificador');
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
     }

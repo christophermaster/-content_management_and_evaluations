@@ -17,6 +17,8 @@ class CreateContenidoTable extends Migration
             $table->increments('id');
             $table->integer('id_user');
             $table->string('contenido');
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
     }
 

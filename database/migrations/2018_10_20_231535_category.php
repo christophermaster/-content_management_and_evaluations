@@ -16,7 +16,8 @@ class Category extends Migration
        Schema::create('update_categories', function (Blueprint $table) {
             $table->increments('id');
              $table->string('nombre');
-             $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
     }
 

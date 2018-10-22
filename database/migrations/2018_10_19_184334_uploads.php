@@ -37,7 +37,8 @@ class Uploads extends Migration
             $table->integer('id_categoria');
             $table->string('categoria');
             $table->string('tipo_archivo');
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
         Schema::table('uploads', function($table){

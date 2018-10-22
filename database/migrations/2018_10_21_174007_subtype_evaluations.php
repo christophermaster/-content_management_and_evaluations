@@ -16,7 +16,8 @@ class SubtypeEvaluations extends Migration
         Schema::create('subtype_evaluations', function (Blueprint $table) {
             $table->increments('id');
              $table->string('nombre');
-             $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
     }
 

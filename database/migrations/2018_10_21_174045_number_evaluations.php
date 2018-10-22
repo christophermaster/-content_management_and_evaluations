@@ -16,7 +16,8 @@ class NumberEvaluations extends Migration
         Schema::create('number_evaluations', function (Blueprint $table) {
             $table->increments('id');
              $table->string('nombre');
-             $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
     }
 

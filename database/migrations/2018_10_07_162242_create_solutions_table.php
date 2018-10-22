@@ -21,7 +21,8 @@ class CreateSolutionsTable extends Migration
             $table->longText('contenido'); //nombre de la Escuela de la universidad de carabobo
             $table->boolean('aprobado');
             $table->integer('id_ejercicio')->unsigned();
-            $table->timestamps();
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
 
         Schema::table('solutions', function($table){

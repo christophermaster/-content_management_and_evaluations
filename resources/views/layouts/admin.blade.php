@@ -113,13 +113,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('gestion/contenido/mi/resumen')}}"">
+                        <a class="nav-link" href="{{url('gestion/contenido/mis/publicaciones')}}"">
                             <i class="material-icons">grid_on</i>
                             <p>Publicaciones</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{url('gestion/contenido')}}">
+                        <a class="nav-link" href="{{url('gestion/contenido/mis/favoritos')}}">
                             <i class="material-icons">favorite</i>
                             <p>Favorito</p>
                         </a>
@@ -250,13 +250,13 @@
                         <div class="collapse" id="subir">
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="{{url('materiales/digitalizados')}}">
+                                    <a class="nav-link" href="{{url('gestion/contenido/materiales/digitalizados')}}">
                                         <span class="sidebar-mini">L.A</span>
                                         <span class="sidebar-normal">Listar</span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="{{url('materiales/digitalizados/subir')}}">
+                                    <a class="nav-link" href="{{url('gestion/contenido/materiales/digitalizados/subir')}}">
                                         <span class="sidebar-mini">S.A</span>
                                         <span class="sidebar-normal">Subir</span>
                                     </a>
@@ -495,17 +495,13 @@
     <!-- Google Analytics
     <script src="{{asset('js/google_analytics.js')}}"></script> -->
 
-
+   <script src="{{asset('js/interlineado.js')}}"></script>
     <script>
         if (typeof urlParams !== 'undefined') {
             var selectLang = document.getElementById('lang_select');
             selectLang.value = urlParams[1];
         }
     </script>
-
-
-
-
     <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
@@ -515,9 +511,15 @@
         });
     </script>
     <script>
+        CKEDITOR.replace( 'example',
+	{
+        enterMode : CKEDITOR.ENTER_BR,
+        extraPlugins : 'bbcode',
+	});
         CKFinder.setupCKEditor(null, '/gestion/contenido/create/ckfinder/');
         CKEDITOR.replace('example', {
             extraPlugins: 'ckeditor_wiris',
+            extraPlugins = 'interlineado';
             language: 'es'
         });
 
@@ -526,6 +528,7 @@
             language: 'es'
         });
     </script>
+
 </body>
 
 </html>

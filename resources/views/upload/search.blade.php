@@ -1,4 +1,4 @@
-{!! Form::open(array('url' => 'materiales/digitalizados' , 'method'=> 'Get','autocomplete' =>'off','role' => 'search'))!!}
+{!! Form::open(array('url' => 'gestion/contenido/materiales/digitalizados' , 'method'=> 'Get','autocomplete' =>'off','role' => 'search'))!!}
 <div class="row miform">
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <label for="exampleFormControlSelect2" class="milabel">Facultad</label>
