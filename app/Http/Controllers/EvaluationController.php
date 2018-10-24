@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use gestion\Http\Requests\EvaluationFormRequest;
 use gestion\models\Faculty;
+use gestion\models\History;
 use gestion\models\People;
 use gestion\models\Teacher;
 use gestion\models\School;
@@ -38,6 +39,7 @@ class EvaluationController extends Controller
         $temporaryEvaluation = DB::table('temporaryevaluations as tem')
                             ->select('tem.*')
                             ->where("tem.id_usuario","=",$usuario->id)
+                            ->where("tem.impreso","=","0")
                             ->get();
 
         $faculty=DB::table('faculties as f')
@@ -57,6 +59,42 @@ class EvaluationController extends Controller
             ->get();            
             
         return view("gestion.evaluacion.index",["faculty"=>$faculty,
+        "temporaryEvaluation"=>$temporaryEvaluation,"tipo_evaluacion"=>$tipo_evaluacion,
+        "subtipo_evaluacion"=>$subtipo_evaluacion,"numero_evaluacion"=>$numero_evaluacion]);
+    }
+    public function listarTodasLasEvaluaciones(){
+
+        $usuario = Auth::user();
+        if($usuario->id_cargo == 3){
+            $temporaryEvaluation = DB::table('temporaryevaluations as tem')
+                        ->join("users as us","us.id","=","tem.id_usuario")
+                        ->select('tem.*')
+                        ->where("us.id_rol","=","3")
+                        ->where("tem.impreso","=","1")
+                        ->get();
+        }else{
+            $temporaryEvaluation = DB::table('temporaryevaluations as tem')
+            ->select('tem.*')
+            ->where("tem.impreso","=","1")
+            ->get();
+        }
+        $faculty=DB::table('faculties as f')
+            ->select('f.id','f.nombre')
+            ->get();
+
+        $tipo_evaluacion=DB::table('type_evaluations as t')
+            ->select('t.id','t.nombre')
+            ->get();
+
+        $subtipo_evaluacion=DB::table('subtype_evaluations as s')
+            ->select('s.id','s.nombre')
+            ->get();    
+
+        $numero_evaluacion=DB::table('number_evaluations as n')
+            ->select('n.id','n.nombre')
+            ->get();            
+            
+        return view("gestion.evaluacion.listarTodasLasEvaluaciones",["faculty"=>$faculty,
         "temporaryEvaluation"=>$temporaryEvaluation,"tipo_evaluacion"=>$tipo_evaluacion,
         "subtipo_evaluacion"=>$subtipo_evaluacion,"numero_evaluacion"=>$numero_evaluacion]);
     }
@@ -95,6 +133,8 @@ class EvaluationController extends Controller
         $evaluation->fecha =$request->get('fecha');
         $evaluation->id_usuario = $usuario->id;
         $evaluation->aprobado = 1;
+        $evaluation->impreso = 0;
+
         if(Auth::check()){
             $evaluation->usuario_creador=$usuario->name;
             $evaluation->usuario_modificador= $usuario->name;
@@ -105,26 +145,54 @@ class EvaluationController extends Controller
 
         return Redirect::to('crear/evaluacion/'.$evaluation->id);
     }
-    public function crearEvaluacion($id){
+    public function crearEvaluacion(Request $request, $id){
         
         $evaluacion = TemporaryEvaluation::findOrfail($id);
 
         if($evaluacion->id_subtipo_evaluacion == 3){
              $ejercicio = DB::table('exercises as exx')
             ->select('exx.*')
-            ->where('exx.id_tipo','=','1')
-            ->orwhere('exx.id_tipo','=','2')
+            ->where('exx.usado','=','0')
             ->orderBy('exx.id','asc')
             ->paginate(40);
         }else{
             $ejercicio = DB::table('exercises as exx')
             ->select('exx.*')
+            ->where('exx.usado','=','0')
             ->where('exx.id_tipo','=',$evaluacion->id_subtipo_evaluacion)
             ->orderBy('exx.id','asc')
             ->paginate(40);
         }
-         $exerciseTemporaryEvaluation = DB::table('exercisetemporaryevaluations as ext')
+
+        if($request->get('facultad') && $request->get('facultad') != '' ){
+            $ejercicio =  $ejercicio->where('id_facultad','=',$request->get('facultad'));
+        }
+        if($request->get('dificultad') && $request->get('dificultad') != '' ){
+            $ejercicio =  $ejercicio->where('id_dificultad','=',$request->get('dificultad'));
+        }
+        if($request->get('escuela') && $request->get('escuela') != '' ){
+            $ejercicio =  $ejercicio->where('id_escuela','=',$request->get('escuela'));
+        }
+        if($request->get('catedra') && $request->get('catedra') != '' ){
+            $ejercicio =  $ejercicio->where('id_catedra','=',$request->get('catedra'));
+        }
+        if($request->get('materia') && $request->get('materia') != '' ){
+            $ejercicio =  $ejercicio->where('id_materia','=',$request->get('materia'));
+        }
+        if($request->get('contenido') && $request->get('contenido') != '' ){
+            $ejercicio =  $ejercicio->where('id_contenido','=',$request->get('contenido'));
+        }
+        if($request->get('dificultad') && $request->get('dificultad') != '' ){
+            $ejercicio =  $ejercicio->where('id_dificultad','=',$request->get('dificultad'));
+        }
+        if($request->get('tipo') && $request->get('tipo') != '' ){
+            $ejercicio =  $ejercicio->where('id_tipo','=',$request->get('tipo'));
+        }
+
+
+        $exerciseTemporaryEvaluation = DB::table('exercisetemporaryevaluations as ext')
         ->join('exercises as ex','ext.id_ejercicio','=',"ex.id")
+        ->where("ext.id_temporal_evaluation","=",$id)
         ->select('ext.id','ex.*')
         ->get();
 
@@ -146,22 +214,25 @@ class EvaluationController extends Controller
         
         $evaluacion = TemporaryEvaluation::findOrfail($id);
 
+      
         if($evaluacion->id_subtipo_evaluacion == 3){
              $ejercicio = DB::table('exercises as exx')
             ->select('exx.*')
-            ->where('exx.id_tipo','=','1')
-            ->orwhere('exx.id_tipo','=','2')
+            ->where('exx.usado','=','0')
             ->orderBy('exx.id','asc')
             ->paginate(40);
         }else{
             $ejercicio = DB::table('exercises as exx')
             ->select('exx.*')
+            ->where('exx.usado','=','0')
             ->where('exx.id_tipo','=',$evaluacion->id_subtipo_evaluacion)
             ->orderBy('exx.id','asc')
             ->paginate(40);
         }
+
          $exerciseTemporaryEvaluation = DB::table('exercisetemporaryevaluations as ext')
         ->join('exercises as ex','ext.id_ejercicio','=',"ex.id")
+        ->where("ext.id_temporal_evaluation","=",$id)
         ->select('ext.id','ex.*')
         ->get();
 
@@ -219,6 +290,7 @@ class EvaluationController extends Controller
         return back() ;
 
     }
+
     public function modificarParcial(EvaluationFormRequest $request,$id){
 
         $temporaryEvaluation = TemporaryEvaluation::findOrfail($id);
@@ -268,7 +340,76 @@ class EvaluationController extends Controller
         $exerciseTemporaryEvaluation->id_temporal_evaluation = $request->get('id_temporal_evaluation');
         $exerciseTemporaryEvaluation->save();
 
+        $exercise = Exercise::findOrfail($request->get('id_ejercicio'));
+        $exercise->usado=1;
+        $exercise->update();
+
+
         return back();
         
+    }
+    public function quitarEjercicio($id,$idt){
+
+        $exercisetemporaryevaluations=DB::table('exercisetemporaryevaluations as ex')
+        ->where("ex.id_ejercicio","=",$id)
+        ->where("ex.id_temporal_evaluation","=",$idt)
+        ->select('ex.id')
+        ->get()->first();
+        
+        ExerciseTemporaryEvaluation::destroy($exercisetemporaryevaluations->id);
+        $exercise = Exercise::findOrfail($id);
+        $exercise->usado=0;
+        $exercise->update();
+        flash('Se quito el ejercicio')->success();
+
+        return back() ;
+        
+    }
+    public function generarEvaluacion($id){
+        $temporaryEvaluation = TemporaryEvaluation::findOrfail($id);
+        $usuario = Auth::user();
+        $hoy = date("Y-m-d");
+
+        $persona = People::findOrfail($usuario->id_persona);
+
+        $ejercicioTeorico = DB::table('exercises as ex')
+            ->join("exercisetemporaryevaluations as ext","ex.id","=","ext.id_ejercicio")
+            ->where("ext.id_temporal_evaluation","=",$id)
+            ->where("ex.id_tipo","=",1)
+            ->select('ex.*')
+            ->get();
+        
+        foreach($ejercicioTeorico as $ejer){
+
+            $history = new History;
+            $history->id_ejercicio = $ejer->id;
+            $history->id_motivo = $temporaryEvaluation->id_tipo_evaluacion;
+            $history->created_at = $temporaryEvaluation->fecha;
+            $history->id_evaluacion = $temporaryEvaluation->id;
+            $history->id_usuario = $temporaryEvaluation->id_usuario;
+            $history->save();
+        }
+        $ejercicioPractico = DB::table('exercises as ex')
+            ->join("exercisetemporaryevaluations as ext","ex.id","=","ext.id_ejercicio")
+            ->where("ext.id_temporal_evaluation","=",$id)
+            ->where("ex.id_tipo","=",2)
+            ->select('ex.*')
+            ->get();
+
+        foreach($ejercicioPractico as $ejer){
+
+            $history = new History;
+            $history->id_ejercicio = $ejer->id;
+            $history->id_motivo = $temporaryEvaluation->id_tipo_evaluacion;
+            $history->created_at = $temporaryEvaluation->fecha;
+            $history->id_evaluacion = $temporaryEvaluation->id;
+            $history->id_usuario = $temporaryEvaluation->id_usuario;
+            $history->save();
+        }
+        $temporaryEvaluation->impreso = 1;
+        $temporaryEvaluation->update();
+        return view('gestion.evaluacion.evaluacionGenerada',["hoy"=>$hoy,
+        "ejercicioTeorico"=>$ejercicioTeorico,"ejercicioPractico"=>$ejercicioPractico,"persona"=>$persona,
+        "temporaryEvaluation"=>$temporaryEvaluation]);
     }
 }

@@ -360,6 +360,7 @@ class ExerciseController extends Controller
         $exercise->dificultad = $dificultad->nombre;
         $exercise->tipo_nombre = $tipo->nombre ;
         $exercise->nombre_contenido = $contenido->nombre;
+        $exercise->usado = 0;
     
         $exercise->tema = $tema->nombre;
         $exercise->aprobado = 1;

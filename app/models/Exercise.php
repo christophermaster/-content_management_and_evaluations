@@ -34,6 +34,7 @@ class Exercise extends Model
         'nombre_contenido',
         'usuario_creador',
         'usuario_modificador',
+        'usado',
         'created_at',
         'updated_at',
     ];

@@ -1,8 +1,8 @@
-{!! Form::open(array('url' => 'gestion/contenido/mis/publicaciones' , 'method'=> 'Get','autocomplete' =>'off','role' => 'search'))!!}
+{!! Form::open(array('url' => 'crear/evaluacion/'.$id_temporal_evaluation , 'method'=> 'Get','autocomplete' =>'off','role' => 'search'))!!}
 <div class="row miform">
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <label for="exampleFormControlSelect2" class="milabel">Facultad</label>
-    <select id="faculty" name="facultad" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7">
+    <select id="faculty" name="id_facultad" class="form-control miInput" data-style="select-with-transition" title="Facultad" data-size="7">
         <option value>Seleccione...</option>
         @foreach($faculty as $fac)
             <option value="{{$fac->id}}">{{$fac->nombre}}</option>
@@ -43,7 +43,7 @@
 </div>
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <label for="exampleFormControlSelect2" class="milabel">Tipo Ejercicio</label>
-    <select id="cathdra" name="tipo" class="form-control miInput" data-style="select-with-transition" title="Escuela" data-size="7">
+    <select id="tipo" name="tipo" class="form-control miInput" data-style="select-with-transition" title="Escuela" data-size="7">
         <option value>Seleccione...</option>
         @foreach($tipo_ejercicio as $type)
             <option value="{{$type->id}}">{{$type->nombre}}</option>

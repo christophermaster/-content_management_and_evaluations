@@ -120,7 +120,7 @@
 @if(count($temporaryEvaluation)>0)
 <div class="row">
     @foreach($temporaryEvaluation as $tem)
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     @if($tem->id_tipo_evaluacion == 1)
@@ -134,8 +134,8 @@
                     <p class="card-text">{{$tem->fecha}}</p>
                     <a class="card-link" href="" data-target="#modal-delete-{{$tem->id}}" data-toggle="modal" >Eliminar</a>
                     <a href="{{route('editarEvaluacion',['id' => $tem->id])}}" class="card-link">Editar</a>
-                    <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">ver</a>
-                    <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">Imprimir</a>
+                   <!-- <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">ver</a>-->
+                    <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">Generar</a>
                 </div>
                 @include('gestion.evaluacion.modal')
             </div>
@@ -145,7 +145,7 @@
 @else
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <h4>No tienes parciales pendientes</h4>
+            <h4>No tienes evaluaciones pendientes</h4>
         </div>
     </div>
 @endif

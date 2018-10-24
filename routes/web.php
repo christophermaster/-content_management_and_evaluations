@@ -186,6 +186,10 @@ Route::get('editar/evaluacion/{id}', ['as' => 'editarEvaluacion', 'uses' => 'Eva
 Route::post('agregar/ejercicio','EvaluationController@agregarEjercicio');
 Route::get('evaluacion/delete/{id}','EvaluationController@eliminarParcial');
 Route::post('evaluacion/modificar/{id}','EvaluationController@modificarParcial');
+Route::get('gestion/contenido/evaluacion/generada/{id}', ['as' => 'vistaEvaluacion', 'uses' => 'EvaluationController@generarEvaluacion']);
+Route::get('ejercicio/elejido/parcial/{id}/{idt}','EvaluationController@quitarEjercicio');
+Route::get('gestioni/contenido/todas/evaluaciones','EvaluationController@listarTodasLasEvaluaciones');
+
 Auth::routes();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**

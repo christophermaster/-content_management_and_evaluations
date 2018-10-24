@@ -20,6 +20,10 @@ p {
     padding: 0px;
 }
 
+textarea.cke_source.cke_reset.cke_enable_context_menu.cke_editable.cke_editable_themed.cke_contents_ltr {
+    height: 100% !important;
+}
+
 .cke_editable {
     font-size: 13px;
     line-height: 1.6;

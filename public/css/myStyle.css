@@ -194,10 +194,15 @@
     
     .bCard {
         height: 200px;
+        width: -webkit-fill-available;
     }
     
     .des {
         overflow: auto;
+    }
+    
+    textarea.cke_source.cke_reset.cke_enable_context_menu.cke_editable.cke_editable_themed.cke_contents_ltr {
+        height: 100% !important;
     }
     
     .blog-card a {

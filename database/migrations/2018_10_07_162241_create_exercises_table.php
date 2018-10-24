@@ -36,6 +36,7 @@ class CreateExercisesTable extends Migration
             $table->integer('id_tema');
             $table->string('tema');
             $table->integer('id_tipo');
+            $table->boolean('usado')->nullable();
             $table->string('tipo_nombre');
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();

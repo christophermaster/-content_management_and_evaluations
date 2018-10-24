@@ -14,17 +14,18 @@ class CreateHistoryExamplesTable extends Migration
     public function up()
     {
 
-         Schema::create('history_examples', function (Blueprint $table) {
+         Schema::create('histories', function (Blueprint $table) {
             $table->increments('id');//identificador de la tabla
-            $table->integer('id_ejercicio')->unsigned();
-            $table->Integer('id_motivo')->unsigned();
+            $table->integer('id_ejercicio')->unsigned()->nullable();
+            $table->integer('id_usuario')->unsigned()->nullable();
+            $table->Integer('id_motivo')->unsigned()->nullable();
             $table->date('created_at')->nullable();
-            $table->date('updated_at')->nullable();
         });
 
-        Schema::table('history_examples', function($table){
+        Schema::table('histories', function($table){
             $table->foreign('id_ejercicio')->references('id')->on('exercises')->onDelete('cascade');
             $table->foreign('id_motivo')->references('id')->on('type_evaluations')->onDelete('cascade');
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -38,8 +39,9 @@ class CreateHistoryExamplesTable extends Migration
         Schema::table('history_examples', function($table)
         {
             Schema::dropIfExists('history_examples');
-            $table->dropForeign('history_examples_id_ejercicio_foreign');
-            $table->dropForeign('history_examples_id_motivo_foreign');
+            $table->dropForeign('histories_id_ejercicio_foreign');
+            $table->dropForeign('histories_id_motivo_foreign');
+            $table->dropForeign('histories_id_usuario_foreign');
         });
     }
 }

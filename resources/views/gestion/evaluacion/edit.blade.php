@@ -9,6 +9,15 @@
         </ol>
     </nav>
 </div>
+<div div="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+        <a href="{{route('vistaEvaluacion',['id' => $id_temporal_evaluation])}}">
+            <button type="button" class="btn btn-primary ">
+            Generar Evaluacion
+            </button>
+        </a>
+    </div>
+</div>
 <!--Detalles para editar-->
 <form method="post" action="/evaluacion/modificar/{{$evaluacion->id}}" >
     @csrf
@@ -198,19 +207,18 @@
                                                     <td>{{$exer ->dificultad}}</td>
                                                     <td>{{$exer ->tipo_nombre}}</td>
                                                     <td class="td-actions">
-                                                        <a href="">
+                                                         <!--  <a href="">
                                                             <button type="button" rel="tooltip" class="btn btn-info btn-link" data-original-title="Ver Carreras" title="Ver escuelas">
                                                                 <i class="material-icons">visibility</i>
                                                             </button>
-                                                        </a>
-                                                        <a href="" data-toggle="modal">
-                                                            <button type="button" rel="tooltip" class="btn btn-danger btn-link" data-original-title="Eliminar" title="Eliminar">
+                                                        </a>-->
+                                                        <form method="delete" action="/ejercicio/elejido/parcial/{{$exer->id}}/{{$id_temporal_evaluation}}" >
+                                                            <button type="submit" rel="tooltip" class="btn btn-danger btn-link" data-original-title="Eliminar" title="Eliminar">
                                                                 <i class="material-icons">close</i>
                                                             </button>
-                                                        </a>
+                                                        </form>
                                                     </td>
                                                 </tr>
-                                                @include('administration.university.faculty.modal') 
                                                 @endforeach
                                             </table>
                                         </div>

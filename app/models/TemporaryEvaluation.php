@@ -32,6 +32,7 @@ class TemporaryEvaluation extends Model
         'id_usuario',
         'usuario_creador',
         'usuario_modificador',
+        'impreso',
         'created_at',
         'updated_at',
     ];

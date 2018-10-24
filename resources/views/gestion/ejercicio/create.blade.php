@@ -117,7 +117,8 @@
                         <textarea name="contenido" id="example" requerid value="{{old('contenido')}}" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="true" role="textbox" aria-label="Rich Text Editor, example" title="Rich Text Editor, example">
                         </textarea>
                     </div>
-                </div>                      
+                </div>  
+       
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <button class="btn btn-primary" type="submit">Guardar y cotinuar</button>

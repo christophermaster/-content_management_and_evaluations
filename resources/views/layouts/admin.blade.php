@@ -171,7 +171,7 @@
                             <ul class="nav">
   
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="{{url('generar/evaluacion')}}">
+                                    <a class="nav-link" href="{{url('gestioni/contenido/todas/evaluaciones')}}">
                                         <span class="sidebar-mini"> LE </span>
                                         <span class="sidebar-normal">Listar </span>
                                     </a>
@@ -511,15 +511,10 @@
         });
     </script>
     <script>
-        CKEDITOR.replace( 'example',
-	{
-        enterMode : CKEDITOR.ENTER_BR,
-        extraPlugins : 'bbcode',
-	});
+
         CKFinder.setupCKEditor(null, '/gestion/contenido/create/ckfinder/');
         CKEDITOR.replace('example', {
             extraPlugins: 'ckeditor_wiris',
-            extraPlugins = 'interlineado';
             language: 'es'
         });
 

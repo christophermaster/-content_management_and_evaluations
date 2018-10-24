@@ -312,7 +312,7 @@
 
                     </div>
                     <h4 class="card-title">
-                        <a href="#pablo"><b>Repositorio de Evaluaciones</b></a>
+                        <a href="{{url('gestioni/contenido/todas/evaluaciones')}}"><b>Repositorio de Evaluaciones</b></a>
                     </h4>
                     <div class="card-description">
                         Reúne las evaluaciones producidas por la comunidad docente de la institución universitaria de la Facyt.

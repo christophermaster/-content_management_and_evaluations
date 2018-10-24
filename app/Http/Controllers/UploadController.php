@@ -230,8 +230,21 @@ class UploadController extends Controller
         return Redirect::to('gestion/contenido/materiales/digitalizados/subir');
     }
     public function downloadFile($id){
-      $upload = Upload::findOrfail($id);;
+      $upload = Upload::findOrfail($id);
       $pathtoFile = public_path()."/".$upload->ruta;
       return response()->download($pathtoFile);
+    }
+
+    public function delete($id){
+
+        $upload = Upload::findOrfail($id);
+        $pathtoFile = public_path()."/".$upload->ruta;
+
+        if(file_exists(public_path($upload->ruta))){
+          unlink(public_path($upload->ruta));
+        }else{
+          dd('El archivo no existe.');
+        }
+       return back();
     }
 }
