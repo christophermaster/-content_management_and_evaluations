@@ -32,7 +32,7 @@ class ContentController extends Controller
             ->where('c.nombre','LIKE','%'.$query.'%')
             ->where('c.id_tema',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('c.id','asc')
+            ->orderBy('c.id','desc')
             ->paginate(10);
 
             return view('administration.university.content.index',["content"=>$content,"id_tema"=>$id,"searchText"=>$query]);

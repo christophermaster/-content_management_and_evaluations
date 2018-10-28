@@ -2,12 +2,8 @@
 <div class="breadcrumb">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones')}}">Detalles de mis
-                    Ejercicios</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones/ejercicios')}}">Ejercicios</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('gestion/contenido/mis/publicaciones/ejercicios/detalles/'.$id_ejercicio)}}">Detalles</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Solución</li>
+            <li class="breadcrumb-item"> <a href="{{ URL::previous() }}"><i class="material-icons">
+            arrow_back</i>Atras</a></li>
         </ol>
     </nav>
 </div>

@@ -86,7 +86,7 @@ class MimeTypeExtensionGuesser implements ExtensionGuesserInterface
         'application/patch-ops-error+xml' => 'xer',
         'application/pdf' => 'pdf',
         'application/pgp-encrypted' => 'pgp',
-        'application/pgp-signature' => 'asc',
+        'application/pgp-signature' => 'desc',
         'application/pics-rules' => 'prf',
         'application/pkcs10' => 'p10',
         'application/pkcs7-mime' => 'p7m',

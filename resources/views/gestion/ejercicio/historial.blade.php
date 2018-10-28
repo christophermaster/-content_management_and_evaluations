@@ -1,12 +1,12 @@
 @extends('layouts.admin') @section('contenido')
-    <div class="breadcrumb">
-       <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Publicaciones</li>
-            </ol>
-        </nav>
-    </div>
+<div class="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> <a href="{{ URL::previous() }}"><i class="material-icons">
+            arrow_back</i>Atras</a></li>
+        </ol>
+    </nav>
+</div>
 <!--
     FILTRAR LOS EJERCICIOS 
 -->
@@ -49,7 +49,7 @@
     PANEL QUE MUESTRA LA CANTIDAD DE EJERCICIOS Y SOLUCIONES  SUBIDOS  
 -->
 <div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="card card-stats">
             <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="card card-stats">
             <div class="card-header card-header-warning card-header-icon">
                 <div class="card-icon">
@@ -91,7 +91,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="card card-stats">
             <div class="card-header card-header-rose card-header-icon">
                 <div class="card-icon">
@@ -112,7 +112,9 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
             <div class="card-header card-header-info card-header-icon">
                 <div class="card-icon">
@@ -128,6 +130,29 @@
                 </div>
                 <div >
                     <a  href="{{url('gestion/contenido/mis/materiales/digitalizados')}}">
+                        <i class="material-icons">arrow_right_alt</i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-inf card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">assignment</i>
+                </div>
+                <p class="card-category">Evaluaciones</p>
+                <h3 class="card-title">{{$canttemporaryevaluations->cantidad}}</h3>
+            </div>
+
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">assignment</i>Evaluaciones Realizadas
+                </div>
+                <div >
+                    <a  href="{{url('gestion/contenido/mis/pulicaciones/mis/evaluaciones')}}">
                         <i class="material-icons">arrow_right_alt</i>
                     </a>
                 </div>

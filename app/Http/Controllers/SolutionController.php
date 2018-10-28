@@ -29,7 +29,7 @@ class SolutionController extends Controller
             $solucion=DB::table('solutions as sol')
             ->select('sol.*')
             ->where('sol.id_usuario','=',$usuario->id)
-            ->orderBy('sol.id','asc')
+            ->orderBy('sol.id','desc')
             ->paginate(10);
             
             $usuario=DB::table('users as user')

@@ -30,7 +30,7 @@ class ModuleController extends Controller
             ->where('m.nombre','LIKE','%'.$query.'%')
             ->where('m.id_materia',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('m.id','asc')
+            ->orderBy('m.id','desc')
             ->paginate(10);
 
             return view('administration.university.module.index',["module"=>$module,"id_materia"=>$id,"searchText"=>$query]);

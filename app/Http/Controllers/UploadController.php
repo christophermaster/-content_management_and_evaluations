@@ -50,7 +50,7 @@ class UploadController extends Controller
             if($usuario->id_cargo == 1 || $usuario->id_cargo == 2 ){
                 $upload=DB::table('uploads as upl')
                 ->select('upl.*')
-                ->orderBy('upl.id','asc')
+                ->orderBy('upl.id','desc')
                 ->paginate(40);
             }else{
                 $upload=DB::table('uploads as upl')
@@ -58,7 +58,7 @@ class UploadController extends Controller
                 ->join('users as us','upl.id_usuario','=',"us.id")
                 ->join('roles as rol','us.id_cargo','=',"rol.id")
                 ->where('rol.id','=',"3")
-                ->orderBy('upl.id','asc')
+                ->orderBy('upl.id','desc')
                 ->paginate(40);
             } 
             
@@ -120,7 +120,7 @@ class UploadController extends Controller
             $upload=DB::table('uploads as upl')
             ->select('upl.*')
             ->where('upl.id_usuario','=',$usuario->id)
-            ->orderBy('upl.id','asc')
+            ->orderBy('upl.id','desc')
             ->paginate(40);
 
             //Filtramos

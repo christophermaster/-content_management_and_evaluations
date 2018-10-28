@@ -2,8 +2,8 @@
 <div class="breadcrumb">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{url('gestion/contenido')}}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Genarar Evaluacion</li>
+            <li class="breadcrumb-item"> <a href="{{ URL::previous() }}"><i class="material-icons">
+            arrow_back</i>Atras</a></li>
         </ol>
     </nav>
 </div>
@@ -125,7 +125,7 @@
                 <div class="card-body">
                     @if($tem->id_tipo_evaluacion == 1)
                         <h5 class="card-title">Parcial {{$tem->numero_evaluacion}}</h5>
-                    @elseif($tem->id_tipo_evaluacion == 1)
+                    @elseif($tem->id_tipo_evaluacion == 2)
                         <h5 class="card-title">Quiz {{$tem->numero_evaluacion}}</h5>
                     @else
                         <h5 class="card-title">Actividad {{$tem->numero_evaluacion}}</h5>
@@ -135,7 +135,7 @@
                     <a class="card-link" href="" data-target="#modal-delete-{{$tem->id}}" data-toggle="modal" >Eliminar</a>
                     <a href="{{route('editarEvaluacion',['id' => $tem->id])}}" class="card-link">Editar</a>
                    <!-- <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">ver</a>-->
-                    <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">Generar</a>
+                    <a href="{{route('vistaEvaluacion',['id' => $tem->id])}}" class="card-link">Generar</a>
                 </div>
                 @include('gestion.evaluacion.modal')
             </div>

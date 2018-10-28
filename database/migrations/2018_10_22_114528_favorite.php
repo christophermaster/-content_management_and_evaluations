@@ -16,9 +16,9 @@ class Favorite extends Migration
          Schema::create('favorites', function (Blueprint $table) {
             $table->increments('id');//identificador de la tabla
             $table->integer('id_usuario')->unsigned();//identificador de la facultad que pertenece la escuela
-            $table->integer('id_ejercicio')->unsigned();
-            $table->integer('id_solucion')->unsigned();
-            $table->integer('id_archivo')->unsigned();
+            $table->integer('id_ejercicio')->unsigned()->nullable();
+            $table->integer('id_solucion')->unsigned()->nullable();
+            $table->integer('id_archivo')->unsigned()->nullable();
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
         });

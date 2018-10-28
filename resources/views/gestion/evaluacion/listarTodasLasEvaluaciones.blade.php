@@ -1,5 +1,14 @@
 @extends('layouts.admin') 
 @section('contenido')
+
+<div class="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> <a href="{{ URL::previous() }}"><i class="material-icons">
+            arrow_back</i>Atras</a></li>
+        </ol>
+    </nav>
+</div>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         @if (count($errors)>0)
@@ -24,7 +33,7 @@
 @if(count($temporaryEvaluation)>0)
 <div class="row">
     @foreach($temporaryEvaluation as $tem)
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     @if($tem->id_tipo_evaluacion == 1)
@@ -36,8 +45,8 @@
                     @endif
                     <h6 class="card-subtitle mb-2 text-muted">{{$tem->tema}}</h6>
                     <p class="card-text">{{$tem->fecha}}</p>
-                    <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">ver</a>
-                    <a href="{{route('evaluacion',['id' => $tem->id])}}" class="card-link">Imprimir</a>
+                    <a href="{{route('detallesEvaluacion',['id' => $tem->id])}}" class="card-link">ver</a>
+                    <a href="{{route('vistaEvaluacion',['id' => $tem->id])}}" class="card-link">Generar</a>
                 </div>
                 @include('gestion.evaluacion.modal')
             </div>

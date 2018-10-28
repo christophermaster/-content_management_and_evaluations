@@ -31,7 +31,7 @@ class SchoolController extends Controller
             ->where('s.nombre','LIKE','%'.$query.'%')
             ->where('s.id_facultad',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('s.id','asc')
+            ->orderBy('s.id','desc')
             ->paginate(10);
 
             return view('administration.university.school.index',["school"=>$school,"id_facultad"=>$id,"searchText"=>$query]);

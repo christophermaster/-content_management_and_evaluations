@@ -185,6 +185,39 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#subir">
+                            <i class="material-icons">cloud_upload</i>
+                            <p>Archivos
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <!-- lISTA DE EJERCICIO-->
+                        <div class="collapse" id="subir">
+                            <ul class="nav">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{url('gestion/contenido/materiales/digitalizados')}}">
+                                        <span class="sidebar-mini">L.A</span>
+                                        <span class="sidebar-normal">Listar</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{url('gestion/contenido/materiales/digitalizados/subir')}}">
+                                        <span class="sidebar-mini">S.A</span>
+                                        <span class="sidebar-normal">Subir</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <!--Historia de los ejercicios -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('gestion/contenido/historicos/ejercicios/archivos')}}">
+                            <i class="material-icons">history</i>
+                            <p>Hist. de los ejercicios</p>
+                        </a>
+                    </li>
 
                     <!--
                         ADINISTRACION UNIVERSITARIA
@@ -239,32 +272,7 @@
                         </div>
                     </li>
                     @endif
-                    <li class="nav-item ">
-                        <a class="nav-link" data-toggle="collapse" href="#subir">
-                            <i class="material-icons">cloud_upload</i>
-                            <p>Archivos
-                                <b class="caret"></b>
-                            </p>
-                        </a>
-                        <!-- lISTA DE EJERCICIO-->
-                        <div class="collapse" id="subir">
-                            <ul class="nav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{url('gestion/contenido/materiales/digitalizados')}}">
-                                        <span class="sidebar-mini">L.A</span>
-                                        <span class="sidebar-normal">Listar</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{url('gestion/contenido/materiales/digitalizados/subir')}}">
-                                        <span class="sidebar-mini">S.A</span>
-                                        <span class="sidebar-normal">Subir</span>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -310,7 +318,7 @@
                         </form>-->
 
                         <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
+                            <!--<li class="nav-item dropdown">
                                 <a class="nav-link" href="http://example.com/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications</i>
                                     <span class="notification">5</span>
@@ -325,7 +333,7 @@
                                     <a class="dropdown-item" href="#">Another Notification</a>
                                     <a class="dropdown-item" href="#">Another One</a>
                                 </div>
-                            </li>
+                            </li>-->
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#pablo" id="salir" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -354,7 +362,7 @@
 
 
             <div class="content">
-
+            @include('flash::message')
                 <div class="box-body">
                     <div class="row">
                         <div class="container center">
@@ -523,7 +531,9 @@
             language: 'es'
         });
     </script>
-
+<script>
+$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 </body>
 
 </html>

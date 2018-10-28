@@ -637,7 +637,7 @@ function mimetype_from_extension($extension)
         'aac' => 'audio/x-aac',
         'ai' => 'application/postscript',
         'aif' => 'audio/x-aiff',
-        'asc' => 'text/plain',
+        'desc' => 'text/plain',
         'asf' => 'video/x-ms-asf',
         'atom' => 'application/atom+xml',
         'avi' => 'video/x-msvideo',

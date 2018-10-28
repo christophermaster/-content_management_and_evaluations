@@ -31,7 +31,7 @@ class CathedraController extends Controller
             ->where('c.nombre','LIKE','%'.$query.'%')
             ->where('c.id_escuela',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('c.id','asc')
+            ->orderBy('c.id','desc')
             ->paginate(10);
 
             return view('administration.university.cathedra.index',["cathedra"=>$cathedra,"id_escuela"=>$id,"searchText"=>$query]);

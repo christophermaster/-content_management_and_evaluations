@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use gestion\User;
 
-class ExerciseController extends Controller
+class HistoryExerciseController extends Controller
 {
      public function __construct()
     {
@@ -34,31 +34,30 @@ class ExerciseController extends Controller
 
     public function index(Request $request)
     {
-      
-    }
-
-    /**
-     * Solo los ejercicios realizados por mi 
-     */
-    public function soloEjercicios(Request $request){
 
         //obtengo el usuario 
         $usuario = Auth::user();
-
+        //obtengo la fecha de hopy 
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $ano = $ano -1;
+        $fecha = $ano."-".$mes."-".$dia;
         if($request){
 
             //obtengo los ejercicios 
-            $ejercicio=DB::table('exercises as exx')
+            $ejercicioUsado=DB::table('exercises as exx')
                 ->select('exx.*')
-                ->where('exx.id_usuario','=', $usuario->id)
-                ->orderBy('exx.id','desc')
-                ->paginate(10);
-            $upload = DB::table('uploads as upl')
-                ->select('upl.*')
-                ->where('upl.id_usuario','=', $usuario->id)
-                ->where('upl.id_categoria','=', "1")
-                ->orderBy('upl.id','desc')
-                ->paginate(10);
+                ->where('exx.usado','=', "1")->get();
+                
+               
+            $ejercicioViejos=DB::table('exercises as exx')
+                ->select('exx.*')
+                ->where('created_at','<=', $fecha)->get();
+
+            $upload=DB::table('uploads as upl')
+            ->select('upl.*')
+            ->where('created_at','<=', $fecha)->get();
 
             //Para llenar los select
             $faculty=DB::table('faculties as f')
@@ -75,65 +74,119 @@ class ExerciseController extends Controller
             ->get();
 
             if($request->get('usuario') && $request->get('usuario') != '' ){
-                $ejercicio =  $ejercicio->where('id_usuario','=',$request->get('usuario'));
+                $ejercicioUsado =  $ejercicioUsado->where('id_usuario','=',$request->get('usuario'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_usuario','=',$request->get('usuario'));
                 $upload =  $upload->where('id_usuario','=',$request->get('usuario'));
+        
             }
             if($request->get('fecha_inicial') && $request->get('fecha_inicial') != '' &&
                 $request->get('fecha_final') && $request->get('fecha_final') != ''  ){
-                $ejercicio =  $ejercicio->where('created_at','>=',$request->get('fecha_incial'))
+
+                $ejercicioUsado =  $ejercicioUsado->where('created_at','>=',$request->get('fecha_incial'))
                 ->where('created_at','<=',$request->get('fecha_final'));
+
+                 $ejercicioViejos =  $ejercicioViejos->where('created_at','>=',$request->get('fecha_incial'))
+                ->where('created_at','<=',$request->get('fecha_final'));
+
                 $upload =  $upload->where('created_at','>=',$request->get('fecha_incial'))
                 ->where('created_at','<=',$request->get('fecha_final'));
+               
 
             }else{
 
                 if($request->get('fecha_inicial') && $request->get('fecha_inicial') != '' ){
-                    $ejercicio =  $ejercicio->where('created_at','=',$request->get('fecha_inicial'));
-                     $upload =  $upload->where('created_at','=',$request->get('fecha_inicial'));
+                    $ejercicioUsado =  $ejercicioUsado->where('created_at','=',$request->get('fecha_inicial'));
+                    $ejercicioViejos =  $ejercicioViejos->where('created_at','=',$request->get('fecha_inicial'));
+                    $upload =  $upload->where('created_at','=',$request->get('fecha_inicial'));
+                    
                 }
                 if($request->get('fecha_final') && $request->get('fecha_final') != '' ){
-                    $ejercicio =  $ejercicio->where('created_at','=',$request->get('fecha_final'));
-                     $upload =  $upload->where('created_at','=',$request->get('fecha_final'));
+                    $ejercicioUsado =  $ejercicioUsado->where('created_at','=',$request->get('fecha_final'));
+                    $ejercicioViejos =  $ejercicioViejos->where('created_at','=',$request->get('fecha_final'));
+                    $upload =  $upload->where('created_at','=',$request->get('fecha_final'));
+                    
                 }
             }
 
-            // comenzar a filtara por ejercicios 
+            // comenzar a filtara por ejercicioUsados 
             if($request->get('facultad') && $request->get('facultad') != '' ){
-                $ejercicio =  $ejercicio->where('id_facultad','=',$request->get('facultad'));
+                $ejercicioUsado =  $ejercicioUsado->where('id_facultad','=',$request->get('facultad'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_facultad','=',$request->get('facultad'));
                 $upload =  $upload->where('id_facultad','=',$request->get('facultad'));
+               
             }
-            if($request->get('dificultad') && $request->get('dificultad') != '' ){
-                $ejercicio =  $ejercicio->where('id_dificultad','=',$request->get('dificultad'));
+            if($request->get('tema') && $request->get('tema') != '' ){
+                $ejercicioUsado =  $ejercicioUsado->where('id_tema','=',$request->get('tema'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_tema','=',$request->get('tema'));
             }
             if($request->get('escuela') && $request->get('escuela') != '' ){
-                $ejercicio =  $ejercicio->where('id_escuela','=',$request->get('escuela'));
+                $ejercicioUsado =  $ejercicioUsado->where('id_escuela','=',$request->get('escuela'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_escuela','=',$request->get('escuela'));
                 $upload =  $upload->where('id_escuela','=',$request->get('escuela'));
+                
                 
             }
             if($request->get('catedra') && $request->get('catedra') != '' ){
-                $ejercicio =  $ejercicio->where('id_catedra','=',$request->get('catedra'));
+                $ejercicioUsado =  $ejercicioUsado->where('id_catedra','=',$request->get('catedra'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_catedra','=',$request->get('catedra'));
                 $upload =  $upload->where('id_catedra','=',$request->get('catedra'));
+         
             }
             if($request->get('materia') && $request->get('materia') != '' ){
-                $ejercicio =  $ejercicio->where('id_materia','=',$request->get('materia'));
+                $ejercicioUsado =  $ejercicioUsado->where('id_materia','=',$request->get('materia'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_materia','=',$request->get('materia'));
                 $upload =  $upload->where('id_materia','=',$request->get('materia'));
+         
             }
             if($request->get('contenido') && $request->get('contenido') != '' ){
-                $ejercicio =  $ejercicio->where('id_contenido','=',$request->get('contenido'));
+                $ejercicioUsado =  $ejercicioUsado->where('id_contenido','=',$request->get('contenido'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_contenido','=',$request->get('contenido'));
                 $upload =  $upload->where('id_contenido','=',$request->get('contenido'));
+             
             }
             if($request->get('dificultad') && $request->get('dificultad') != '' ){
-                $ejercicio =  $ejercicio->where('id_dificultad','=',$request->get('dificultad'));
-                $upload =  $upload->where('id_dificultad','=',$request->get('dificultad'));
+                $ejercicioUsado =  $ejercicioUsado->where('id_dificultad','=',$request->get('dificultad'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_dificultad','=',$request->get('dificultad'));
+               
             }
             if($request->get('tipo') && $request->get('tipo') != '' ){
-                $ejercicio =  $ejercicio->where('id_tipo','=',$request->get('tipo'));
+                $ejercicioUsado =  $ejercicioUsado->where('id_tipo','=',$request->get('tipo'));
+                $ejercicioViejos =  $ejercicioViejos->where('id_tipo','=',$request->get('tipo'));
                 $upload =  $upload->where('id_tipo','=',$request->get('tipo'));
+   
             }
-            return view("gestion.ejercicio.soloEjercicios",["ejercicio"=>$ejercicio,"upload"=>$upload,"faculty"=>$faculty,
-          "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio,"usuario"=>$usuario]);
+
+
+            return view("gestion.ejercicio.historiaEjercicios",["ejercicioUsado"=>$ejercicioUsado,"faculty"=>$faculty,
+          "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio,"usuario"=>$usuario,
+          "ejercicioViejos"=>$ejercicioViejos,"upload"=>$upload]);
         }
-        
+      
+    }
+
+    public function actualizarFecha($id){
+        $ejercicio = Exercise::findOrfail($id);
+        $usuario = Auth::user();
+        $hoy = date("Y-m-d");
+        $ejercicio->created_at =  $hoy;
+        $ejercicio->usuario_modificador = $usuario->name;
+        $ejercicio->update();
+
+        return back();
+
+    }
+
+    public function usarEjercicio($id){
+        $ejercicio = Exercise::findOrfail($id);
+        $usuario = Auth::user();
+        $hoy = date("Y-m-d");
+        $ejercicio->updated_at =  $hoy;
+        $ejercicio->usuario_modificador = $usuario->name;
+        $ejercicio->usado = 0;
+        $ejercicio->update();
+
+        return back();
+
     }
 
     /**Detalles de los ejercicios */
@@ -210,12 +263,6 @@ class ExerciseController extends Controller
         ->get()
         ->first();
 
-        $canttemporaryevaluations = DB::table('temporaryevaluations as up')
-        ->select(DB::raw('count(*) as cantidad'))
-        ->where('up.id_usuario','=', $usuario->id)
-        ->get()
-        ->first();
-
         $faculty=DB::table('faculties as f')
         ->select('f.id','f.nombre')
         ->get();
@@ -228,7 +275,7 @@ class ExerciseController extends Controller
        return view('gestion.ejercicio.historial',["ejercicio"=>$ejercicio,
        "cantEjercicio"=>$cantEjercicio,"cantSoluciones"=>$cantSoluciones,"faculty"=>$faculty,
        "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio,"cantfavorites"=>$cantfavorites,
-       "cantUpdate"=>$cantUpdate,"canttemporaryevaluations"=>$canttemporaryevaluations]);
+       "cantUpdate"=>$cantUpdate]);
     }
 
     /**Muestra todos los ejercicios  */
@@ -507,12 +554,9 @@ class ExerciseController extends Controller
         $tipo_ejercicio=DB::table('typeexercises as te')
         ->select('te.id','te.nombre')
         ->get();
-        $usuario=DB::table('users as user')
-        ->select('user.*')
-        ->get();
         flash('Se elimino Correctamente')->success();
         return view("gestion.ejercicio.soloEjercicios",["ejercicio"=>$ejercicio,"upload"=>$upload,"faculty"=>$faculty,
-          "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio,"usuario"=>$usuario]);
+          "dificultad"=>$dificultad,"tipo_ejercicio"=>$tipo_ejercicio]);
     }
 
     public function favorito($id){

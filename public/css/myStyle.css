@@ -495,3 +495,7 @@
         margin-top: 7px;
         margin-right: 8px;
     }
+    
+    .card .card-header-inf .card-icon {
+        background-color: #f44336;
+    }

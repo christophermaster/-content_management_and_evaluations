@@ -31,7 +31,7 @@ class MatterController extends Controller
             ->where('m.nombre','LIKE','%'.$query.'%')
             ->where('m.id_catedra',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('m.id','asc')
+            ->orderBy('m.id','desc')
             ->paginate(10);
 
             return view('administration.university.matter.index',["matter"=>$matter,"id_catedra"=>$id,"searchText"=>$query]);

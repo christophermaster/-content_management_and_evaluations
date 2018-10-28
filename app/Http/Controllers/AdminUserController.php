@@ -47,7 +47,7 @@ class AdminUserController extends Controller
             'peo.cedula','use.name','use.email')
             ->where('peo.nombre','LIKE','%'.$query.'%')
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('peo.id','asc')
+            ->orderBy('peo.id','desc')
             ->paginate(10);
 
             return view('administration.user.index',["user"=>$user,"searchText"=>$query]);

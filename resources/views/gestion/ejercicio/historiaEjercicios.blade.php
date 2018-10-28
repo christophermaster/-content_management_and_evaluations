@@ -1,21 +1,23 @@
 @extends('layouts.admin') @section('contenido')
+
 <div class="breadcrumb">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"> <a href="{{ URL::previous() }}"><i class="material-icons">
             arrow_back</i>Atras</a></li>
-
         </ol>
     </nav>
 </div>
-<!--FILTRAR LOS EJERCICIOS -->
+<!--FILTRAR LOS EJERCICIOS-->
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
                 <div id="accordion" role="tablist">
                     <div class="card-collapse">
-                        <!--ENCABEZADO-->
+                        <!--
+                            ENCABEZADO
+                        -->
                         <div class="card-header" role="tab" id="headingTwo">
                             <h5 class="mb-0">
                                 <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -24,12 +26,14 @@
                                 </a>
                             </h5>
                         </div>
-                        <!-- BODY-->
+                        <!--
+                            BODY
+                        -->
                         <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                                        @include('favorito.filtroFavorito')
+                                        @include('filtros.vista-historico.historicoEjercicio')
                                     </div>
                                 </div>
                             </div>
@@ -40,43 +44,30 @@
         </div>
     </div>
 </div>
+
 <ul class="nav nav-tabs nav-tab" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link a active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="material-icons">
                 category
-            </i>Ejercicios</a>
+            </i>Ejercicios Deprecado</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link a" id="archivos" data-toggle="tab" href="#archivo" role="tab" aria-controls="archivo" aria-selected="false"><i class="material-icons">
+                <!--extension-->cloud_upload
+            </i>Archivos deprecado</a>
     </li>
     <li class="nav-item">
         <a class="nav-link a" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="material-icons">
-                extension
-            </i>Soluciones</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link a" id="parciales" data-toggle="tab" href="#parcial" role="tab" aria-controls="parcial" aria-selected="false"><i class="material-icons">
-                assignment
-            </i>Parciles</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link a" id="achivos" data-toggle="tab" href="#archivo" role="tab" aria-controls="archivo" aria-selected="false"><i class="material-icons">
-                attach_file
-            </i>Archivos</a>
+                <!--extension-->assignment
+            </i>Ejercicios Usados</a>
     </li>
 
 </ul>
 
-
 <div class="tab-content">
     <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                <div class="row titulo">
-                    <h3 class="detalle">Repositorio de Ejercicios</h3>
-                </div>
-            </div>
-        </div>
-        <hr>
         <div class="container">
-            @foreach($ejercicio as $ejer)
+            @foreach($ejercicioViejos as $ejer)
             <div class="blog-card bCard">
                 <div class="meta">
                     @if($ejer->id_tema == 1)
@@ -103,10 +94,13 @@
                     </ul>
                 </div>
                 <div class="description des">
-                    <form method="delete" action="/quitar/favorito/{{$ejer->id_favorito}}">
+                    <form method="post" action="/gestion/contenido/historicos/ejercicios/archivos/actualizar/fecha/{{$ejer->id}}">
+                        @csrf
+                        <input type="hidden" value="{{csrf_token()}}" name="_token" />
                         <div class="row text-right">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <button class="favorito" type="submit" rel="tooltip" title="Quitar de favoritos"><i class="material-icons">favorite</i></button>
+                                <button class="noFavorito" type="submit" rel="tooltip" title="Renovar Fecha"><i
+                                        class="material-icons">calendar_today</i></button>
                             </div>
                         </div>
                     </form>
@@ -122,95 +116,66 @@
                 </div>
             </div>
             @endforeach
-            <div class="text-center">
-                {{$ejercicio ->render()}}
-            </div>
         </div>
     </div>
 
     <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                <div class="row titulo">
-                    <h3 class="detalle">Soluciones</h3>
-                </div>
-            </div>
-        </div>
-        @foreach($solucion as $sol)
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                <div class="row titulo">
-
-                    <h3 class="detalle"></h3>
-
-                    <div class="mystats miEditar">
-                        <a class="nav-item menu" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons munu">more_vert</i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{route('solutionEditar',['id' => $sol->id])}}"><i class="material-icons">edit</i>Editar</a>
-                            <a class="dropdown-item" href="#" data-target="#modal-delete-{{$sol->id}}" data-toggle="modal"><i
-                                    class="material-icons">clear</i>Eliminar</a>
-                            <a class="dropdown-item" href="{{route('detallesEjercicio',['id' => $sol->id_ejercicio])}}"><i
-                                    class="material-icons">description</i>Detalles</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <hr>
-
-        <div class="row recuadro">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="row miform">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <label for="">Usuario Creador: </label>
-                        <p>{{$sol->usuario_creador}}</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <label for="">Usuario Modificador : </label>
-                        <p>{{$sol->usuario_modificador}}</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <label for="">Fecha de Creación: </label>
-                        <p>{{$sol->created_at}}</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <label for="">Fecha de Modificación: </label>
-                        <p>{{$sol->updated_at}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
-            <div class="blog-card">
-                <div class="descriptionB">
-                    <form method="delete" action="/quitar/favorito/{{$sol->id_favorito}}">
+            @foreach($ejercicioUsado as $ejer)
+            <div class="blog-card bCard">
+                <div class="meta">
+                    @if($ejer->id_tema == 1)
+                    <div class="photoo" style="background-image: url('{{asset('img/logica.jpg')}}')"></div>
+                    @elseif($ejer->id_tema == 2)
+                    <div class="photoo" style="background-image: url('{{asset('img/conjunto.png')}}')"></div>
+                    @elseif($ejer->id_tema == 3)
+                    <div class="photoo" style="background-image: url('{{asset('img/relaciones.jpg')}}')"></div>
+                    @else
+                    <div class="photoo" style="background-image: url('{{asset('img/conteo.jpg')}}')"></div>
+                    @endif
+
+                    <ul class="details">
+                        <li class="author"><a href="#">{{$ejer->usuario_creador}}</a></li>
+                        <li class="date">{{$ejer->created_at}}</li>
+                        <li class="tags">
+                            <ul>
+                                <li><a href="#">{{$ejer->facultad}}</a></li>
+                                <li><a href="#">{{$ejer->escuela}}</a></li>
+                                <li><a href="#">{{$ejer->catedra}}</a></li>
+                                <li><a href="#">{{$ejer->materia}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="description des">
+                    <form method="post" action="/gestion/contenido/historicos/ejercicios/archivos/usar/{{$ejer->id}}">
+                        @csrf
+                        <input type="hidden" value="{{csrf_token()}}" name="_token" />
                         <div class="row text-right">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <button class="favorito" type="submit" rel="tooltip" title="Quitar de favoritos"><i class="material-icons">favorite</i></button>
+                                <button class="noFavorito" type="submit" rel="tooltip" title="Volver a Utilizarlo"><i
+                                        class="material-icons">cached</i></button>
                             </div>
                         </div>
                     </form>
-                    <h1>Solución</h1>
-                    <p>
-                        <?php echo $sol->contenido; ?>
+                    <p class="read-more">
+                        <a href="{{route('detallesEjercicio',['id' => $ejer->id])}}">Ver más</a>
                     </p>
+                    <h1>{{$ejer->tema}}</h1>
+                    <h2>{{$ejer->nombre_contenido}}</h2>
+                    <p>
+                        <?php echo $ejer->contenido; ?>
+                    </p>
+
                 </div>
             </div>
+            @endforeach
         </div>
-        @include('gestion.solucion.modal')
-        <br> @endforeach
     </div>
-    <div class="tab-pane" id="parcial" role="tabpanel" aria-labelledby="parcial">
-        hola
-    </div>
-    <div class="tab-pane" id="archivo" role="tabpanel" aria-labelledby="archivo">
-                <div class="row">
-
-
-            @foreach($upload as $upl)
+    <div class="tab-pane" id="archivo" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="container">
+    <div class="row">
+        @foreach($upload as $upl)
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 cardCenter">
                 <div class="card " style="width:197px; height:197px " >
                    
@@ -231,11 +196,13 @@
                         <p class="card-title ctitulo"><b>{{$upl->titulo}}</b></p>
                     </div>
                     <div class="card-footer cfooter" >
-                        <form method="delete" action="/quitar/favorito/{{$upl->id_favorito}}">
+                        <form method="post" action="/favorito/archivos/{{$upl->id}}">
+                            @csrf
+                            <input type="hidden" value="{{csrf_token()}}" name="_token" />
                             <div class="row text-left">
                                 <div >
-                                    <button class="favorito margen" type="submit" rel="tooltip" title="Quitar de favoritos"><i
-                                            class="material-icons">favorite</i></button>
+                                    <button class="noFavorito margen" type="submit" rel="tooltip" title="Agregar a favoritos"><i
+                                            class="material-icons">favorite_border</i></button>
                                 </div>
                             </div>
                         </form>
@@ -250,92 +217,89 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
+                <!-- Modal -->
             <div class="modal fade bd-example-modal-lg" id="modal{{$upl->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Detalles - {{$upl->titulo}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <h5 class="modal-title" id="exampleModalLabel">Detalles - {{$upl->titulo}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="modal-body">
+                    <div class="container">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Facultad: </label> <p>{{$upl->facultad}}</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Escuela: </label><p>{{$upl->escuela}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Catedra: </label><p>{{$upl->catedra}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Materia: </label> <p>{{$upl->materia}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Tema: </label><p>{{$upl->tema}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">contenido: </label><p>{{$upl->contenido}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Categoria: </label> <p>{{$upl->categoria}}</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Usaurio: </label><p>{{$upl->usuario_creador}}</p> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">fecha: </label><p>{{$upl->created_at}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Nombre: </label> <p>{{$upl->titulo}}</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Peso: </label><p>{{$upl->usuario_creador}}</p> 
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="" class="">Tipo: </label><p>{{$upl->tipo_archivo}}</p> 
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label for="" class="">Descripción: </label> <p>{{$upl->descripcion}}</p>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Facultad: </label>
-                                    <p>{{$upl->facultad}}</p>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Escuela: </label>
-                                    <p>{{$upl->escuela}}</p>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Catedra: </label>
-                                    <p>{{$upl->catedra}}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Materia: </label>
-                                    <p>{{$upl->materia}}</p>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Tema: </label>
-                                    <p>{{$upl->tema}}</p>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">contenido: </label>
-                                    <p>{{$upl->contenido}}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Categoria: </label>
-                                    <p>{{$upl->categoria}}</p>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Usaurio: </label>
-                                    <p>{{$upl->usuario_creador}}</p>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">fecha: </label>
-                                    <p>{{$upl->created_at}}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Nombre: </label>
-                                    <p>{{$upl->titulo}}</p>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Peso: </label>
-                                    <p>{{$upl->usuario_creador}}</p>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="" class="">Tipo: </label>
-                                    <p>{{$upl->tipo_archivo}}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <label for="" class="">Descripción: </label>
-                                    <p>{{$upl->descripcion}}</p>
-                                </div>
+                     </div>
+                    </div>
 
-                            </div>
-                            <hr>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
+                    <hr>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
                     </div>
                 </div>
             </div>
-            @endforeach
-        </div>
+        @endforeach
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal modall">
+  <span id ="close" class="close">&times;</span>
+  <img class="modal-content cont" id="img01">
+  <div id="caption"></div>
+</div>
     </div>
 </div>
 <!-- The Modal -->
@@ -481,7 +445,5 @@ body {font-family: Roboto,sans-serif;}
     }
 }
 </style>
-
-
 
 @endsection

@@ -31,7 +31,7 @@ class TopicController extends Controller
             ->where('t.nombre','LIKE','%'.$query.'%')
             ->where('t.id_modulo',"=",$id)
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('t.id','asc')
+            ->orderBy('t.id','desc')
             ->paginate(10);
 
             return view('administration.university.topic.index',["topic"=>$topic,"id_modulo"=>$id,"searchText"=>$query]);

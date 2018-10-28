@@ -28,7 +28,7 @@ class FacultyController extends Controller
             ,'f.usuario_modificador','f.created_at','f.updated_at')
             ->where('f.nombre','LIKE','%'.$query.'%')
             //->orwhere('a.codigo','LIKE','%'.$query.'%')
-            ->orderBy('f.id','asc')
+            ->orderBy('f.id','desc')
             ->paginate(10);
 
             return view('administration.university.faculty.index',["faculty"=>$faculty,"searchText"=>$query]);

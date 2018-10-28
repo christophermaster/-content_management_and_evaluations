@@ -47,21 +47,21 @@ class FavoriteController extends Controller
             ->join("favorites as fav",'exx.id','=',"fav.id_ejercicio")
             ->select('exx.*','fav.id as id_favorito')
             ->where('fav.id_usuario','=', $usuario->id)
-            ->orderBy('exx.id','asc')
+            ->orderBy('exx.id','desc')
             ->paginate(2);
 
             $solucion  = DB::table('solutions as sol')
             ->join("favorites as fav",'sol.id','=',"fav.id_solucion")
             ->select('sol.*','fav.id as id_favorito')
             ->where('fav.id_usuario','=',$usuario->id)
-            ->orderBy('sol.id','asc')
+            ->orderBy('sol.id','desc')
             ->paginate(2);
 
             $upload  = DB::table('uploads as upl')
             ->join("favorites as fav",'upl.id','=',"fav.id_archivo")
             ->select('upl.*','fav.id as id_favorito')
             ->where('fav.id_usuario','=',$usuario->id)
-            ->orderBy('upl.id','asc')
+            ->orderBy('upl.id','desc')
             ->paginate(2);
             
             if($request->get('facultad') && $request->get('facultad') != '' ){

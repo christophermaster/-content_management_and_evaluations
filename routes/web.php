@@ -189,8 +189,9 @@ Route::post('evaluacion/modificar/{id}','EvaluationController@modificarParcial')
 Route::get('gestion/contenido/evaluacion/generada/{id}', ['as' => 'vistaEvaluacion', 'uses' => 'EvaluationController@generarEvaluacion']);
 Route::get('ejercicio/elejido/parcial/{id}/{idt}','EvaluationController@quitarEjercicio');
 Route::get('gestioni/contenido/todas/evaluaciones','EvaluationController@listarTodasLasEvaluaciones');
+Route::get('gestion/contenido/mis/pulicaciones/mis/evaluaciones','EvaluationController@misEvaluaciones');
+Route::get('gestion/contenido/mis/pulicaciones/mis/evaluaciones/detalles/{id}',['as' => 'detallesEvaluacion', 'uses' =>'EvaluationController@detalles']);
 
-Auth::routes();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * favoritos
@@ -203,7 +204,14 @@ Route::get('gestion/contenido/mis/favoritos','FavoriteController@favorito');
 //qui de favoritos
 Route::get('quitar/favorito/{id}', ['as' => 'quitarFavoritoEjercicio', 'uses' => 'FavoriteController@quitarFavorite']);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Historia de los usarios 
+ */
+Route::get('gestion/contenido/historicos/ejercicios/archivos','HistoryExerciseController@index');
+Route::post('gestion/contenido/historicos/ejercicios/archivos/actualizar/fecha/{id}','HistoryExerciseController@actualizarFecha');
+Route::post('gestion/contenido/historicos/ejercicios/archivos/usar/{id}','HistoryExerciseController@usarEjercicio');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Auth::routes();
 Route::auth();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
